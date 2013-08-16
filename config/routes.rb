@@ -1,5 +1,5 @@
 SplitAmongUs::Application.routes.draw do
   devise_for :users
 
-  root :to => "shared#index"
+  root :to => "home#index"
 end
