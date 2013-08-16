@@ -1,3 +1,35 @@
+/*font-family: 'Shadows Into Light', cursive;
+font-family: 'Happy Monkey', cursive;
+font-family: 'Over the Rainbow', cursive;*/
+
+$tan: #FFAF89;
+$teal: #1C9C84;
+$red: #ED544C;
+$gray: #D2CAD9;
+$purple: #51089C;
+
+nav {
+  padding: .1em;
+  background-color: $purple;
+}
+
 h1 {
-  color: purple;
+  padding-left: .5em;
+  color: $tan;
+  font-family: 'Over the Rainbow', cursive;
+}
+
+img {
+  padding: .15em;
+  width: 8%;
+  float: left;
+}
+
+h2 {
+  font-family: 'Shadows Into Light', cursive;
+  color: $purple;
+}
+
+.login {
+  float:right;
 }
