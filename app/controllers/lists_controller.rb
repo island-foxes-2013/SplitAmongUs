@@ -11,8 +11,12 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.
+    p "these are the list params #{list_params}"
     @list.save
-    respond_with @list
+    p "this i s the list #{@list}"
+    # render partial: 'lists/list', locals: { list: @list }
+    # respond_with @list
   end
 
   private
