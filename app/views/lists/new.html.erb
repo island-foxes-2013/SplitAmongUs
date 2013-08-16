@@ -1,10 +1,4 @@
-<%= form_for @list do |f| %>
+<%= form_for @list, remote: true do |f| %>
   <%= f.text_field :name, placeholder: "List Name" %>
   <%= f.submit "Create List!" %>
 <% end %>
-
-<script>
-  $(function() {
-    $(".new_list");
-  });
-</script>
