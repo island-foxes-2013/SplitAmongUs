@@ -9,7 +9,9 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= render partial: "devise/shared/links" %>
+  <% if user_signed_in? %>
+  <%= link_to "sign out", destroy_user_session_path, {method: :delete} %>
+  <% end %>
 <%= yield %>
 
 </body>
