@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  
+  # before authenticate! 
+
   def show
     @list = List.find(params[:id])
   end
