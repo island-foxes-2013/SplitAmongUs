@@ -1,22 +1,24 @@
 class ListsController < ApplicationController
   # before authenticate! 
 
-  def show
-    @list = List.find(params[:id])
-  end
+  # def show
+  #   @list = current_user.lists.find(params[:id])
+  # end
 
   def new
-    @list = List.new
+    @list = current_user.lists.new
   end
 
   def create
-    @list = List.new(list_params)
-    @list.
-    p "these are the list params #{list_params}"
-    @list.save
-    p "this i s the list #{@list}"
-    # render partial: 'lists/list', locals: { list: @list }
-    # respond_with @list
+    # List.transaction do |t|
+    # end
+
+    @list = current_user.lists.new(list_params)
+    if current_user.save
+      redirect_to dashboard_index_path
+    else
+      render text: "jeffreysux"
+    end
   end
 
   private
