@@ -11,7 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815222621) do
+ActiveRecord::Schema.define(:version => 20130816050830) do
+
+  create_table "bills", :force => true do |t|
+    t.string   "description"
+    t.integer  "amount"
+    t.integer  "list_id"
+    t.date     "date"
+    t.boolean  "paid"
+    t.date     "date_paid"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.integer  "total_amount"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
