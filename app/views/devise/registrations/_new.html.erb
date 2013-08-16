@@ -1,19 +1,14 @@
 <h2>Sign up</h2>
-
+<!-- at some point it'll move to the left -->
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <!-- <div><%#= f.label :name %><br /> -->
   <%= f.text_field :name, placeholder: :name %></div>
-
-  <!-- <div><%#= f.label :email %><br /> -->
+  <br />
   <%= f.email_field :email, placeholder: :email %></div>
-
-  <!-- <div><%#= f.label :password %><br /> -->
+  <br />
   <%= f.password_field :password, placeholder: :password %></div>
-
-  <!-- <div><%#= f.label :password_confirmation %><br /> -->
-  <%= f.password_field :password_confirmation, placeholder: :password_confirmation %></div>
+  <br />
+  <%= f.password_field :password_confirmation, placeholder: 'password confirmation' %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
