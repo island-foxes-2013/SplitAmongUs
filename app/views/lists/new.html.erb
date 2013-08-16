@@ -1,0 +1,10 @@
+<%= form_for @list do |f| %>
+  <%= f.text_field :name, placeholder: "List Name" %>
+  <%= f.submit "Create List!" %>
+<% end %>
+
+<script>
+  $(function() {
+    $(".new_list");
+  });
+</script>
