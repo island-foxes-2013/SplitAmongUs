@@ -1,23 +1,22 @@
 class ListsController < ApplicationController
-  # before authenticate! 
-
-  def show
-    @list = List.find(params[:id])
-  end
+  before_filter :authenticate_user!
 
   def new
-    @list = List.new
+    @list = current_user.lists.new
   end
 
   def create
-    @list = List.new(list_params)
-    @list.save
-    respond_with @list
+    @list = current_user.lists.new(list_params)
+    if current_user.save
+      redirect_to dashboard_index_path
+    else
+      flash[:error] = @list.errors[:name].join('')
+      redirect_to dashboard_index_path
+    end
   end
 
   private
     def list_params
       params.require(:list).permit(:name)
     end
-
 end

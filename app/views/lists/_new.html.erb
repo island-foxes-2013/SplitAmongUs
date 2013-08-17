@@ -1,4 +1,5 @@
-<%= form_for @list, remote: true do |f| %>
+<%= form_for lists do |f| %>
   <%= f.text_field :name, placeholder: "List Name" %>
   <%= f.submit "Create List!" %>
+  <span class='errors'><%= flash[:error] %></span>
 <% end %>

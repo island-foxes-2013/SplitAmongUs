@@ -1,1 +1,6 @@
-<li><%= list.name %></li>
+<% if lists.any? %>
+  <% lists.each do |list| %>
+    <li><%= list.name %></li>
+  <% end %>
+<% end %>
+
