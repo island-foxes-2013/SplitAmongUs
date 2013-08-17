@@ -1,6 +1,6 @@
-<% if lists.any? %>
-  <% lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
+<% lists.each do |list| %>
+  <!-- why do I need an unless there????? -->
+  <li><%= link_to list.name, list_path(list), {method: :get} unless list.id.nil? %></li>
 <% end %>
+
 

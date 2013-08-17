@@ -4,12 +4,14 @@ class BillsController < ApplicationController
   # end
   
   def create
+    p "these are the params #{params}"
     @bill = Bill.new(bill_params)
-    @bill.list = params[:list_id]
+    @bill.list_id = params[:list_id]
     if @bill.save
-      p 'nice'
+      redirect_to list_path(@bill.list)
     else
-      p 'almost there'
+      flash[:error] = @bill.errors.full_messages.join('')
+      redirect_to list_path(@bill.list)
     end
   end
 
