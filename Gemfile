@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'money-rails'
 gem 'pg'
 gem 'rails', '3.2.13'
 gem 'responders'
 gem 'strong_parameters'
 gem 'gravtastic'
+gem 'zepto-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,8 +22,6 @@ group :assets do
   gem 'compass-rails' # you need this or you get an err
   gem 'zurb-foundation', '~> 4.0.0'
 end
-
-gem 'jquery-rails'
 
 group :development, :test do
   gem 'sextant'
@@ -35,9 +36,7 @@ group :development, :test do
   gem 'capybara-webkit','~>1.0.0'
   gem 'rb-fsevent' #notifies when files change
   gem 'quiet_assets'
+  gem 'pry-rails'
+  gem 'debugger'
 end
 
-gem 'pry-rails', :group => :development
-
-# To use debugger
-gem 'debugger'

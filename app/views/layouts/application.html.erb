@@ -7,9 +7,13 @@
   <head>
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Happy+Monkey|Over+the+Rainbow' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt|Aclonica|Sansita+One' rel='stylesheet' type='text/css'>
-    <script src="myscripts.js"></script>
+    <!--
     <script src="/js/custom.modernizr.js"></script>
     <script src="/js/foundation.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+
+    <%= javascript_include_tag("application") %>
   	<meta charset="utf-8" />
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
@@ -33,20 +37,17 @@
         </fieldset>
       </div>
       <% if user_signed_in? %>
-<!--       <ul>
- -->        <!-- <li id="user_dropdown"> -->
-        <%#= @user%>
+        <%= @user%>
           <a href="#" id="user_dropdown" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
             <ul id="drop1" class="f-dropdown" data-dropdown-content>
               <li><a href="#">my profile</a></li>
               <li><a href="#">This is another</a></li>
               <li><a href="#">log off</a></li>
             </ul>
-<!--         </li> -->
+
 
         <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
         <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
-      <!-- </ul> -->
   <% else %>
     <%= render partial: 'devise/sessions/new' %>
   <% end %>
@@ -56,7 +57,7 @@
   <p class="alert"><%= alert %></p>
   
 <%= yield %>
-
+<!--
   <script>
   document.write('<script src=' +
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
@@ -76,7 +77,7 @@
   <script src="js/foundation/foundation.section.js"></script>
   <script src="js/foundation/foundation.tooltips.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
-  <script src="js/foundation/foundation.interchange.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script> --> 
   <script>
     $(document).foundation();
     $('#user_dropdown').foundation();
