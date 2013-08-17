@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  before_filter :authenticate_user!
+
   # def new
   #   @bill = Bill.new
   # end
@@ -15,11 +17,11 @@ class BillsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
   private
     def bill_params
