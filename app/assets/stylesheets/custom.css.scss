@@ -80,4 +80,7 @@ header a {
   fieldset {
     @include grid-column($columns: 6, $float: false)
   }
+  input[type="submit"] {
+    @include button($full-width:true)
+  }
 }
