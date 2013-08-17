@@ -17,7 +17,7 @@ describe ListsController do
 
     context "with invalid attributes" do
       it "does not save the new list in the database"
-      it "renders the error message"
+      it "renders the error message and redirects to the dashboard page"
     end
   end 
 end

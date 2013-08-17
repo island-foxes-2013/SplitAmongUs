@@ -10,7 +10,8 @@ class ListsController < ApplicationController
     if current_user.save
       redirect_to dashboard_index_path
     else
-      render text: "jeffreysux"
+      flash[:error] = @list.errors[:name].join('')
+      redirect_to dashboard_index_path
     end
   end
 
