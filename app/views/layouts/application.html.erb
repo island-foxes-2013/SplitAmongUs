@@ -7,8 +7,13 @@
   <head>
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Happy+Monkey|Over+the+Rainbow' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt|Aclonica|Sansita+One' rel='stylesheet' type='text/css'>
+<!--    
     <script src="/js/custom.modernizr.js"></script>
     <script src="/js/foundation.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+-->
+    <%= javascript_include_tag("application") %>
   	<meta charset="utf-8" />
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
@@ -51,7 +56,7 @@
   <p class="alert"><%= alert %></p>
   
 <%= yield %>
-
+<!--
   <script>
   document.write('<script src=' +
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
@@ -71,7 +76,7 @@
   <script src="js/foundation/foundation.section.js"></script>
   <script src="js/foundation/foundation.tooltips.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
-  <script src="js/foundation/foundation.interchange.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script> --> 
   <script>
     $(document).foundation();
   </script>
