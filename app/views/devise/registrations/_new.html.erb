@@ -1,14 +1,20 @@
-<h2>Sign up</h2>
-<!-- at some point it'll move to the left -->
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.text_field :name, placeholder: :name %></div>
-  <br />
-  <%= f.email_field :email, placeholder: :email %></div>
-  <br />
-  <%= f.password_field :password, placeholder: :password %></div>
-  <br />
-  <%= f.password_field :password_confirmation, placeholder: 'password confirmation' %></div>
+<div id="signup">
+  <fieldset>
+    <img src="pig-wallpaper.jpg" img-tag="pig_wallpaper"></img>
+  </fieldset>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <fieldset>
+    <%= devise_error_messages! %>
+    <h2>Sign up</h2>
+    <%= f.text_field :name, placeholder: :name %>
+    <br />
+    <%= f.email_field :email, placeholder: :email %>
+    <br />
+    <%= f.password_field :password, placeholder: :password %>
+    <br />
+    <%= f.password_field :password_confirmation, placeholder: 'password confirmation' %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+    <%= f.submit "Sign up" %>
+  </fieldset>
+  <% end %>
+</div>
