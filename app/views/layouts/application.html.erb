@@ -29,11 +29,12 @@
           <h2> splitamong.us </h2>
         </fieldset>
       </div>
-      <%= render partial: 'devise/sessions/new' %>
-    </header>
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
   <%= link_to "sign out", destroy_user_session_path, {method: :delete} %>
+  <% else %>
+    <%= render partial: 'devise/sessions/new' %>
   <% end %>
+    </header>
   </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
