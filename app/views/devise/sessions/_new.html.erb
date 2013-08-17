@@ -1,17 +1,23 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="row" id="login" class="large-4 columns">
-    <label class="left inline">Log in</label>
-      <%= f.email_field :email, placeholder: :email %>
 
-      <%= f.password_field :password, placeholder: :password %>
+<div id="login">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>    
+  <fieldset>
+    <%= f.email_field :email, placeholder: :email %>
+    <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me %><%= f.label :remember_me %>
+    <% end -%>
+  </fieldset>
 
-      <% if devise_mapping.rememberable? -%>
-        <%= f.check_box :remember_me %><%= f.label :remember_me %>
-      <% end -%>
-      <%= f.submit "Log In" %>
+  <fieldset>
+    <%= f.password_field :password, placeholder: :password %>
+    <%= render "devise/shared/links" %>
+  </fieldset>
 
-      <%= render "devise/shared/links" %>
-  </div>
-<% end %>
+  <fieldset>
+    <%= f.submit "Log In" %>  
+  </fieldset>  
+  <% end %>      
+</div>
+
 
 

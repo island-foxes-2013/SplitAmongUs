@@ -17,6 +17,7 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
+$body-font-family: 'Happy Monkey', cursive;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -65,9 +66,9 @@
 // Grid Variables
 //
 
-// $row-width: 62.5em;
+$row-width: 100%;
 // $column-gutter: 1.875em;
-// $total-columns: 12;
+$total-columns: 12;
 
 //
 // Block Grid Variables
@@ -85,10 +86,10 @@
 //
 
 // We use these to control header font styles
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: 'Shadows Into Light', cursive;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: $alt-primary-color;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -207,7 +208,7 @@
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
-// $fieldset-border-width: 1px;
+$fieldset-border-width: 0px;
 // $fieldset-border-color: #ddd;
 // $fieldset-padding: emCalc(20px);
 // $fieldset-margin: emCalc(18px) 0;

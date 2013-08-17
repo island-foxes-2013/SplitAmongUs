@@ -1,48 +1,76 @@
-/*font-family: 'Shadows Into Light', cursive;
-font-family: 'Happy Monkey', cursive;
-font-family: 'Over the Rainbow', cursive;*/
-
-$tan: #FFAF89;
-$teal: #1C9C84;
-$red: #ED544C;
-$gray: #D2CAD9;
-$purple: #51089C;
-
 nav {
-  padding: .1em;
-  background-color: $purple;
+  background-color: $alt-primary-color;
+}
+
+
+
+
+h2 {
+  color: $alt-primary-color;
 }
 
 header {
-  display: inline-block;
-  border: 0;
-  padding-right: 0 0 0 .05em;
+  @include grid-row();
 }
 
-header h2 {
-  display: inline;
-  position: relative;
-  padding-left: .5em;
-  padding-right: 0;
-  color: $tan;
-  font-family: 'Over the Rainbow', cursive;
+header a {
+  font-size: .8em;
 }
 
-img {
-  padding: .15em;
-  width: 4em;
-  float: left;
-}
+#logo {
+  
+  @media #{$small} {
+    @include grid-column(12);
+  }
+  @media #{$large} {
+    @include grid-column(6);
+  }
+  h2, img {
+    display: inline-block;
+  }
 
-h2 {
-  font-family: 'Shadows Into Light', cursive;
-  color: $purple;
+  img {
+    width: 4em;
+  }
+
+  h2 {
+    color: $secondary-color;
+    line-height: 16px;
+    font-family: 'Over the Rainbow', cursive;
+  }
 }
 
 #login {
-  display: inline;
-  font-family: 'Happy Monkey', cursive;
-  color: $gray;
-  padding: 0;
+  
+
+  @media #{$small} {
+    @include grid-column(12);
+    
+    fieldset {
+      @include grid-column(12);
+      margin: 0;
+    }
+  }
+  @media #{$large} {
+    @include grid-column($columns: 6, $last-column:true);
+
+    fieldset {
+      @include grid-column(5);
+      margin: 0;
+    }
+    fieldset:last-child {
+      @include grid-column(2);
+    }
+  }
+  
+  h1,h2,h3,h4, label {
+    color: $alt-secondary-color;   
+  }
+  label { display: inline; }
+
+
+  input[type="submit"] {
+    @include button($full-width:true, $radius)
+  }
 }
 

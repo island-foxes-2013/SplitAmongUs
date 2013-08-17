@@ -9,6 +9,22 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
- *= require_tree .
 */
+
+
+/*font-family: 'Shadows Into Light', cursive;
+font-family: 'Happy Monkey', cursive;
+font-family: 'Over the Rainbow', cursive;*/
+$secondary-color: #FFAF89; /* Lavender */
+$primary-color: #1C9C84;   /* teal */
+$alert-color: #ED544C;     /* Red */
+
+$alt-primary-color: #51089C;
+$alt-secondary-color: #D2CAD9;
+
+$small-screen: emCalc(768);
+$large-screen: emCalc(769);
+
+@import "foundation_and_overrides";
+@import "foundation";
+@import "custom"
