@@ -5,5 +5,6 @@ class List < ActiveRecord::Base
 
   validates :name, presence: true
 
+  monetize :total_amount_cents
   # Need to create a method to calculate total amount
 end

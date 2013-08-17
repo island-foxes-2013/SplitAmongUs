@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-
-gem 'pg'
 gem 'devise'
+gem 'money-rails'
+gem 'pg'
+gem 'rails', '3.2.13'
 gem 'responders'
 gem 'strong_parameters'
 

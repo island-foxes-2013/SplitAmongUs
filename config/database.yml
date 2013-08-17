@@ -17,6 +17,7 @@ development:
   encoding: unicode
   database: SplitAmongUs_development
   pool: 5
+  min_messages: WARNING
   # username: SplitAmongUs
   # password:
 
@@ -43,6 +44,7 @@ test:
   encoding: unicode
   database: SplitAmongUs_test
   pool: 5
+  min_messages: WARNING
   # username: SplitAmongUs
   # password:
 

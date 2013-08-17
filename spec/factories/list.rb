@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :list do |f|
     f.name "Awesome List"
-    f.total_amount 500
+    f.total_amount 50
     # fill in date here using faker! with blocks {}
   end
 
