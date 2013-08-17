@@ -31,6 +31,7 @@
       </div>
       <% if user_signed_in? %>
   <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
+  <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
   <% else %>
     <%= render partial: 'devise/sessions/new' %>
   <% end %>

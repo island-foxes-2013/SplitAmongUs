@@ -1,6 +1,6 @@
 SplitAmongUs::Application.routes.draw do
   devise_for :users
-  match 'users/:id' => 'users#show'
+  match 'users/:id' => 'users#show', as: :users
   resources :dashboard, only: [:index]
   resources :lists, only: [:show, :create]
 
