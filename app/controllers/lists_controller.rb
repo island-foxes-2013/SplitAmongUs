@@ -1,10 +1,6 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!
 
-  def new
-    @list = current_user.lists.new
-  end
-
   def create
     @list = current_user.lists.new(list_params)
     if current_user.save
@@ -17,6 +13,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:name)
+      params.require(:list).permit(:name, :total_amount)
     end
 end
