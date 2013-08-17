@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  private
-    def list_params
-      params.require(:list).permit(:name)
-    end
+  # private
+  #   def list_params
+  #     params.require(:list).permit(:name)
+  #   end
 end
