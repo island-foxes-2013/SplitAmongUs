@@ -15,16 +15,16 @@
 /*font-family: 'Shadows Into Light', cursive;
 font-family: 'Happy Monkey', cursive;
 font-family: 'Over the Rainbow', cursive;*/
-$secondary-color: #FFAF89; /* Lavender */
+$secondary-color: #FFBC8C; /* tan */
 $primary-color: #1C9C84;   /* teal */
-$alert-color: #ED544C;     /* Red */
+$alert-color: #ED544C;     /* red */
 
-$alt-primary-color: #51089C;
-$alt-secondary-color: #D2CAD9;
+$alt-primary-color: #360769; /* purple */
+$alt-secondary-color: #E5DDD9; /* lavendar */
 
 $small-screen: emCalc(768);
 $large-screen: emCalc(769);
 
 @import "foundation_and_overrides";
 @import "foundation";
-@import "custom"
+@import "custom";

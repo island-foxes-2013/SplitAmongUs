@@ -1,9 +1,10 @@
+body {
+  background-color: rgba(229,221,217, 0.1);
+}
+
 nav {
   background-color: $alt-primary-color;
 }
-
-
-
 
 h2 {
   color: $alt-primary-color;
@@ -29,19 +30,18 @@ header a {
     display: inline-block;
   }
 
-  img {
+/*  img {
     width: 4em;
-  }
+  }*/
 
   h2 {
-    color: $secondary-color;
+    color: $alt-secondary-color;
     line-height: 16px;
     font-family: 'Over the Rainbow', cursive;
   }
 }
 
 #login {
-  
 
   @media #{$small} {
     @include grid-column(12);
@@ -70,7 +70,14 @@ header a {
 
 
   input[type="submit"] {
-    @include button($full-width:true, $radius)
+    @include button($full-width:true)
   }
 }
 
+#signup {
+  @include grid-column(6);
+
+  fieldset {
+    @include grid-column($columns: 6, $float: false)
+  }
+}
