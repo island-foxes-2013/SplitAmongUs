@@ -7,6 +7,8 @@
   <head>
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Happy+Monkey|Over+the+Rainbow' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt|Aclonica|Sansita+One' rel='stylesheet' type='text/css'>
+    <script src="/js/custom.modernizr.js"></script>
+    <script src="/js/foundation.min.js"></script>
   	<meta charset="utf-8" />
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
@@ -26,12 +28,20 @@
     <header>
       <div id="logo">
         <fieldset>
-          <h2> Split*Among.Us </h2>
+          <a href="/dashboard"><h2> Split*Among.Us </h2></a>
         </fieldset>
       </div>
       <% if user_signed_in? %>
-  <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
-  <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
+        <%= @user%>
+          <a href="#" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
+            <ul id="drop1" class="f-dropdown" data-dropdown-content>
+              <li><a href="#">my profile</a></li>
+              <li><a href="#">This is another</a></li>
+              <li><a href="#">log off</a></li>
+            </ul>
+
+        <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
+        <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
   <% else %>
     <%= render partial: 'devise/sessions/new' %>
   <% end %>
@@ -42,6 +52,30 @@
   
 <%= yield %>
 
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.alerts.js"></script>
+  <script src="js/foundation/foundation.clearing.js"></script>
+  <script src="js/foundation/foundation.cookie.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <script src="js/foundation/foundation.forms.js"></script>
+  <script src="js/foundation/foundation.joyride.js"></script>
+  <script src="js/foundation/foundation.magellan.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  <script src="js/foundation/foundation.reveal.js"></script>
+  <script src="js/foundation/foundation.section.js"></script>
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  </script>
 </body>
 </html>
 

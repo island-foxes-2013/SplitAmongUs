@@ -6,6 +6,7 @@ gem 'pg'
 gem 'rails', '3.2.13'
 gem 'responders'
 gem 'strong_parameters'
+gem 'gravtastic'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -2,10 +2,21 @@ require 'spec_helper'
 
 describe ListsController do
   let(:user) { create(:user) }
-  let(:list) { user.lists.create(:list) }
+  let(:list) { create(:list) }
    
   before do
     sign_in(user)
+  end
+
+  describe "GET #show" do
+    it "assigns the requested list to @list" do
+      get :show, id: list.id
+      assigns(:list).should eq(list)
+    end
+    it "renders the show template" do
+      get :show, id: list.id
+      expect(response).to render_template("show")
+    end
   end
 
   describe "POST #create" do

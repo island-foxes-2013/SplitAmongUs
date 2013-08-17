@@ -16,3 +16,4 @@
 //= require_tree .
 
 $(document).foundation();
+	$('#scope').foundation();
