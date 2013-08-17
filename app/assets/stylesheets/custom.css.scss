@@ -70,16 +70,25 @@ header a {
 
 
   input[type="submit"] {
-    @include button($full-width:true)
+    /*padding: 0;*/
+    font-size: .77em !important;
+    @include button($full-width:true, $padding: $button-med)
   }
 }
 
 #signup {
-  @include grid-column(6);
-
   fieldset {
-    @include grid-column($columns: 6, $float: false)
+    @include grid-column($columns: 8)
   }
+
+  img {
+    height: 40em;
+    opacity:0.2;
+  }
+
+  fieldset:last-child {
+    @include grid-column(4);
+    }
   input[type="submit"] {
     @include button($full-width:true)
   }
