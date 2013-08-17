@@ -11,6 +11,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+    p "these are the params #{params} and list params #{list_params}"
+    @list = List.find(params[:id])
+  end
+
   private
     def list_params
       params.require(:list).permit(:name, :total_amount)

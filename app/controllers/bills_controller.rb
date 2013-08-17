@@ -4,7 +4,7 @@ class BillsController < ApplicationController
   # end
   
   def create
-    @bill = Bill.new(params[:bill])
+    @bill = Bill.new(bill_params)
     @bill.list = params[:list_id]
     if @bill.save
       p 'nice'
@@ -12,4 +12,15 @@ class BillsController < ApplicationController
       p 'almost there'
     end
   end
+
+  def edit
+  end
+
+  def update
+  end
+
+  private
+    def bill_params
+      params.require(:bill).permit(:description, :amount, :date)
+    end
 end
