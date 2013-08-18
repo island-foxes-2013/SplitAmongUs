@@ -10,5 +10,7 @@ SplitAmongUs::Application.routes.draw do
     resources :bills, only: [:show, :create, :edit, :update] # will need edit update delete and destroy
   end
 
+  resources :lists, only: [:edit, :update, :destroy]
+
   root :to => "home#index"
 end

@@ -1,4 +1,4 @@
-<h3> These are all the bills </h3>
+<h3> Bills for list: <%= @list.name %> </h3>
 <% bills.each do |bill| %>
   <% next if bill.description.nil? %>
   <h4><%= bill.description %></h4>

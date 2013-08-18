@@ -14,4 +14,11 @@
 <div class="add bill">
   
 </div>
+
+<h3>Total Amount for bills in <%= @list.name %>:</h3>
+    <% @total = Money.new(0, "USD") %>
+    <% @list.bills.each do |bill| %> 
+    <% @total += bill.amount %>
+    <% end %>
+    $<%= @total %> 
 <% end %> 
