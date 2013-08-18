@@ -39,10 +39,10 @@
       <% if user_signed_in? %>
 
           <fieldset id="user_nav">
-            <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome,&nbsp<%= current_user.name %></a>
+            <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome, <%= current_user.name %></a>
               <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
               <ul id="drop1" class="f-dropdown" data-dropdown-content>
-                <li><%= link_to "my profile", users_path(current_user.id), {method: :get} %></li>
+                <li><%= link_to "my profile", edit_user_registration_path, {method: :get} %></li>
                 <li><a href="#">This is another</a></li>
                 <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
               </ul>
@@ -77,32 +77,6 @@
         </div>
       </footer>
 
-<!--
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  <script src="js/foundation/foundation.js"></script>
-  <script src="js/foundation/foundation.alerts.js"></script>
-  <script src="js/foundation/foundation.clearing.js"></script>
-  <script src="js/foundation/foundation.cookie.js"></script>
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  <script src="js/foundation/foundation.forms.js"></script>
-  <script src="js/foundation/foundation.joyride.js"></script>
-  <script src="js/foundation/foundation.magellan.js"></script>
-  <script src="js/foundation/foundation.orbit.js"></script>
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  <script src="js/foundation/foundation.reveal.js"></script>
-  <script src="js/foundation/foundation.section.js"></script>
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  <script src="js/foundation/foundation.topbar.js"></script>
-  <script src="js/foundation/foundation.interchange.js"></script> --> 
-  <script>
-    $(document).foundation();
-    $('#user_dropdown').foundation();
-  </script>
-  <script src=zepto.min.js></script>
 </body>
 </html>
 

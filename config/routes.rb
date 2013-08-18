@@ -1,5 +1,8 @@
 SplitAmongUs::Application.routes.draw do
   devise_for :users
+  resources :users, only: [] do
+    resources :bills, only: [:index]
+  end
   match 'users/:id' => 'users#show', as: :users
   resources :dashboard, only: [:index]
 

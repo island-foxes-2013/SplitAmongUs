@@ -4,9 +4,13 @@ class BillsController < ApplicationController
   # def new
   #   @bill = Bill.new
   # end
+
+  def index
+    @lists = current_user.lists
+  end
   
   def create
-    p "these are the params #{params}"
+    # p "these are the params #{params}"
     @bill = Bill.new(bill_params)
     @bill.list_id = params[:list_id]
     if @bill.save

@@ -1,0 +1,22 @@
+<ul>
+  <% @lists.each do |list| %>
+  <% if list.bills.any? %>
+  <li><h4><%= list.name %></h4><br />
+    <% list.bills.each do |bill| %>
+    <%= bill.description %> - $<%= bill.amount %><br />
+    <%= bill.date %><br />
+    <%= bill.date_paid %></li>
+    <br />
+    <% end %>
+    <% end %>
+    <% end %>
+  </ul>
+
+  <h3>Total Amount:</h3>
+    <% @total = Money.new(0, "USD") %>
+    <% @lists.each do |list| %>
+    <% list.bills.each do |bill| %>
+    <% @total += Money.new(bill.amount, "USD") %>
+    <% end %>
+    <% end %>
+    $<%= @total * 100.00 %>  

@@ -1,9 +1,14 @@
 FactoryGirl.define do
 
   factory :bill do
-    amount      { rrand(2333.43) }
+    amount      { rand(2333.43) }
     description { Faker::Lorem.sentence }
     date        { Date.today }
-    # fill in date here using faker! with blocks {}
+  end
+
+  factory :invalid_bill, parent: :bill do |f|
+    f.amount      nil
+    f.description nil
+    f.date        nil
   end
 end

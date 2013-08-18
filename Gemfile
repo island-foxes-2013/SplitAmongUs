@@ -10,6 +10,7 @@ gem 'responders'
 gem 'strong_parameters'
 gem 'gravtastic'
 gem 'zepto-rails'
+gem 'devise_invitable'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,5 +39,9 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'debugger'
+end
+
+group :development do
+  gem "letter_opener"
 end
 
