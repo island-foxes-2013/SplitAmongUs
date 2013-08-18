@@ -41,3 +41,7 @@ group :development, :test do
   gem 'debugger'
 end
 
+group :development do
+  gem "letter_opener"
+end
+
