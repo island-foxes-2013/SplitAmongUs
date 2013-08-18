@@ -17,7 +17,7 @@
       }, 500 );
     }
  
-    $( "#dialog-form" ).dialog({
+    $( "#dialog-lists-form" ).dialog({
       autoOpen: false,
       height: 300,
       width: 350,
@@ -38,6 +38,6 @@
  
     $( "#create-list" )
       .click(function() {
-        $( "#dialog-form" ).dialog( "open" );
+        $( "#dialog-lists-form" ).dialog( "open" );
       });
   });

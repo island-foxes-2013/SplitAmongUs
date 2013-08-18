@@ -109,11 +109,6 @@ header a {
   }
 }
 
-
-.new_bill {
-  @include grid-column(4)
-}
-
 #user_nav {
   @include grid-column($columns: 3, $last-column:true);
 

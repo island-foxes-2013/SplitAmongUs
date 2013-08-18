@@ -14,14 +14,14 @@
       }, 500 );
     }
  
-    $( "#dialog-form" ).dialog({
+    $( "#dialog-bills-form" ).dialog({
       autoOpen: false,
       height: 300,
       width: 350,
       modal: true,
       buttons: {
         "Create bill": function() {
-          $('form#form_bill').submit();
+          $('form#new_bill').submit();
           $( this ).dialog( "close" );
         },
         Cancel: function() {
@@ -35,6 +35,6 @@
  
     $( "#create-bill" )
       .click(function() {
-        $( "#dialog-form" ).dialog( "open" );
+        $( "#dialog-bills-form" ).dialog( "open" );
       });
   });
