@@ -6,12 +6,10 @@ class ListsController < ApplicationController
   # end
 
   def create
-    @list = current_user.lists.build(list_params)
-    if @list.save
+    @list = current_user.lists.new(list_params)
+    if current_user.save
       redirect_to dashboard_index_path
     else
-      p "*" * 100
-      p @list.errors.full_messages
       flash[:error] = @list.errors[:name].join('')
       redirect_to dashboard_index_path
     end
