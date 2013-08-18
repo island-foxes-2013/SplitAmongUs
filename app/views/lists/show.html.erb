@@ -1,6 +1,7 @@
 <h3>create a bill for <%= @list.name %></h3>
 <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
 <% if @list.bills.any? %>
+
 <ul class="bills">
   <%= render partial: 'bills/bill', locals: { bills: @list.bills } %>
 </ul>

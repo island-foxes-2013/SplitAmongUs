@@ -119,3 +119,17 @@ header a {
     border-radius: 50px;
   }
 }
+
+
+#left_column {
+  @include grid_column($columns: 3)
+}
+
+#middle_column {
+  @include grid_column($columns: 6)
+}
+
+#right_column {
+  @include grid_column($columns: 3, $last-column: true)
+
+}

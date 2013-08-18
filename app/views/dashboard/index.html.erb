@@ -1,59 +1,60 @@
-<div id="users-contain" class="ui-widget">
-  <h1>My Lists:</h1>
-  <% if current_user.lists.any? %>
-  <ul class="lists">
-    <%= render partial: 'lists/list', locals: { lists: current_user.lists } %>
-  </ul>
-  <% end %> 
-</div>
-<button id="create-list">Create new list</button>
-
-
-<div id="dialog-form">
-<%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
-</div>
-
-<script>
-  $(function() {
-    var name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
-      tips = $( ".validateTips" );
+<div class="row">
+    <div class="large-12 columns">
+       <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <!-- Shows -->
+            <div class="large-3 small-6 columns">
  
-    function updateTips( t ) {
-      tips
-        .text( t )
-        .addClass( "ui-state-highlight" );
-      setTimeout(function() {
-        tips.removeClass( "ui-state-highlight", 1500 );
-      }, 500 );
-    }
+               <div id="users-contain" class="ui-widget">
+                <h2>My Lists:</h2>
+                <% if current_user.lists.any? %>
+                <ul class="lists">
+                  <%= render partial: 'lists/list', locals: { lists: current_user.lists } %>
+                </ul>
+                <% end %> 
+              </div>
+              <button id="create-list">Create new list</button>
  
-    $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "Create list": function() {
-          $('form#new_list').submit();
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      },
-      close: function() {
-        allFields.val( "" );
-      }
-    });
+              <div class="row">
+                <div class="large-1 column">
+                  <img src="http://placehold.it/50x50&amp;text=[img]">
+                </div>
+              </div>
+            </div>
+            <!-- End Shows -->
  
-    $( "#create-list" )
-      .click(function() {
-        $( "#dialog-form" ).dialog( "open" );
-      });
-  });
-  </script>
+ 
+            <!-- Image -->
+ 
+            <div class="large-6 small-6 columns">
+                <div id="dialog-form">
+              <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
+              </div>
+            </div>
+ 
+            <!-- End Image -->
+ 
+ 
+            <!-- Feed -->
+ 
+            <div class="large-3 small-12 columns">
+ 
+              <h4>Your Stats:</h4><hr>
+              <div class="panel">
+                <h5><a href="#">Post Title 1</a></h5>
+ 
+                <h6 class="subheader">
+                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+                </h6>
+ 
+            </div>
+ 
+            <!-- End Feed -->
+ 
+          </div>
+        </div>
+      </div>
+
 
 
