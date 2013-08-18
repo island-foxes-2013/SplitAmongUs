@@ -16,6 +16,7 @@
 /*font-family: 'Shadows Into Light', cursive;
 font-family: 'Happy Monkey', cursive;
 font-family: 'Over the Rainbow', cursive;*/
+
 $secondary-color: #FFBC8C; /* tan */
 $primary-color: #1C9C84;   /* teal */
 $alert-color: #ED544C;     /* red */
@@ -29,3 +30,4 @@ $large-screen: emCalc(769);
 @import "foundation_and_overrides";
 @import "foundation";
 @import "custom";
+
