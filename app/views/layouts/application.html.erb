@@ -7,12 +7,12 @@
   <head>
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Happy+Monkey|Over+the+Rainbow' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt|Aclonica|Sansita+One' rel='stylesheet' type='text/css'>
-<!--    
+    <!--
     <script src="/js/custom.modernizr.js"></script>
     <script src="/js/foundation.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
--->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+
     <%= javascript_include_tag("application") %>
   	<meta charset="utf-8" />
   	<!-- Uncomment to make IE8 render like IE7 -->
@@ -37,6 +37,7 @@
         </fieldset>
       </div>
       <% if user_signed_in? %>
+
           <fieldset id="user_nav">
             <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome,&nbsp<%= current_user.name %></a>
               <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
@@ -56,6 +57,7 @@
       <span class="alert"><%= alert %></span>
       
     <%= yield %>
+
 <!--
   <script>
   document.write('<script src=' +
@@ -79,8 +81,9 @@
   <script src="js/foundation/foundation.interchange.js"></script> --> 
   <script>
     $(document).foundation();
+    $('#user_dropdown').foundation();
   </script>
-  </script>
+  <script src=zepto.min.js></script>
 </body>
 </html>
 
