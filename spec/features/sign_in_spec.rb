@@ -25,6 +25,13 @@ describe 'SignIn' do
     end
   end
 
+  context "user forgot password" do
+    it "redirects to password reset page" do
+      click_link "Forgot your password"
+      redirect_to(new_user_password_path)
+    end
+  end
+
   context "after sign-in" do
     it "redirects to the dashboard page" do
       within '#login' do 
