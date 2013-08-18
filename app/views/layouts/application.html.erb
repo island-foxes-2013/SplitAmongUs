@@ -37,16 +37,23 @@
         </fieldset>
       </div>
       <% if user_signed_in? %>
-        <div id="user_nav">
-        </div>
+          <fieldset id="user_nav">
+            <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome,&nbsp<%= current_user.name %></a>
+              <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
+              <ul id="drop1" class="f-dropdown" data-dropdown-content>
+                <li><%= link_to "my profile", users_path(current_user.id), {method: :get} %></li>
+                <li><a href="#">This is another</a></li>
+                <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
+              </ul>
+          </fieldset>
 
       <% else %>
         <%= render partial: 'devise/sessions/new' %>
       <% end %>
         </header>
       </nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
       
     <%= yield %>
 <!--

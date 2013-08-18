@@ -4,6 +4,7 @@ body {
 
 nav {
   background-color: $alt-primary-color;
+
 }
 
 h2 {
@@ -12,6 +13,11 @@ h2 {
 
 header {
   @include grid-row();
+}
+
+.notice {
+  float: right;
+  color: $alert-color;
 }
 
 
@@ -91,3 +97,21 @@ header a {
   }
 }
 
+
+.new_bill {
+  @include grid-column(4)
+}
+
+#user_nav {
+  @include grid-column($columns: 3, $last-column:true);
+
+  a {
+    font-size: 1em;
+    line-height: 40px;
+    height: 50%;
+  }
+
+  img {
+    border-radius: 50px;
+  }
+}
