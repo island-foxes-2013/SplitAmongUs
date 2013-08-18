@@ -1,15 +1,13 @@
 <div id="left column">
-
-<div id="users-contain" class="ui-widget">
-  <h1>My Lists:</h1>
-  <% if current_user.lists.any? %>
-  <ul class="lists">
-    <%= render partial: 'lists/list', locals: { lists: current_user.lists } %>
-  </ul>
-  <% end %> 
-</div>
-<button id="create-list">Create new list</button>
-
+  <div id="users-contain" class="ui-widget">
+    <h1>My Lists:</h1>
+    <% if current_user.lists.any? %>
+    <ul class="lists">
+      <%= render partial: 'lists/list', locals: { lists: current_user.lists } %>
+    </ul>
+    <% end %> 
+  </div>
+  <button id="create-list">Create new list</button>
 </div>
 
 <div id="middle column">
@@ -18,47 +16,7 @@
   </div>
 </div>
 
-<script>
-  $(function() {
-    var name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
-      tips = $( ".validateTips" );
- 
-    function updateTips( t ) {
-      tips
-        .text( t )
-        .addClass( "ui-state-highlight" );
-      setTimeout(function() {
-        tips.removeClass( "ui-state-highlight", 1500 );
-      }, 500 );
-    }
- 
-    $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "Create list": function() {
-          $('form#new_list').submit();
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      },
-      close: function() {
-        allFields.val( "" );
-      }
-    });
- 
-    $( "#create-list" )
-      .click(function() {
-        $( "#dialog-form" ).dialog( "open" );
-      });
-  });
-  </script>
-
+<div id="right column">
+  <h2> Your Stats: </h2>
+</div>
 
