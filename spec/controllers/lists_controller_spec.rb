@@ -25,6 +25,7 @@ describe ListsController do
         expect {
           post :create, list: attributes_for(:list)
         }.to change(List, :count).by(1)
+        List.last.users.should == [user]
        end
       it "redirects to the dashboard page" do
         post :create, list: attributes_for(:list)
