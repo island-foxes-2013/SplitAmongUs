@@ -15,6 +15,10 @@ header {
   @include grid-row();
 }
 
+li {
+  list-style-type: none;
+}
+
 .notice {
   float: right;
   color: $alert-color;
