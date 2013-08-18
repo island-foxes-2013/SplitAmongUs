@@ -35,6 +35,7 @@ group :development, :test do
   gem 'guard-rspec' # auto-run tests
   gem 'launchy'
   gem 'capybara-webkit','~>1.0.0'
+  gem 'selenium-webdriver'
   gem 'rb-fsevent' #notifies when files change
   gem 'quiet_assets'
   gem 'pry-rails'

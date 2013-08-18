@@ -43,7 +43,7 @@
               <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
               <ul id="drop1" class="f-dropdown" data-dropdown-content>
                 <li><%= link_to "my profile", edit_user_registration_path, {method: :get} %></li>
-                <li><a href="#">This is another</a></li>
+                <li><a href="#">edit profile</a></li>
                 <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
               </ul>
           </fieldset>

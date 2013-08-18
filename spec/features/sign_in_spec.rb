@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'selenium-webdriver'
 
 describe 'SignIn' do
   let(:user) { create(:user) }
@@ -26,8 +27,8 @@ describe 'SignIn' do
   end
 
   context "user forgot password" do
-    it "redirects to password reset page" do
-      click_link "Forgot your password"
+    it 'redirects to password reset page' do
+      click_link 'Forgot your password'
       redirect_to(new_user_password_path)
     end
   end
@@ -37,9 +38,22 @@ describe 'SignIn' do
       within '#login' do 
         fill_in 'email', :with => user.email
         fill_in 'password', :with => user.password
-        click_button "Log In"
+        click_button 'Log In'
       end
       page.should have_content("Welcome, #{user.name}")
+    end
+  end
+
+  context "user clicks 'remember me' button" do
+    it "remembers a user who clicks remember me button" do
+      within '#login' do 
+        fill_in 'email', :with => user.email
+        fill_in 'password', :with => user.password
+        check 'Remember me'
+        click_button 'Log In'
+      end
+      page.should have_content("Welcome, #{user.name}")
+      Capybara.close_browser
     end
   end
 
