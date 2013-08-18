@@ -33,7 +33,11 @@
     <header>
       <div id="logo">
         <fieldset>
-          <a href="/dashboard"><h2> Split*Among.Us </h2></a>
+          <% if user_signed_in? %>
+            <a href="/dashboard"><h2> Split*Among.Us </h2></a>
+          <% else %>
+            <a href="/"><h2> Split*Among.Us </h2></a>
+          <% end %>
         </fieldset>
       </div>
       <% if user_signed_in? %>
