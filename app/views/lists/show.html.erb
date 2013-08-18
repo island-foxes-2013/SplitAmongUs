@@ -1,3 +1,5 @@
+<div id="list_show">
+  <div id="list-bills-content">
 <div id="dialog-bills-form">
   <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
 </div>
@@ -22,3 +24,5 @@
     <% end %>
     $<%= @total %> 
 <% end %> 
+</div>
+</div>

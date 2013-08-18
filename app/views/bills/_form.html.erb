@@ -1,6 +1,6 @@
 <%= form_for [list, bills] do |f| %>
   <%= f.text_field :description, placeholder: :description %>
   <%= f.text_field :amount, placeholder: :amount %>
-  <%= f.date_select :date %>
+  <%= f.text_field :date, :class => :datepicker, placeholder: :date %>
   <span class='errors'><%= flash[:error] %></span>
 <% end %>
