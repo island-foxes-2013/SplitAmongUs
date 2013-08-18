@@ -7,6 +7,7 @@ describe 'SignUp' do
   end
 
   let(:user) { build(:user) }
+  let(:dup_user) { create(:user) }
 
   context "user sign up" do
     it "allows a user to sign up if all information is present" do
@@ -44,10 +45,10 @@ describe 'SignUp' do
 
     it "does not allow a user to sign up with a duplicate email" do
       within '#signup' do
-        fill_in 'name', with: user.name
-        fill_in 'email', with: 'example@example.com'
-        fill_in 'password', with: user.password
-        fill_in 'password confirmation', with: user.password
+        fill_in 'name', with: dup_user.name
+        fill_in 'email', with: dup_user.email
+        fill_in 'password', with: dup_user.password
+        fill_in 'password confirmation', with: dup_user.password
         click_button "Sign up"
       end
       page.should have_content("Email has already been taken")
