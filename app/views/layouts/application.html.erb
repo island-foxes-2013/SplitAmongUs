@@ -7,8 +7,13 @@
   <head>
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Happy+Monkey|Over+the+Rainbow' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Rock+Salt|Aclonica|Sansita+One' rel='stylesheet' type='text/css'>
+    <!--
     <script src="/js/custom.modernizr.js"></script>
     <script src="/js/foundation.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+
+    <%= javascript_include_tag("application") %>
   	<meta charset="utf-8" />
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
@@ -32,26 +37,47 @@
         </fieldset>
       </div>
       <% if user_signed_in? %>
-        <%= @user%>
-          <a href="#" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
-            <ul id="drop1" class="f-dropdown" data-dropdown-content>
-              <li><a href="#">my profile</a></li>
-              <li><a href="#">This is another</a></li>
-              <li><a href="#">log off</a></li>
-            </ul>
 
-        <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
-        <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
-  <% else %>
-    <%= render partial: 'devise/sessions/new' %>
-  <% end %>
-    </header>
-  </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-<%= yield %>
+          <fieldset id="user_nav">
+            <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome, <%= current_user.name %></a>
+              <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
+              <ul id="drop1" class="f-dropdown" data-dropdown-content>
+                <li><%= link_to "my profile", users_path(current_user.id), {method: :get} %></li>
+                <li><a href="#">This is another</a></li>
+                <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
+              </ul>
+          </fieldset>
 
+      <% else %>
+        <%= render partial: 'devise/sessions/new' %>
+      <% end %>
+        </header>
+      </nav>
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+
+    <%= yield %>
+
+    <footer class="row">
+      <div class="large-12 columns"><hr>
+        <div class="row">
+        <div class="large-6 columns">
+          <p>About Us</p>
+              </div>
+              <div class="large-6 small-12 columns">
+                  <ul class="inline-list right">
+                    <li><a href="#">Created By:</a></li>
+                    <li><a href="#">Christine</a></li>
+                    <li><a href="#">Maria</a></li>
+                    <li><a href="#">Zassmin</a></li>
+                  </ul>
+              </div>
+ 
+            </div>
+        </div>
+      </footer>
+
+<!--
   <script>
   document.write('<script src=' +
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
@@ -71,11 +97,12 @@
   <script src="js/foundation/foundation.section.js"></script>
   <script src="js/foundation/foundation.tooltips.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
-  <script src="js/foundation/foundation.interchange.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script> --> 
   <script>
     $(document).foundation();
+    $('#user_dropdown').foundation();
   </script>
-  </script>
+  <script src=zepto.min.js></script>
 </body>
 </html>
 
