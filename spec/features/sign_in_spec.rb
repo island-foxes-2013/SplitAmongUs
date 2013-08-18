@@ -44,7 +44,7 @@ describe 'SignIn' do
     end
   end
 
-  context "user clicks 'remember me' button" do
+  context "user clicks 'remember me' button", :js => true do
     it "remembers a user who clicks remember me button" do
       within '#login' do 
         fill_in 'email', :with => user.email
@@ -53,7 +53,10 @@ describe 'SignIn' do
         click_button 'Log In'
       end
       page.should have_content("Welcome, #{user.name}")
-      Capybara.close_browser
+      page.execute_script "window.close();"
+      page.execute_script "window.open();"
+      visit root_path
+      page.should have_content("Welcome, #{user.name}")
     end
   end
 
