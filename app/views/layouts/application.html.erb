@@ -37,25 +37,18 @@
         </fieldset>
       </div>
       <% if user_signed_in? %>
-        <%= @user%>
-          <a href="#" data-dropdown="drop1" data-options="is_hover:true">Has Dropdown</a>
-            <ul id="drop1" class="f-dropdown" data-dropdown-content>
-              <li><a href="#">my profile</a></li>
-              <li><a href="#">This is another</a></li>
-              <li><a href="#">log off</a></li>
-            </ul>
+        <div id="user_nav">
+        </div>
 
-        <%= button_to "sign out", destroy_user_session_path, {method: :delete} %>
-        <%= button_to "my profile", users_path(current_user.id), {method: :get} %>
-  <% else %>
-    <%= render partial: 'devise/sessions/new' %>
-  <% end %>
-    </header>
-  </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-<%= yield %>
+      <% else %>
+        <%= render partial: 'devise/sessions/new' %>
+      <% end %>
+        </header>
+      </nav>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
+    <%= yield %>
 <!--
   <script>
   document.write('<script src=' +

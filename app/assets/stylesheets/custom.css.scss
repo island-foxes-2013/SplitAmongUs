@@ -14,6 +14,7 @@ header {
   @include grid-row();
 }
 
+
 header a {
   font-size: .8em;
 }
@@ -30,10 +31,6 @@ header a {
     display: inline-block;
   }
 
-/*  img {
-    width: 4em;
-  }*/
-
   h2 {
     color: $alt-secondary-color;
     line-height: 16px;
@@ -41,6 +38,7 @@ header a {
   }
 }
 
+/* This modifies the login form */
 #login {
 
   @media #{$small} {
@@ -70,12 +68,11 @@ header a {
 
 
   input[type="submit"] {
-    /*padding: 0;*/
     font-size: .77em !important;
     @include button($full-width:true, $padding: $button-med)
   }
 }
-
+/* This controls the sign up form and picture*/
 #signup {
   fieldset {
     @include grid-column($columns: 8)
@@ -94,11 +91,3 @@ header a {
   }
 }
 
-
-form {
-  @include grid-column(4)
-}
-
-li {
-  list-style-type: none;
-}
