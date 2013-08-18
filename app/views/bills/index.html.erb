@@ -15,8 +15,8 @@
   <h3>Total Amount:</h3>
     <% @total = Money.new(0, "USD") %>
     <% @lists.each do |list| %>
-    <% list.bills.each do |bill| %>
-    <% @total += Money.new(bill.amount, "USD") %>
+    <% list.bills.each do |bill| %> 
+    <% @total += bill.amount %>
     <% end %>
     <% end %>
-    $<%= @total * 100.00 %>  
+    $<%= @total %>  
