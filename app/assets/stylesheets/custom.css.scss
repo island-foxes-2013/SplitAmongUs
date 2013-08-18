@@ -133,3 +133,17 @@ header a {
   @include grid_column($columns: 3, $last-column: true)
 
 }
+
+#edit_form {
+  float: right;
+  width: 50%;
+  padding-right: 200px;
+}
+
+#profile_header {
+  padding_left: 100px;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+

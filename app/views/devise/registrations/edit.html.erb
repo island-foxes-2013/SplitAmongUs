@@ -1,4 +1,13 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="profile_header">
+<h2>Hello, <%= @user.name %>!</h2>
+
+<%= image_tag(@user.gravatar_url, height: 400, width: 400) %>
+
+<p>To change your image, <a href="https://en.gravatar.com/">click here!</a></p>
+</div>
+
+<div id="edit_form">
+<h2>Edit My Account:</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -26,3 +35,4 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
 <%= link_to "Back", :back %>
+</div>
