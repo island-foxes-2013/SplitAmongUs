@@ -1,0 +1,13 @@
+<ul>
+  <% @lists.each do |list| %>
+  <% if list.bills.any? %>
+  <li><h3><%= list.name %></h3><br />
+    <% list.bills.each do |bill| %>
+    <%= bill.description %> - $<%= bill.amount %><br />
+    <%= bill.date %><br />
+    <%= bill.date_paid %></li>
+    <br />
+    <% end %>
+    <% end %>
+    <% end %>
+  </ul>

@@ -4,6 +4,10 @@ class BillsController < ApplicationController
   # def new
   #   @bill = Bill.new
   # end
+
+  def index
+    @lists = current_user.lists
+  end
   
   def create
     # p "these are the params #{params}"

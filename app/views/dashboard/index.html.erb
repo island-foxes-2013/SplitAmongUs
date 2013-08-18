@@ -5,7 +5,8 @@
           <div class="row">
             <!-- Shows -->
             <div class="large-3 small-6 columns">
- 
+              <br />
+              <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
                <div id="users-contain" class="ui-widget">
                 <h2>My Lists:</h2>
                 <% if current_user.lists.any? %>
