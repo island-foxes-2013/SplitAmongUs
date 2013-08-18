@@ -1,4 +1,7 @@
 def populate_users_table
+
+  User.create(name: 'example', email: 'example@example.com', password: 'password', password_confirmation: 'password')
+
   10.times do |user|
     User.create(name: Faker::Name.name, email: Faker::Internet.email, password: '123456', password_confirmation: '123456')
   end

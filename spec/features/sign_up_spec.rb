@@ -42,6 +42,29 @@ describe 'SignUp' do
       page.should have_content("Email can't be blank")
     end
 
+    it "does not allow a user to sign up with a duplicate email" do
+      within '#signup' do
+        fill_in 'name', with: user.name
+        fill_in 'email', with: 'example@example.com'
+        fill_in 'password', with: user.password
+        fill_in 'password confirmation', with: user.password
+        click_button "Sign up"
+      end
+      page.should have_content("Email has already been taken")
+    end
+
+    it "does not allow a user to sign up with an invalid email" do
+      within '#signup' do
+        fill_in 'name', with: user.name
+        fill_in 'email', with: 'example@example'
+        fill_in 'password', with: user.password
+        fill_in 'password confirmation', with: user.password
+        click_button "Sign up"
+      end
+      page.should have_content("Email is invalid")
+    end
+
+
     it "does not allow a user to sign up without a password" do
       within '#signup' do
         fill_in 'name', with: user.name
@@ -61,7 +84,7 @@ describe 'SignUp' do
         fill_in 'password confirmation', with: "12345"
         click_button "Sign up"
       end
-      page.should have_content("Password can't be blank")
+      page.should have_content("Password is too short")
     end
 
     it "does not allow a user to sign up without matching passwords" do
