@@ -2,19 +2,59 @@ require 'spec_helper'
 
 describe Bill do
   
-  # create factory girl testing data
+  let(:list) { create(:list) }
+  let(:bill) { create(:bill, list: list) }
 
   context 'create bill' do
-    context 'when valid' do
-      it 'should allow mass-assignment on description' 
-      it 'should allow mass-assignment on amount'
-      it 'should allow mass-assignment on date'
+    
+    it 'can be instantiated' do
+      expect(bill).to be_an_instance_of(Bill)
+    end
+    
+    it "can be saved successfully" do
+      expect { bill.save }.to change(Bill, :count).by(1)
     end
 
-    context 'when invalid' do
-      it 'should not allow mass-assignment on list_id'
-      it 'should not allow mass-assignment on paid'
-      it 'should not allow mass-assignment on date_paid'
+    it "has a description" do
+      expect(bill.description).not_to eq(nil)
+    end
+
+    it 'has an amount' do
+      expect(bill.amount).not_to eq(nil)
+    end
+
+    it 'has a date' do
+      expect(bill.date).not_to eq(nil)
+    end
+
+    it 'has a list_id' do
+      expect(bill.list_id).not_to eq(nil)
+    end
+  end
+
+  context "validate bill" do
+
+    context "should raise error" do
+      
+      it "when description is blank" do
+        bill.description = nil
+        expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+
+      it "when amount is blank" do
+        bill.amount = ''
+        expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+
+      it "when list_id is blank" do
+        bill.list_id = nil
+        expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+
+      it "when date is blank" do
+        bill.date = nil
+        expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
     end
   end
 end

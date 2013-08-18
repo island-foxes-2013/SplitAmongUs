@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   # end
   
   def create
-    p "these are the params #{params}"
+    # p "these are the params #{params}"
     @bill = Bill.new(bill_params)
     @bill.list_id = params[:list_id]
     if @bill.save
