@@ -1,5 +1,10 @@
-<h3>create a bill for <%= @list.name %></h3>
-<%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
+<div id="dialog-form">
+  <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
+</div>
+
+<br />
+<button id="create-bill">Create A Bill</button>
+
 <% if @list.bills.any? %>
 
 <ul class="bills">
