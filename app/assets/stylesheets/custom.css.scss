@@ -4,7 +4,6 @@ body {
 
 nav {
   background-color: $alt-primary-color;
-
 }
 
 h2 {
@@ -140,7 +139,6 @@ header a {
 
 #right_column {
   @include grid_column($columns: 3, $last-column: true)
-
 }
 
 #edit_form {
@@ -155,4 +153,8 @@ header a {
   float: left;
   text-align: center;
 }
+
+  input[type="submit"] {
+    @include button($padding: $button-med)
+  }
 
