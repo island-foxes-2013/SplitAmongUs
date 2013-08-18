@@ -5,3 +5,4 @@ class Bill < ActiveRecord::Base
   
   validates :description, :amount, :date, :list_id, presence: true
 end
+
