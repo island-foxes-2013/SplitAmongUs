@@ -15,8 +15,17 @@ header {
   @include grid-row();
 }
 
+#list_name {
+    font-family: 'Happy Monkey', cursive;
+  }
+
+.ui-button-text {
+    font-family: 'Happy Monkey', cursive;
+  }
+
 li {
   list-style-type: none;
+  font-family: 'Happy Monkey', cursive;
 }
 
 .notice {
