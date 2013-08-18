@@ -154,7 +154,7 @@ header a {
   text-align: center;
 }
 
-  input[type="submit"] {
-    @include button($padding: $button-med)
-  }
+input[type="submit"] {
+  @include button($padding: $button-med)
+}
 
