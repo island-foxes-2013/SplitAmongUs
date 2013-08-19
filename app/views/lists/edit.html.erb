@@ -1,0 +1,6 @@
+<h3>Edit this list:</h3>
+<%= form_for @list do |f| %>
+  <%= f.text_field :name, value: @list.name %>
+  <%= f.submit "Save Changes" %>
+  <span class='errors'><%= flash[:error] %></span>
+<% end %>

@@ -1,5 +1,4 @@
 <div id="list_show">
-  <div id="list-bills-content">
 <div id="dialog-bills-form">
   <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
 </div>
@@ -24,5 +23,6 @@
     <% end %>
     $<%= @total %> 
 <% end %> 
-</div>
+<br />
+<%= button_to "Edit List", edit_list_path(@list), :method => "get" %>
 </div>

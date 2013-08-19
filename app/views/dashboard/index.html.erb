@@ -11,7 +11,7 @@
                 <h2>My Lists:</h2>
                 <% if current_user.lists.any? %>
                 <ul class="lists">
-                  <%= render partial: 'lists/list', locals: { lists: current_user.lists } %>
+                  <%= render partial: 'lists/list', locals: { lists: current_user.lists.order(:created_at) } %>
                 </ul>
                 <% end %> 
               </div>
