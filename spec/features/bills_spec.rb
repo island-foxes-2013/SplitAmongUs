@@ -6,6 +6,9 @@ describe "bill management" do
 	context "view all bills" do
 
 		let(:user) { create(:user) }
+		let(:list) { create(:list) }
+		let(:bill_1) { create(:bill, list: list) }
+		let(:bill_2) { create(:bill, list: list) }
 
 	  before do
 	    visit root_path
@@ -17,15 +20,12 @@ describe "bill management" do
 	    visit dashboard_index_path
 	  end
 
-	  let(:list) { create(:list) }
-		# let(:bill_1) { create (:bill, list: list) }
-		# let(:bill_2) { create(:bill, list: list) }
 
 		it "should show all bills when button is clicked" do
 			# This is not working-- issue in bill creation
 			click_button('All My Bills')
-			# page.should have_content("#{bill_1.description}")
-			# page.should have_content("#{bill_2.description}")
+			page.should have_content("#{bill_1.description}")
+			page.should have_content("#{bill_2.description}")
 		end
 
 		it "should show all bills by list" do
