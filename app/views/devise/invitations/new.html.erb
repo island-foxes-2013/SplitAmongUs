@@ -1,8 +1,10 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<h2>Invite a friend to "<%= @list.name %>"</h2>
 
 <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
   <%= devise_error_messages! %>
 
+ 
+  <%= f.hidden_field :list_id, value: @list.id %>
   <p><%= f.label :name %><br />
   <%= f.text_field :name %></p>
 <% resource.class.invite_key_fields.each do |field| -%>
