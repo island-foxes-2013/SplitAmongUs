@@ -7,7 +7,7 @@ SplitAmongUs::Application.routes.draw do
   resources :dashboard, only: [:index]
 
   resources :lists, only: [:show, :new, :create] do
-    resources :bills, only: [:show, :create, :edit, :update, :destory]
+    resources :bills, only: [:show, :create, :edit, :update, :destroy]
   end
   
   resources :lists, only: [:edit, :update, :destroy]
