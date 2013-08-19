@@ -2,11 +2,13 @@ require 'spec_helper'
 require 'selenium-webdriver'
 
 describe "bill management" do
+	let(:user) { create(:user) }
+  let!(:list) { create(:list) }
+  let!(:list) { user.lists.create(name: "apartment") }
+	let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today) }
+	let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today) }
 
 	context "view all bills" do
-
-		let(:user) { create(:user) }
-
 	  before do
 	    visit root_path
 	    within '#login' do 
@@ -17,15 +19,12 @@ describe "bill management" do
 	    visit dashboard_index_path
 	  end
 
-	  let(:list) { create(:list) }
-		# let(:bill_1) { create (:bill, list: list) }
-		# let(:bill_2) { create(:bill, list: list) }
 
-		it "should show all bills when button is clicked" do
-			# This is not working-- issue in bill creation
+
+		it "should show all bills when button is clicked", :js => true do
 			click_button('All My Bills')
-			# page.should have_content("#{bill_1.description}")
-			# page.should have_content("#{bill_2.description}")
+			page.should have_content("#{bill_1.description}")
+			page.should have_content("#{bill_2.description}")
 		end
 
 		it "should show all bills by list" do
@@ -34,14 +33,15 @@ describe "bill management" do
 
 		it "shows the total amount" do
 			click_button('All My Bills')
-			page.should have_content('Total Amount:')
+			page.should have_content('Total Amount: $1025.00')
 		end
 	end
 
 	context "create a new bill" do
 
 		it "dispays a modal to create a new bill on click" do
-			pending
+			# this is not working!
+			click_link("apartment")
 		end
 
 		it "creates a new bill if all information is filled in" do
