@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.new(list_params)
     if current_user.save
-      redirect_to dashboard_index_path
+      render json: @list
     else
       flash[:error] = @list.errors[:name].join('')
       redirect_to dashboard_index_path
@@ -13,6 +13,11 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    if request.xhr?
+      render partial: "list", locals: { list: @list }
+    else
+      render :show
+    end
   end
 
   def edit
