@@ -2,7 +2,7 @@
 <% bills.each do |bill| %>
   <% next if bill.description.nil? %>
   <h4><%= bill.description %></h4>
-  <p><%= bill.amount %></p>
+  <div id="bill_amount"><%= bill.amount %></div>
   <!-- get the date picker for date -->
-  <p><%= bill.date %></p> 
+  <div id="date_format"><%= bill.date %></div> 
 <% end %>
