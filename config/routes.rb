@@ -12,5 +12,9 @@ SplitAmongUs::Application.routes.draw do
   
   resources :lists, only: [:edit, :update, :destroy]
 
+  authenticated :user do
+    root :to => "dashboard#index"
+  end
+
   root :to => "home#index"
 end
