@@ -12,6 +12,7 @@ h2 {
 
 header {
   @include grid-row();
+  height: 6em;
 }
 
 
