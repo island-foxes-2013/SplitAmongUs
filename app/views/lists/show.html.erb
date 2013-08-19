@@ -26,4 +26,5 @@
 <br />
 <%= button_to "Edit List", edit_list_path(@list), :method => "get" %>
 <%= button_to "Delete List", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete" %>
+<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
 </div>
