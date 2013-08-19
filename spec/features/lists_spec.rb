@@ -78,6 +78,11 @@ describe 'managing lists' do
     end
 
     it "has a button to delete the list" do
+      pending
+    end
+
+    it "dispays the bill in order of age" do
+      pending
     end
 
   end
@@ -136,7 +141,6 @@ describe 'managing lists' do
     it "reloads the list without refreshing after delete" do
       pending
     end
-
   end
 
 end
