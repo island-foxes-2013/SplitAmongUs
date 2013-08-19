@@ -14,6 +14,7 @@ header {
   @include grid-row();
 }
 
+
 #list_name {
     font-family: 'Happy Monkey', cursive;
   }
@@ -117,6 +118,7 @@ header a {
 
 #user_nav {
   @include grid-column($columns: 3, $last-column:true);
+  width: auto;
 
   a {
     font-size: 1em;
