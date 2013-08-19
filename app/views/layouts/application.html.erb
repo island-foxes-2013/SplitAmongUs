@@ -33,11 +33,12 @@
     <header>
       <div id="logo">
         <fieldset>
-          <% if user_signed_in? %>
+          <%= link_to 'Split*Among.Us', root_path %>
+<!--           <%# if user_signed_in? %>
             <a href="/dashboard"><h2> Split*Among.Us </h2></a>
-          <% else %>
+          <%# else %>
             <a href="/"><h2> Split*Among.Us </h2></a>
-          <% end %>
+          <%# end %> -->
         </fieldset>
       </div>
       <% if user_signed_in? %>
