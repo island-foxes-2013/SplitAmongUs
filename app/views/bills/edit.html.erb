@@ -5,4 +5,6 @@
   <%= f.text_field :date, :class => :datepicker, value: @bill.date %>
   <%= f.submit "Save Changes" %>
   <span class='errors'><%= flash[:error] %></span>
+  <!-- not priority but this needs remote true -->
+  <!-- need to verify errors here! -->
 <% end %>

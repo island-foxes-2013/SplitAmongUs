@@ -3,4 +3,6 @@
   <%= f.text_field :amount, placeholder: :amount %>
   <%= f.text_field :date, :class => :datepicker, placeholder: :date %>
   <span class='errors'><%= flash[:error] %></span>
+  <!-- needs remote true-->
+  <!-- needs error handling, it shows up on modal but buggy: error appears after to sumbit with an empty field, modal should respond to error instantly -->
 <% end %>
