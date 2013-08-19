@@ -121,4 +121,16 @@ describe "bill management" do
 
 	end
 
+	context "sharing a bill" do
+
+		it "allows the user to assign bill responsibility to multiple users" do
+			pending
+		end
+
+		it "allows the user to charge a percentage of responsibility to group users" do
+			pending
+		end
+
+	end
+
 end
