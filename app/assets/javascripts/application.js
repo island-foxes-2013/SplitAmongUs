@@ -19,4 +19,7 @@
 
 $(document).foundation();
 
-	
+$(function() {
+  var lists = new Lists();
+  new DashboardListsView('#dashboard-lists', lists);
+});

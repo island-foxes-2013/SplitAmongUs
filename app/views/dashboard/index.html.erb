@@ -1,21 +1,25 @@
 <div class="row">
-    <div class="large-12 columns">
-       <div class="row">
-        <div class="large-12 columns">
-          <div class="row">
-            <!-- Shows -->
-            <div class="large-3 small-6 columns">
-              <br />
-              <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
-               <div id="users-contain" class="ui-widget">
-                <h2>My Lists:</h2>
-                <% if current_user.lists.any? %>
-                <ul class="lists">
-                  <%= render partial: 'lists/list', locals: { lists: current_user.lists.order(:created_at) } %>
-                </ul>
-                <% end %> 
+  <div class="large-12 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="row">
+          <!-- Shows -->
+          <div class="large-3 small-6 columns">
+            <br />
+            <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
+            <div id="dashboard-lists">
+              <div class="list-item-template" style="display: none;">
+                <li><a href="/foo/bar" data-remote="true">default</a></li>
               </div>
-              <button id="create-list">Create new list</button>
+              <div id="users-contain" class="ui-widget">
+                <h2>My Lists:</h2>
+                <%- if current_user.lists.any? %>
+                  <ul class="lists">
+                    <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
+                  </ul>
+                <%- end %>
+              </div>
+              <button class="create">Create new list</button>
               <br />
  
               <div class="row">
@@ -23,36 +27,38 @@
                 </div>
               </div>
             </div>
-            <!-- End Shows -->
- 
- 
-            <!-- Image -->
- 
-            <div class="large-6 small-6 columns">
-                <div id="dialog-lists-form">
-              <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
-              </div>
+          </div>
+          <!-- End Shows -->
+
+
+          <!-- Image -->
+
+          <div id="dashboard-main-content" class="large-6 small-6 columns">
+
+          </div>
+
+          <div id="dialog-lists-form">
+            <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
+          </div>
+          <!-- End Image -->
+
+
+          <!-- Feed -->
+
+          <div class="large-3 small-12 columns">
+
+            <h4>Your Stats:</h4><hr>
+            <div class="panel">
+              <h5><a href="#">Post Title 1</a></h5>
+
+              <h6 class="subheader">
+                Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+              </h6>
+
             </div>
- 
-            <!-- End Image -->
- 
- 
-            <!-- Feed -->
- 
-            <div class="large-3 small-12 columns">
- 
-              <h4>Your Stats:</h4><hr>
-              <div class="panel">
-                <h5><a href="#">Post Title 1</a></h5>
- 
-                <h6 class="subheader">
-                  Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
-                </h6>
- 
-            </div>
- 
+
             <!-- End Feed -->
- 
+
           </div>
         </div>
       </div>

@@ -1,0 +1,8 @@
+<h3>Edit this bill:</h3>
+<%= form_for [@list, @bill] do |f| %>
+  <%= f.text_field :description, value: @bill.description %>
+  <%= f.text_field :amount, value: @bill.amount %>
+  <%= f.text_field :date, :class => :datepicker, value: @bill.date %>
+  <%= f.submit "Save Changes" %>
+  <span class='errors'><%= flash[:error] %></span>
+<% end %>

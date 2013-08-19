@@ -5,4 +5,5 @@
   <div id="bill_amount"><%= bill.amount %></div>
   <!-- get the date picker for date -->
   <div id="date_format"><%= bill.date %></div> 
+  <li><%= link_to "edit", edit_list_bill_path(@list, bill), {method: :get} %></li>
 <% end %>
