@@ -22,6 +22,12 @@ header {
     font-family: 'Happy Monkey', cursive;
   }
 
+ #new_bill {
+  #bill_description, #bill_amount, #bill_date {
+    font-family: 'Happy Monkey', cursive; 
+  }
+ } 
+
 li {
   list-style-type: none;
   font-family: 'Happy Monkey', cursive;
