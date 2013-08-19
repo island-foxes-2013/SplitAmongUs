@@ -111,24 +111,24 @@ describe "groups" do
 	context "delete groups" do
 		
 		it "allows a user to delete a group" do
-      pending
-    end
+	      pending
+	    end
 
-    it "asks a user to confirm delete before deleting" do
-      pending
-    end
+	    it "asks a user to confirm delete before deleting" do
+	      pending
+	    end
 
-    it "deletes a group if a user confirms delete" do
-      pending
-    end
+	    it "deletes a group if a user confirms delete" do
+	      pending
+	    end
 
-    it "does not delete the group if not confirmed" do
-      pending
-    end
+	    it "does not delete the group if not confirmed" do
+	      pending
+	    end
 
-    it "reloads the groups without refreshing after delete" do
-      pending
-    end
+	    it "reloads the groups without refreshing after delete" do
+	      pending
+	    end
 	end
 
 
