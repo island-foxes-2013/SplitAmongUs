@@ -1,16 +1,11 @@
 class BillsController < ApplicationController
   before_filter :authenticate_user!
 
-  # def new
-  #   @bill = Bill.new
-  # end
-
   def index
     @lists = current_user.lists
   end
   
-  def create
-    # p "these are the params #{params}"
+  def create 
     @bill = Bill.new(bill_params)
     @bill.list_id = params[:list_id]
     if @bill.save
@@ -21,14 +16,8 @@ class BillsController < ApplicationController
     end
   end
 
-  # def edit
-  # end
-
-  # def update
-  # end
-
   private
-    def bill_params
-      params.require(:bill).permit(:description, :amount, :date)
-    end
+  def bill_params
+    params.require(:bill).permit(:description, :amount, :date)
+  end
 end

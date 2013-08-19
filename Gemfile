@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'american_date'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
