@@ -31,6 +31,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to dashboard_index_path
   end
 
   private
