@@ -40,7 +40,11 @@ describe "groups" do
 		end
 
 		it "will not work with an invalid email" do
-			pending
+			click_button('Add A Friend')
+			fill_in 'Name', with: "user.name" + " a.k.a Peter Griffin"
+			fill_in 'Email', with: "example" + rand(1000000).to_s + rand(200000).to_s
+			click_button('Send an invitation')
+			page.should have_content("Email is invalid")
 		end
 
 		it "will send invitations on submit" do

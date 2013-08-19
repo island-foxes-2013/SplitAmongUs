@@ -5,8 +5,27 @@ describe "bill management" do
 
 	context "view all bills" do
 
+		let(:user) { create(:user) }
+
+	  before do
+	    visit root_path
+	    within '#login' do 
+	      fill_in 'email', with: user.email
+	      fill_in 'password', with: user.password
+	      click_button 'Log In'
+	      end
+	    visit dashboard_index_path
+	  end
+
+	  let(:list) { create(:list) }
+		# let(:bill_1) { create (:bill, list: list) }
+		# let(:bill_2) { create(:bill, list: list) }
+
 		it "should show all bills when button is clicked" do
-			pending
+			# This is not working-- issue in bill creation
+			click_button('All My Bills')
+			# page.should have_content("#{bill_1.description}")
+			# page.should have_content("#{bill_2.description}")
 		end
 
 		it "should show all bills by list" do
@@ -14,7 +33,8 @@ describe "bill management" do
 		end
 
 		it "shows the total amount" do
-			pending 
+			click_button('All My Bills')
+			page.should have_content('Total Amount:')
 		end
 	end
 
