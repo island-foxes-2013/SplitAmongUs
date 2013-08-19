@@ -8,6 +8,9 @@
             <br />
             <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
             <div id="dashboard-lists">
+              <div class="list-item-template" style="display: none;">
+                <li><a href="/foo/bar" data-remote="true">default</a></li>
+              </div>
               <div id="users-contain" class="ui-widget">
                 <h2>My Lists:</h2>
                 <%- if current_user.lists.any? %>
@@ -31,12 +34,13 @@
 
           <!-- Image -->
 
-          <div class="large-6 small-6 columns">
-            <div id="dialog-lists-form">
-              <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
-            </div>
+          <div id="dashboard-main-content" class="large-6 small-6 columns">
+
           </div>
 
+          <div id="dialog-lists-form">
+            <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
+          </div>
           <!-- End Image -->
 
 

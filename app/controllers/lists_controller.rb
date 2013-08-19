@@ -14,7 +14,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     if request.xhr?
-      render partial: "list", locals: { list: @list }
+      render :show, :layout => false
     else
       render :show
     end
