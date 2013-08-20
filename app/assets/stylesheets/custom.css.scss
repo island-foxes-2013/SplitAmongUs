@@ -208,6 +208,7 @@ header a {
     float: left;
     text-align: left;
     width: 30%;
+    padding-left: 2em;
     }
 }
 
@@ -230,6 +231,19 @@ input[type="submit"] {
 
 #list_show {
   text-align: center;
+}
+
+.headings p {
+  float: left;
+  padding: 0;
+  border: 2px solid #e5ddd9;
+  background-color: #e5ddd9;
+  font-size: 16px;
+  width: 16em;
+
+  button, a {
+    float: right;
+  }
 }
 
 

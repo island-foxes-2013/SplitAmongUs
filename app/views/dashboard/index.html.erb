@@ -9,9 +9,6 @@
           <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
           <h4>Hi&nbsp<%=current_user.name%>!</h4>
         </div>
-          <span id="all-bills">
-          <%= button_to "All My Bills", user_bills_path(current_user), :method => "get", remote: true %>
-          </span>
         <div id="dashboard-lists">
           <div class="list-item-template" style="display: none;">
             <li><a href="/foo/bar" data-remote="true">default</a></li>
@@ -20,7 +17,11 @@
             <div class = "row">
               <div class= "large-6 columns">
                 <div class="headings">
-                  <p>view all bills</p>
+                  <p>all bills
+                    <span id="all-bills">
+                      <%= link_to "view", user_bills_path(current_user), :method => "get", remote: true %>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -28,7 +29,7 @@
             <div class = "row">
               <div class= "large-6 columns">
                 <div class="headings">
-                  <p>my lists</p>
+                  <p>my lists<button class="create">add</button></p>
                   <%- if current_user.lists.any? %>
                     <ul class="lists">
                       <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
@@ -62,8 +63,6 @@
               </div>
             </div>
           </div>
-
-          <button class="create">Create new list</button>
           <br />
           <div class="row">
             <div class="large-1 column">
