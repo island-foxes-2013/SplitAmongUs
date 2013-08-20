@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :groups
   has_many :lists, through: :groups
+
+  has_many :paid_settlements, class_name: "Settlement", foreign_key: "payer_id"
+  has_many :received_settlements, class_name: "Settlement", foreign_key: "payee_id"
 end
