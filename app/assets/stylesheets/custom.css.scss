@@ -65,9 +65,7 @@ li, p {
   margin: 4px;
 }
 
-/*ul {
-  text-indent: 1em;
-}*/
+
 
 .notice {
   float: right;
@@ -176,17 +174,37 @@ header a {
   }
 }
 
-
-#left_column {
-  @include grid_column($columns: 3)
+.temp {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  
+  #left_column {
+  /*@include grid_column($columns: 3, $offset: 2)*/
+  float: left;
+  text-align: left;
+  width: 30%;
 }
 
-#middle_column {
-  @include grid_column($columns: 6)
-}
+  #middle_column {
+    /*@include grid_column($columns: 3)*/
+   float: left;
+   text-align: left;
+   width: 40%;
+   border-left: 4px solid $alt-secondary-color;
+   border-right:4px solid $alt-secondary-color;
 
-#right_column {
-  @include grid_column($columns: 3, $last-column: true)
+  ul, h3 {
+    padding: 0 20% 0 20%;
+   }
+  }
+
+  #right_column {
+    /*@include grid_column($columns: 3, $last-column: true)*/
+    float: left;
+    text-align: left;
+    width: 30%;
+    }
 }
 
 #edit_form {
@@ -196,7 +214,7 @@ header a {
 }
 
 #profile_header {
-  padding_left: 100px;
+  padding-left: 100px;
   width: 50%;
   float: left;
   text-align: center;

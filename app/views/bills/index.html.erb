@@ -17,7 +17,7 @@
       <% @total = Money.new(0, "USD") %>
           <% current_user.lists.each do |list| %>
             <% list.bills.each do |bill| %> 
-            <% @total += bill.amount %>
+            <h5><% @total += bill.amount %></h5>
           <% end %>
       <% end %>
   $<%= @total %>  
