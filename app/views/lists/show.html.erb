@@ -25,14 +25,15 @@
 
 		<div id="list-amounts">
 			<h3>Total Amount for bills in <%= @list.name %>:</h3>
-			    <% @total = Money.new(0, "USD") %>
-			    	<% @list.bills.each do |bill| %> 
-			    		<% @total += bill.amount %>
-			    	<% end %>
-			    $<%= @total %> 
-			<% end %> 
-			<br />
+			  <% @total = Money.new(0, "USD") %>
+			  	<% @list.bills.each do |bill| %> 
+			  		<% @total += bill.amount %>
+			  	<% end %>
+			  $<%= @total %> 
 		</div>
+		<% end %> 
+		< br />
+		
 
 		<%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
 		<%= link_to "Delete List", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete" %>
