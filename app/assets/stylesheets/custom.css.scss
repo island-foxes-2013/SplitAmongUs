@@ -31,6 +31,7 @@ header .right {
   text-align: center;
 
   img, h4 {
+    display: inline-block;
     float:left;
   }
 
@@ -193,8 +194,9 @@ header a {
    float: left;
    text-align: left;
    width: 40%;
-   border-left: 4px solid $alt-secondary-color;
-   border-right:4px solid $alt-secondary-color;
+/*   border-left: 4px solid $alt-secondary-color;
+   border-right: 4px solid $alt-secondary-color;*/
+   background-color: rgba(229,221,217, 0.2);
 
   ul, h3 {
     padding: 0 20% 0 20%;
@@ -237,13 +239,16 @@ input[type="submit"] {
 
 .headings p {
   float: left;
-  padding: 0;
-  border: 2px solid #e5ddd9;
-  background-color: #e5ddd9;
+  padding: 0 0 0 1em;
+  border-top: 2px solid #D1CAC6;
+  border-bottom: 2px solid #D1CAC6;
+  background-color: $alt-secondary-color;
   font-size: 16px;
-  width: 16em;
+  width: 16.5em;
+  height: 1.7em;
 
   button, a {
+    padding-right: 8px;
     float: right;
   }
 }
