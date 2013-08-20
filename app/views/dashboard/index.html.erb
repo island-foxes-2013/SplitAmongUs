@@ -54,7 +54,7 @@
             <div class="panel">
 
               <h6 class="subheader">
-                <%= render partial: 'bills/totals' %>
+                <%= render partial: 'bills/totals', locals: { lists: current_user.lists } %>
               </h6>
 
             </div>
