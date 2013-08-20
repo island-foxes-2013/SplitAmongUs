@@ -6,7 +6,6 @@
           <!-- Shows -->
           <div class="large-3 small-6 columns">
             <br />
-            <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
             <div id="dashboard-lists">
               <div class="list-item-template" style="display: none;">
                 <li><a href="/foo/bar" data-remote="true">default</a></li>
@@ -34,7 +33,11 @@
           <!-- Image -->
 
           <div id="dashboard-main-content" class="large-6 small-6 columns">
-
+            <% if current_user.lists.any? %>
+            <%= render template: 'bills/index' %>
+            <% else %>
+            <p>Welcome to SplitAmong.us!</p>
+            <% end %>
           </div>
 
           <div id="dialog-lists-form">
