@@ -13,6 +13,7 @@ class BillsController < ApplicationController
   def create 
     @bill = Bill.new(bill_params)
     @bill.list_id = params[:list_id]
+    @bill.user_id = current_user.id
     if @bill.save
       if request.xhr?
         render json: {html: render_to_string(partial: 'bill', locals: { bill: @bill }), total: @bill }.to_json
