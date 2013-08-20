@@ -9,6 +9,7 @@ function CreateBillDialog(locator) {
     height: 300,
     width: 350,
     modal: true,
+    title: "add bill",
     buttons: {
       "Create bill": function() {
         self.form.submit();

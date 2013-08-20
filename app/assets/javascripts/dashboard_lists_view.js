@@ -12,8 +12,10 @@ function DashboardListsView(locator, lists) {
     newList.find('a').text(list.name);
     self.listsUl.append(newList);
   });
+  // this is the .lists and is still the same...
   this.listsUl.on('ajax:success', 'li a', function(e, response) {
-    $('#dashboard-main-content').html(response);
+    // a dashboard-main-content doesn't exists any more...
+    $('#middle_column').html(response);
     new ListShowView('#list_show');
   });
   this.element.on('click', '.create', function() {
