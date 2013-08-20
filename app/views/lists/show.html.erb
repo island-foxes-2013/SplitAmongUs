@@ -14,7 +14,7 @@
 		<% end %>
 
 		<% if @list.bills.any? %>
-		<h3> Bills for list: <%= @list.name %> </h3>	
+		<h3> Bills for list: <%= @list.name %> </h3><%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>	
 		<ul class="bills">
 		  <%= render partial: 'bills/bill', collection: @list.bills %>
 		</ul>
@@ -35,7 +35,5 @@
 		
 		<!-- needs remote true-->
 		<%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
-	  <!-- where the delete of this list is displayed needs more thinking -->
-	  <%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>
 		<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
 		</div>
