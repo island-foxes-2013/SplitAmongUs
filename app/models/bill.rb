@@ -7,8 +7,13 @@ class Bill < ActiveRecord::Base
   
   validates :description, :amount, :date, :list_id, :user_id, presence: true
 
+
   def shared_amount_cents
   	amount_cents / list.users.count
+  end
+  
+  def amount_in_cents
+    amount.fractional
   end
 end
 

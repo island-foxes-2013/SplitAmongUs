@@ -17,14 +17,23 @@ class User < ActiveRecord::Base
   has_many :paid_settlements, class_name: "Settlement", foreign_key: "payer_id"
   has_many :received_settlements, class_name: "Settlement", foreign_key: "payee_id"
 
-
-  def amount_owed(list)
+  def self.amount_owed(list, user)
     total = 0
+    grand_total = 0
+    list.bills.each do |bill|
+      if bill.user_id == user.id
+        total += bill.amount_in_cents
+      end
+      grand_total = total - list.person_share_cents
+    end
     # DO ALL CALCULATIONS IN CENTS:
-    #   - iterate over all bills and add to total
     #   - iterate over all paid settlements (for this ist) and add to total
     #   - iterate over all received settlements (for this list) and subtract from total
-    Money.new(total)
+    Money.new(grand_total)
+  end
+
+  def amount_owed(list, user)
+    self.class.amount_owed(list,user)
   end
 end
 
