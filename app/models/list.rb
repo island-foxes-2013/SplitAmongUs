@@ -25,11 +25,4 @@ end
 
 # TODO-JW: 
 #   - write tests to verify this logic
-#
-#
-# To print out what's owed:
-#
-# list = List.find(1)
-# list.users.each do |user|
-#   puts "#{user.name}: #{user.amount_owed(list)}"
-# end
+

@@ -5,8 +5,8 @@ describe "bill management" do
 	let(:user) { create(:user) }
   let!(:list) { create(:list) }
   let!(:list) { user.lists.create(name: "apartment") }
-	let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today) }
-	let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today) }
+	let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today, user: user) }
+	let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today, user: user) }
 
 	context "view all bills" do
 	  before do
