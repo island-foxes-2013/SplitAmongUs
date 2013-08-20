@@ -1,8 +1,8 @@
 class Users::InvitationsController < Devise::InvitationsController
   def new
     @list = List.find(params[:list_id])
+    p ">>>>>>>>>>>> #{@list}"
     self.resource = resource_class.new
-    render :new
   end
 
   def create

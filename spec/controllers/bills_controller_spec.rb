@@ -8,7 +8,6 @@ describe BillsController do
    
   before do
     sign_in(user)
-    redirect_to list_path(list.id)
   end
 
 
