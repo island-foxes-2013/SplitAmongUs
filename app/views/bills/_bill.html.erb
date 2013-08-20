@@ -3,6 +3,23 @@
 <div id="bill_amount"><%= bill.amount %></div>
 <!-- get the date picker for date -->
 <div id="date_format"><%= bill.date.strftime("%m-%d-%Y") %></div> 
+  
+  <% List.find(bill.list_id).users.each do |user| %>
+    <% if user.id == bill.owner_id %>
+      <% if user == current_user %>
+      You Paid: <%= bill.amount %>
+      <% else %>
+      <%= user.name %> Paid: <%= bill.amount %>
+      <% end %>
+    <% else %>
+      <% if user == current_user %>
+        You lent: <%= (bill.amount / List.find(bill.list_id).users.count) * (List.find(bill.list_id).users.count - 1) %>
+      <% else %>
+        <%= User.find(bill.owner_id) %> lent you: <%= bill.amount / List.find(bill.list_id).users.count %>
+      <% end %>
+    <% end %>
+    <% end %>
+
 <!-- needs remote true-->
 <!-- needs error handling -->
 <li><%= link_to "edit", edit_list_bill_path(bill.list, bill), {method: :get} %></li>
