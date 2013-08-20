@@ -4,7 +4,7 @@
   <h4><%= bill.description %></h4>
   <div id="bill_amount"><%= bill.amount %></div>
   <!-- get the date picker for date -->
-  <div id="date_format"><%= bill.date %></div> 
+  <div id="date_format"><%= bill.datestrftime("%m-%d-%Y") %></div> 
   <!-- needs remote true-->
   <!-- needs error handling -->
   <li><%= link_to "edit", edit_list_bill_path(@list, bill), {method: :get} %></li>
