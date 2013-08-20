@@ -24,8 +24,6 @@ class List < ActiveRecord::Base
 end
 
 # TODO-JW: 
-#   - fix the bills form to take a user_id
-#   - update the bills controller to take a user_id
 #   - write tests to verify this logic
 #
 #

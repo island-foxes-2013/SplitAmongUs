@@ -44,8 +44,8 @@
                 <p>friends:</p>
                 <div id="friends">
                   <% if current_user.lists.any? %>
-                    <% friends = [] %>
                     <% current_user.lists.each do |list| %>
+                    <% friends = [] %>
                       <% if list.users.length > 1 %>
                         <% list.users.each do |user| %>
                           <% if user.id != current_user.id %>
