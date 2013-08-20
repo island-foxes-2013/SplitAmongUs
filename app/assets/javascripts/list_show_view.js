@@ -12,9 +12,6 @@ function ListShowView(locator) {
   });
 
   // delete form
-  $(".delete-list").on('click', function(){
-    self.delete(this);
-  })
 }
 
 // now a ton of stuff needs to update - need to make this more scalable
@@ -26,6 +23,6 @@ ListShowView.prototype.refreshStats = function(amount) {
   return $('.owe-me').text('$'+newTotal);
 }
 
-ListShowView.prototype.delete = function(self) {
-  // pass in the delete link - 
-}
+// ListShowView.prototype.delete = function(self) {
+//   // pass in the delete link - 
+// }

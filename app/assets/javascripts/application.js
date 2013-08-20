@@ -31,4 +31,9 @@ $(function() {
 
 $(document).ready(function(){
   errors();   
+
+  // $('body').on('ajax:success', ".remote-delete-list", function(e, list){
+  //   $(this).parent().remove();
+  // });
+
 });
