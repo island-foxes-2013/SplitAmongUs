@@ -1,41 +1,17 @@
 function ListShowView(locator) {
-  var name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
-      tips = $( ".validateTips" );
-
-  function updateTips( t ) {
-    tips
-      .text( t )
-      .addClass( "ui-state-highlight" );
-    setTimeout(function() {
-      tips.removeClass( "ui-state-highlight", 1500 );
-    }, 500 );
-  }
-
-  $( "#dialog-bills-form" ).dialog({
-    autoOpen: false,
-    height: 300,
-    width: 350,
-    modal: true,
-    buttons: {
-      "Create bill": function() {
-        $('form#new_bill').submit();
-        $( this ).dialog( "close" );
-      },
-    Cancel: function() {
-      $( this ).dialog( "close" );
-    }
-    },
-    close: function() {
-      allFields.val( "" );
-    }
+  this.element = $(locator);
+  var dialog = new CreateBillDialog("#dialog-bills-form");
+  var self = this;
+  dialog.form.on('ajax:success', function(e, bill) {
+    self.element.find('.bills').append(bill);
+    self.refreshStats();
   });
-
-  $( "#create-bill" )
-    .click(function() {
-      $( "#dialog-bills-form" ).dialog( "open" );
-    });
+  
+  $( "#create-bill" ).click(function() {
+    dialog.open();
+  });
 }
 
+ListShowView.prototype.refreshStats = function() {
+  // call the server to re-render the list-amounts div
+}

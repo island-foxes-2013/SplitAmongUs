@@ -14,23 +14,26 @@
 		<% end %>
 
 		<% if @list.bills.any? %>
-
+		<h3> Bills for list: <%= @list.name %> </h3>	
 		<ul class="bills">
-		  <%= render partial: 'bills/bill', locals: { bills: @list.bills } %>
+		  <%= render partial: 'bills/bill', collection: @list.bills %>
 		</ul>
 
 		<div class="add bill">
   
 		</div>
 
-		<h3>Total Aaount for bills in <%= @list.name %>:</h3>
-		    <% @total = Money.new(0, "USD") %>
-		    	<% @list.bills.each do |bill| %> 
-		    		<% @total += bill.amount %>
-		    	<% end %>
-		    $<%= @total %> 
+		<div id="list-amounts">
+			<h3>Total Amount for bills in <%= @list.name %>:</h3>
+			  <% @total = Money.new(0, "USD") %>
+			  	<% @list.bills.each do |bill| %> 
+			  		<% @total += bill.amount %>
+			  	<% end %>
+			  $<%= @total %> 
+		</div>
 		<% end %> 
-		<br />
+		< br />
+		
 
 		<%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
 		<%= link_to "Delete List", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete" %>

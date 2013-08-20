@@ -9,7 +9,9 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.list_id = params[:list_id]
     if @bill.save
-      redirect_to list_path(@bill.list)
+      if request.xhr?
+        render partial: 'bill', locals: { bill: @bill }
+      end
     else
       flash[:error] = @bill.errors.full_messages.join('')
       redirect_to list_path(@bill.list)
