@@ -9,13 +9,22 @@ describe ListsController do
   end
 
   describe "GET #show" do
-    it "assigns the requested list to @list" do
-      get :show, id: list.id
-      assigns(:list).should eq(list)
+    context "HTML request" do
+      it "assigns the requested list to @list" do
+        get :show, id: list.id
+        assigns(:list).should eq(list)
+      end
+      it "renders the show template" do
+        get :show, id: list.id
+        expect(response).to render_template("show")
+      end
     end
-    it "renders the show template" do
-      get :show, id: list.id
-      expect(response).to render_template("show")
+
+    context "AJAX request" do
+      it "renders the show template" do
+        xhr :get, :show, id: list.id
+        expect(response).to render_template("show")
+      end
     end
   end
 
@@ -43,12 +52,15 @@ describe ListsController do
       end
     end
     context "invalid attributes" do
-      it "locates the requested list" do 
-        put :update, id: list.id
-        assigns(:list).should eq(list)
+      it "does not change list's attributes" do
+        expect {
+        put :update, id: list.id, list: { name: nil }
+        }.to_not change{ list.name }
       end
-      it "does not change list's attributes"
-      it "re-renders the edit page"
+      it "re-renders the edit page" do
+        put :update, id: list.id, list: { name: nil }
+        response.should render_template :edit
+      end
     end
   end
 

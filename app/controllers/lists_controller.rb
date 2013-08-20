@@ -26,9 +26,11 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    @list.name = list_params[:name]
-    @list.save
-    redirect_to dashboard_index_path
+    if @list.update_attributes(list_params)
+      redirect_to dashboard_index_path
+    else
+      render :edit
+    end
   end
 
   def destroy
