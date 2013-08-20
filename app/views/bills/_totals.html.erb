@@ -1,0 +1,23 @@
+<h4>I Owe:</h4>
+<% @total = Money.new(0, "USD") %>
+<% current_user.lists.each do |list| %>
+<% list.bills.each do |bill| %>
+<% if bill.owner_id == current_user.id %> 
+<% @total += bill.amount %>
+<% end %>
+<% end %>
+<% end %>
+$<%= @total %> 
+<br />
+<br />
+
+<h4>People Owe Me:</h4>
+<% @total = Money.new(0, "USD") %>
+<% current_user.lists.each do |list| %>
+<% list.bills.each do |bill| %>
+<% if bill.owner_id != current_user.id %> 
+<% @total += bill.amount %>
+<% end %>
+<% end %>
+<% end %>
+$<%= @total %> 
