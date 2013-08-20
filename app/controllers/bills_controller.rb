@@ -30,11 +30,11 @@ class BillsController < ApplicationController
     redirect_to dashboard_index_path
   end
 
-  # def destroy
-  #   @list = List.find(params[:id])
-  #   @list.destroy
-  #   redirect_to dashboard_index_path
-  # end
+  def destroy
+    @bill = Bill.find(params[:id])
+    @bill.destroy
+    redirect_to dashboard_index_path
+  end
 
   private
   def bill_params
