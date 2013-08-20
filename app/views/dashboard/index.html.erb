@@ -29,7 +29,7 @@
             <div class = "row">
               <div class= "large-6 columns">
                 <div class="headings">
-                  <p>my lists<button class="create">add</button></p>
+                  <p>my lists<a href='#' class="create">add</button></p>
                   <%- if current_user.lists.any? %>
                     <ul class="lists">
                       <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>

@@ -18,7 +18,7 @@ function addBill(amount, totalAmount) {
 function BillsIndexView(locator) {
   this.element = $(locator);
   
-  this.element.on('ajax:success', '.button_to', function(e, response) {
+  this.element.on('ajax:success', 'a', function(e, response) {
     $('#middle_column').html(response);
   });
 }
