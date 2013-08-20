@@ -45,24 +45,9 @@ header .right {
   border-left: 5px solid $alt-secondary-color;
 }
 
-/*
-#list_name {
-    font-family: 'Happy Monkey', cursive;
-  }
-
-.ui-button-text {
-    font-family: 'Happy Monkey', cursive;
-  }
-
- #new_bill {
-  #bill_description, #bill_amount, #bill_date {
-    font-family: 'Happy Monkey', cursive; 
-  }
- } */
 
 li, p {
   list-style-type: none;
-/*  font-family: 'Esteban', serif;*/
   margin: 4px;
 }
 
@@ -214,7 +199,11 @@ header a {
     text-align: left;
     width: 30%;
     padding-left: 2em;
+
+    li {
+    text-indent: 2em;
     }
+  }
 }
 
 #edit_form {
