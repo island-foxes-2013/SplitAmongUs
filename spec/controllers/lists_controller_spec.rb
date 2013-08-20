@@ -55,11 +55,11 @@ describe ListsController do
   describe "DELETE #destroy" do
     it "deletes the requested list from the database" do
       expect{ 
-        delete :destroy, id: list 
+        delete :destroy, id: list.id
         }.to change(List,:count).by(-1)
     end
     it "redirects to the dashboard page" do
-      delete :destroy, id: list
+      delete :destroy, id: list.id
       response.should redirect_to dashboard_index_path
     end
   end
