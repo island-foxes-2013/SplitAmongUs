@@ -42,8 +42,9 @@
       </div>
       <% if user_signed_in? %>
         <div class="right">
-          <li><%= link_to "my profile", edit_user_registration_path, {method: :get} %></li>
-          <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
+          <p><%= link_to "my profile", edit_user_registration_path, {method: :get} %></p>
+          <p><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></p>
+
         </div>
       <% else %>
         <%= render partial: 'devise/sessions/new' %>
@@ -56,24 +57,18 @@
     <%= yield %>
 
     <footer class="row">
-      <div class="large-12 columns"><hr>
-        <div class="row">
-        <div class="large-6 columns">
-          <p>About Us</p>
-              </div>
-              <div class="large-6 small-12 columns">
-                  <ul class="inline-list right">
-                    <li><a href="#">Created By:</a></li>
-                    <li><a href="#">Christine</a></li>
-                    <li><a href="#">Maria</a></li>
-                    <li><a href="#">Zassmin</a></li>
-                  </ul>
-              </div>
- 
-            </div>
-        </div>
-      </footer>
-
+      <div class="large-6 small-12 columns">
+        <p>About Us</p>
+      </div>
+      <div class="large-6 small-12 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Created By:</a></li>
+          <li><a href="#">Christine</a></li>
+          <li><a href="#">Maria</a></li>
+          <li><a href="#">Zassmin</a></li>
+        </ul>
+      </div>
+    </footer>
 </body>
 </html>
 

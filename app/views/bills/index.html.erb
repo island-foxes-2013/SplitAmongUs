@@ -1,23 +1,32 @@
 <!-- needs to be rendered via remote true -->
-<ul>
-  <% current_user.lists.each do |list| %>
-      <% if list.bills.any? %>
-        <li><h4><%= list.name %></h4><br />
-            <% list.bills.each do |bill| %>
-            <%= bill.description %> - $<%= bill.amount %><br />
-            <%= bill.date %><br />
-            <%= bill.date_paid %></li>
-          <br />
+<% current_user.lists.each do |list| %>
+  <% if list.bills.any? %>
+    <table>
+      <thead>
+        <tr><th colspan="6"><%= list.name %></th></tr>
+      </thead>
+      <tbody>
+        <% list.bills.each do |bill| %>
+          <tr>
+            <td><%=bill.date%></td>
+            <td><%=bill.description%></td>
+            <td><%=bill.amount%></td>
+            <td><%=bill.date_paid%></td>
+            <td><%=responsibility_for(bill)%></td>
+            <td><%=bill.shared_amount%></td>
+          </tr>
         <% end %>
-      <% end %>
-    <% end %>
-  </ul>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
 
-  <h3>Total Amount:</h3>
-      <% @total = Money.new(0, "USD") %>
-          <% current_user.lists.each do |list| %>
-            <% list.bills.each do |bill| %> 
-            <h5><% @total += bill.amount %></h5>
-          <% end %>
-      <% end %>
-  $<%= @total %>  
+
+<h3>Total Amount:</h3>
+<% @total = Money.new(0, "USD") %>
+<% current_user.lists.each do |list| %>
+<% list.bills.each do |bill| %> 
+<h5><% @total += bill.amount %></h5>
+<% end %>
+<% end %>
+$<%= @total %>  

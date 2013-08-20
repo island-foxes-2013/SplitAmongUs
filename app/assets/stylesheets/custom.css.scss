@@ -19,37 +19,16 @@ header .right {
   height: 5.5em;
   width: 10em;
   display: inline-block;
-
-  li {
+  line-height: 5.5em;
+  p {
     display: inline;
     font-size: 1.15em;
     padding-left: 5px;
   }
 }
 
-#left-column {
-  border-right: 5px solid $alt-secondary-color;
-  height: 100%;
-}
-
 #user-info {
-  margin: 0;
-  padding-bottom: 2em;
-  text-align: center;
-
-  img, h4 {
-    display: inline-block;
-    float:left;
-  }
-
-  h4 {
-    padding-right: 6em;
-    padding-left: .75em;
-  }
-}
-
-#right-column {
-  border-left: 5px solid $alt-secondary-color;
+  img { vertical-align: middle; }
 }
 
 
@@ -169,47 +148,52 @@ header a {
   }
 }
 
-.temp {
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-  
-  #left_column {
-    float: left;
-    text-align: left;
-    width: 25%;
+table { 
+  width: 100%;
 }
 
-  #middle_column {
-    /*@include grid_column($columns: 3)*/
-   float: left;
-   text-align: left;
-   width: 50%;
-   height: 100%;
-   border-left: 1px solid #d9d9d9;
-   border-right: 1px solid #d9d9d9;
-   background-color: $alt-secondary-color;
+#index-page {
+  display: table;
+  width: 100%;
+
+}
+#left_column {
+  width: 25%;
+  border-right: 5px solid $alt-secondary-color;
+  text-align: left;
+}
+
+#middle_column {
+  width: 50%;
+  text-align: left;
+  border-left: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+  background-color: $alt-secondary-color;
 
   ul, h3 {
     padding: 0 20% 0 20%;
-   }
+  }
 
   h5 {
     text-align: center;
   }
-  }
+}
 
-  #right_column {
-    /*@include grid_column($columns: 3, $last-column: true)*/
-    float: left;
-    text-align: left;
-    width: 25%;
-    padding-left: 2em;
 
-    li {
+
+#right_column {
+  width: 25%;
+  text-align: left;
+  border-left: 5px solid $alt-secondary-color;
+
+  li {
     text-indent: 2em;
-    }
   }
+}
+
+
+#left_column, #middle_column, #right_column {
+    display: table-cell; 
 }
 
 #edit_form {
@@ -270,3 +254,7 @@ input[type="submit"] {
   }
  } 
 
+footer {
+  border-top: 1px solid $alt-secondary-color;
+
+}
