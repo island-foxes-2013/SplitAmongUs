@@ -24,6 +24,7 @@ populate_lists
 
 
 def populate_bills
+  user_ids = User.all.map {|user| user.id}
   list_ids = []
   List.all.each do |list|
     list_ids << list.id
@@ -34,6 +35,7 @@ def populate_bills
       date = Date.today - i.days
       bill = Bill.new(description: Faker::Lorem.sentence, amount: 233.23, date: date)
       bill.list_id = list_ids.sample
+      bill.user_id = list_ids.sample
       bill.save
     end
   end
