@@ -44,18 +44,18 @@
                 <p>friends:</p>
                 <div id="friends">
                   <% if current_user.lists.any? %>
-                    <% @friends = [] %>
+                    <% friends = [] %>
                     <% current_user.lists.each do |list| %>
                       <% if list.users.length > 1 %>
                         <% list.users.each do |user| %>
                           <% if user.id != current_user.id %>
-                          <% @friends << user %>
+                          <% friends << user %>
                         <% end %>
                       <% end %>
                     <% end %>
-                    <% @unique_friends = @friends.uniq %>
-                    <% @unique_friends.each do |friend| %>
-                      <%= friend.name %>  <%= image_tag(friend.gravatar_url, height: 40, width: 40) %><br />
+                    <% unique_friends = friends.uniq %>
+                    <% unique_friends.each do |friend| %>
+                    <%= image_tag(friend.gravatar_url, height: 40, width: 40) %>  <%= friend.name %><br />
                      <% end %>
                     <% end %>
                   <% end %>

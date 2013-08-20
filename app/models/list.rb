@@ -23,9 +23,8 @@ class List < ActiveRecord::Base
 end
 
 # TODO-JW: 
-#   - Bill belongs_to User (change owner_id to user_id)
-#   - remove total_amount_cents from List
-#   - add list_id to Settlement
+#   - fix the bills form to take a user_id
+#   - update the bills controller to take a user_id
 #   - write tests to verify this logic
 #
 #
