@@ -1,4 +1,5 @@
 <%= form_for [list, bills], remote: true do |f| %>
+  <!-- add in hidden field -->
   <%= f.text_field :description, placeholder: :description %>
   <%= f.text_field :amount, placeholder: :amount %>
   <%= f.text_field :date, :class => :datepicker, placeholder: :date %>
