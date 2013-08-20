@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
+  has_many :bills
   has_many :groups
   has_many :lists, through: :groups
 

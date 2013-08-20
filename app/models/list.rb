@@ -5,6 +5,8 @@ class List < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # failing message: divided by 0
+  # /Users/zmontesd/Projects/DevBootCamp/SplitAmongUs/app/models/list.rb:20:in `/'
   monetize :total_amount_cents
   monetize :person_share_cents
 
@@ -17,9 +19,8 @@ class List < ActiveRecord::Base
   end
 
   def person_share_cents
-    total_amount_cents / users.count
+    total_amount_cents == 0 ? 0 : total_amount_cents / self.users.count
   end
-
 end
 
 # TODO-JW: 
