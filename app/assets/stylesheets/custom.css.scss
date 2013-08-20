@@ -19,11 +19,11 @@ header .right {
   height: 5.5em;
   width: 10em;
   display: inline-block;
-  vertical-align: text-center;
 
   li {
     display: inline;
-    font-size: 1em;
+    font-size: 1.15em;
+    padding-left: 5px;
   }
 }
 
@@ -175,17 +175,16 @@ header a {
   text-align: center;
   
   #left_column {
-  /*@include grid_column($columns: 3, $offset: 2)*/
-  float: left;
-  text-align: left;
-  width: 30%;
+    float: left;
+    text-align: left;
+    width: 25%;
 }
 
   #middle_column {
     /*@include grid_column($columns: 3)*/
    float: left;
    text-align: left;
-   width: 40%;
+   width: 50%;
    height: 100%;
    border-left: 1px solid #d9d9d9;
    border-right: 1px solid #d9d9d9;
@@ -204,7 +203,7 @@ header a {
     /*@include grid_column($columns: 3, $last-column: true)*/
     float: left;
     text-align: left;
-    width: 30%;
+    width: 25%;
     padding-left: 2em;
 
     li {

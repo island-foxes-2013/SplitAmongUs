@@ -14,8 +14,8 @@
             <li><a href="/foo/bar" data-remote="true">default</a></li>
           </div>
           <div id="users-contain" class="ui-widget">
-            <div class = "row">
-              <div class= "large-6 columns">
+<!--             <div class = "row">
+              <div class= "large-6 columns"> -->
                 <div class="headings">
                   <p>all bills
                     <span id="all-bills">
@@ -23,11 +23,11 @@
                     </span>
                   </p>
                 </div>
-              </div>
-            </div>
+<!--               </div>
+            </div> -->
           </div>
-            <div class = "row">
-              <div class= "large-6 columns">
+<!--             <div class = "row">
+              <div class= "large-6 columns"> -->
                 <div class="headings">
                   <p>my lists<button class="create">add</button></p>
                   <%- if current_user.lists.any? %>
@@ -35,11 +35,11 @@
                       <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
                     </ul>
                   <%- end %>
-              </div>
-            </div>
+<!--               </div>
+            </div> -->
           </div>
-          <div class = "row">
-            <div class= "large-6 columns">
+<!--           <div class = "row">
+            <div class= "large-6 columns"> -->
               <div class="headings">
                 <p>friends:</p>
                 <div id="friends">
@@ -59,8 +59,8 @@
                      <% end %>
                     <% end %>
                   <% end %>
-                </div>
-              </div>
+<!--                 </div>
+              </div> -->
             </div>
           </div>
           <br />
