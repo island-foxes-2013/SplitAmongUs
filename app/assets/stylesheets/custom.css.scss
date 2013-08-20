@@ -26,7 +26,7 @@ header .right {
 }
 
 #user-info {
-  margin: 0 3em 2em .5em;
+  margin: 0;
   padding-bottom: 2em;
   text-align: center;
 
@@ -180,8 +180,8 @@ header a {
    text-align: left;
    width: 40%;
    height: 100%;
-   border-left: 2px solid #d9d9d9;
-   border-right: 2px solid #d9d9d9;
+   border-left: 1px solid #d9d9d9;
+   border-right: 1px solid #d9d9d9;
    background-color: $alt-secondary-color;
 
   ul, h3 {
@@ -230,8 +230,8 @@ input[type="submit"] {
 .headings p {
   float: left;
   padding: 0 0 0 1em;
-  border-top: 2px solid #d9d9d9;
-  border-bottom: 2px solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
   background-color: $alt-secondary-color;
   font-size: 16px;
   width: 16.5em;
