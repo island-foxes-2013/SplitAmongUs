@@ -1,25 +1,33 @@
 <div id="list-amounts">
-<h4>I Owe:</h4>
+<h4>Total for all bills:</h4>
 <% @total = Money.new(0, "USD") %>
 <% current_user.lists.each do |list| %>
-<% list.bills.each do |bill| %>
-<% if bill.owner_id == current_user.id %> 
-<% @total += bill.amount %></span>
+  <% list.bills.each do |bill| %> 
+    <% @total += bill.amount %>
+  <% end %>
 <% end %>
-<% end %>
-<% end %>
-<span class='owe'>$<%= @total %></span>
-<br />
-<br />
 
-<h4>People Owe Me:</h4>
-<% @total = Money.new(0, "USD") %>
+$<%= @total %> 
+
+
+
+<% @user_total = Money.new(0, "USD") %>
 <% current_user.lists.each do |list| %>
-<% list.bills.each do |bill| %>
-<% if bill.owner_id != current_user.id %> 
-<% @total += bill.amount %>
+  <% list.users.each do |user| %>
+    <% list.bills.each do |bill| %>
+      <% if bill.owner_id == user.id %>
+        <% @user_total += (bill.amount / List.find(bill.list_id).users.count) * (List.find(bill.list_id).users.count - 1) %>
+      <% else %>
+        <% @user_total -= bill.amount / List.find(bill.list_id).users.count %>
+      <% end %>
+    <% end %>
+    <% @user_total %>
+    <% if @user_total >= 0 %>
+      <p><%= user.name %> gets back: <%= @user_total %></p>
+    <% else %>
+      <p><%= user.name %> owes: <%= @user_total %></p>
+    <% end %>
+  <% end %>
 <% end %>
-<% end %>
-<% end %>
-<span class='owe-me'>$<%= @total %></span>
-</div>
+
+
