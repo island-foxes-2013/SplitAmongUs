@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
 
   has_many :groups
   has_many :lists, through: :groups
+
+
+  def amount_owed(list)
+    total = 0
+    # DO ALL CALCULATIONS IN CENTS:
+    #   - iterate over all bills and add to total
+    #   - iterate over all paid settlements (for this ist) and add to total
+    #   - iterate over all received settlements (for this list) and subtract from total
+    Money.new(total)
+  end
+
 end
+
