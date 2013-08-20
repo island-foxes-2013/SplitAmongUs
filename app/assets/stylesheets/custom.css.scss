@@ -180,9 +180,9 @@ header a {
    text-align: left;
    width: 40%;
    height: 100%;
-/*   border-left: 4px solid $alt-secondary-color;
-   border-right: 4px solid $alt-secondary-color;*/
-   background-color: rgba(229,221,217, 0.2);
+/*   border-left: 4px solid #d9d9d9;
+   border-right: 4px solid #d9d9d9;
+   background-color: $alt-secondary-color;
 
   ul, h3 {
     padding: 0 20% 0 20%;
@@ -230,9 +230,9 @@ input[type="submit"] {
 .headings p {
   float: left;
   padding: 0 0 0 1em;
-  border-top: 2px solid $alt-secondary-color;
-  border-bottom: 2px solid $alt-secondary-color;
-  background-color: rgba(229,221,217, 0.3);
+  border-top: 2px solid #d9d9d9;
+  border-bottom: 2px solid #d9d9d9;
+  background-color: $alt-secondary-color;
   font-size: 16px;
   width: 16.5em;
   height: 1.7em;
