@@ -26,4 +26,9 @@ describe List do
       expect { list.save! }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
+
+  context "tallying money owed due to bills and settlements" do
+    it "should fucking work"
+  end
+
 end

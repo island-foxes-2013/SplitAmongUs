@@ -9,10 +9,14 @@ end
 populate_users_table
 
 def populate_lists
-  user = User.all
-  user.each do |user|
-    3.times do |lists|
-      user.lists.create(name: Faker::Name.name)
+  User.all.each do |user|
+    3.times do |i|
+      list = user.lists.create(name: Faker::Name.name)
+      list.users << User.find(rand(User.count)+1)
+      list.users << User.find(rand(User.count)+1)
+      list.users << User.find(rand(User.count)+1)
+      list.users << User.find(rand(User.count)+1)
+      list.save
     end
   end
 end
@@ -26,8 +30,9 @@ def populate_bills
   end
   lists = List.all
   lists.each do |list|
-    3.times do
-      bill = Bill.new(description: Faker::Lorem.sentence, amount: 233.23)
+    3.times do |i|
+      date = Date.today - i.days
+      bill = Bill.new(description: Faker::Lorem.sentence, amount: 233.23, date: date)
       bill.list_id = list_ids.sample
       bill.save
     end
