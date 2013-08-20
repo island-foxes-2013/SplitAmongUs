@@ -1,0 +1,35 @@
+<% @total = Money.new(0, "USD") %>
+  <% @list.bills.each do |bill| %> 
+  <% @total += bill.amount %>
+<% end %>
+$<%= @total %> 
+
+<div id="list-amounts">
+<h4>I Get Back:</h4>
+<span class='owe'>$<%= @total %></span>
+<br />
+<br />
+
+<h4>People Owe Me:</h4>
+<% @list.users.each do |user| %>
+<% if user != curr %>
+$<%= @total %>
+<span class='owe-me'></span>
+</div>
+
+<!-- For each bill on the list show page -->
+<% List.find(bill.list_id).users.each do |user| %>
+  <% if user.id == bill.owner_id %>
+    <% if user == current_user %>
+    You Paid: <%= bill.amount %>
+    <% else %>
+    <%= user.name %> Paid: <%= bill.amount %>
+    <% end %>
+  <% else %>
+    <% if user == current_user %>
+      You lent: <%= (bill.amount / List.find(bill.list_id).users.count) * (List.find(bill.list_id).users.count - 1) %>
+    <% else %>
+      <%= User.find(bill.list_id) %> lent you: <%= bill.amount / List.find(bill.list_id).users.count %>
+    <% end %>
+  <% end %>
+
