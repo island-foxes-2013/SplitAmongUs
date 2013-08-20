@@ -15,6 +15,16 @@ header {
   height: 6em;
 }
 
+#left-column {
+  border-right: 5px solid $alt-secondary-color;
+  height: 100%;
+}
+
+#right-column {
+  border-left: 5px solid $alt-secondary-color;
+  height: 100%;
+}
+
 
 #list_name {
     font-family: 'Happy Monkey', cursive;
