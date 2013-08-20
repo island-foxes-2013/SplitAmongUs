@@ -6,20 +6,42 @@
           <!-- Shows -->
           <div class="large-3 small-6 columns" id="left-column">
             <br />
-            <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
-            <h4>Hi&nbsp<%=current_user.name%>!</h4>
+            <div id="user-info">
+              <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
+              <h4>Hi&nbsp<%=current_user.name%>!</h4>
+            </div>
             <%= button_to "All My Bills", user_bills_path(current_user), :method => "get" %>
             <div id="dashboard-lists">
               <div class="list-item-template" style="display: none;">
                 <li><a href="/foo/bar" data-remote="true">default</a></li>
               </div>
               <div id="users-contain" class="ui-widget">
-                <h2>My Lists:</h2>
-                <%- if current_user.lists.any? %>
-                  <ul class="lists">
-                    <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
-                  </ul>
-                <%- end %>
+                <div class = "row">
+                  <div class= "large-6 columns">
+                    <div class="headings">
+                      <p>view all bills</p>
+                        <%- if current_user.lists.any? %>
+                          <ul class="lists">
+                            <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
+                          </ul>
+                      <%- end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class = "row">
+                  <div class= "large-6 columns">
+                  <div class="headings">
+                    <p>my lists</p>
+                  </div>
+                </div>
+              </div>
+              <div class = "row">
+                <div class= "large-6 columns">
+                  <div class="headings">
+                    <p>friends</p>
+                  </div>
+                </div>
               </div>
               <button class="create">Create new list</button>
               <br />

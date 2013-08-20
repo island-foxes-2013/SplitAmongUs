@@ -12,7 +12,12 @@ h2 {
 
 header {
   @include grid-row();
-  height: 6em;
+  height: 5.5em;
+}
+
+header .right {
+  height: 5.5em;
+  width: 10em;
 }
 
 #left-column {
@@ -20,9 +25,23 @@ header {
   height: 100%;
 }
 
+#user-info {
+  margin: 0 3em 2em .5em;
+  padding-bottom: 2em;
+  text-align: center;
+
+  img, h4 {
+    float:left;
+  }
+
+  h4 {
+    padding-right: 6em;
+    padding-left: .75em;
+  }
+}
+
 #right-column {
   border-left: 5px solid $alt-secondary-color;
-  height: 100%;
 }
 
 
@@ -40,16 +59,25 @@ header {
   }
  } 
 
-li {
+li, p {
   list-style-type: none;
   font-family: 'Happy Monkey', cursive;
+  margin: 4px;
 }
+
+/*ul {
+  text-indent: 1em;
+}*/
 
 .notice {
   float: right;
   color: $alert-color;
 }
 
+header fieldset {
+  margin: 0;
+  padding: 13px 0 0 0;
+}
 
 header a {
   font-size: .8em;
@@ -63,6 +91,10 @@ header a {
   @media #{$large} {
     @include grid-column(6);
   }
+
+  padding: 0;
+  height: 5.5em;
+
   h2, img {
     display: inline-block;
   }
@@ -71,6 +103,7 @@ header a {
     color: $alt-secondary-color;
     line-height: 16px;
     font-family: 'Over the Rainbow', cursive;
+    margin: .8em;
   }
 }
 
@@ -130,6 +163,7 @@ header a {
 #user_nav {
   @include grid-column($columns: 3, $last-column:true);
   width: auto;
+  padding: 0 0 15px 0;
 
   a {
     font-size: 1em;
