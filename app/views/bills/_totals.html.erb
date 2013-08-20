@@ -15,7 +15,7 @@ $<%= @total %>
 <% current_user.lists.each do |list| %>
   <% list.users.each do |user| %>
     <% list.bills.each do |bill| %>
-      <% if bill.owner_id == user.id %>
+      <% if bill.user_id == user.id %>
         <% @user_total += (bill.amount / List.find(bill.list_id).users.count) * (List.find(bill.list_id).users.count - 1) %>
       <% else %>
         <% @user_total -= bill.amount / List.find(bill.list_id).users.count %>
