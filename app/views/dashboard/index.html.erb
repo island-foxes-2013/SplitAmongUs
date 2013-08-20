@@ -59,6 +59,12 @@
 
           <div id="middle_column" class="large-6 small-12 columns">
 
+          <div id="dashboard-main-content" class="large-6 small-6 columns">
+            <% if current_user.lists.any? %>
+            <%= render template: 'bills/index' %>
+            <% else %>
+            <p>Welcome to SplitAmong.us!</p>
+            <% end %>
           </div>
 
           <div id="dialog-lists-form">
@@ -73,10 +79,9 @@
 
             <h4>Your Stats:</h4><hr>
             <div class="panel">
-              <h5><a href="#">Post Title 1</a></h5>
 
               <h6 class="subheader">
-                Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+                <%= render partial: 'bills/totals' %>
               </h6>
 
             </div>
