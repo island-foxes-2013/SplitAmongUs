@@ -33,26 +33,24 @@
     <header>
       <div id="logo">
         <fieldset>
-          <h2><%= link_to 'Split*Among.Us', root_path %></h2>
-<!--           <%# if user_signed_in? %>
+          <% if user_signed_in? %>
             <a href="/dashboard"><h2> Split*Among.Us </h2></a>
-          <%# else %>
+          <% else %>
             <a href="/"><h2> Split*Among.Us </h2></a>
-          <%# end %> -->
+          <% end %>
         </fieldset>
       </div>
       <% if user_signed_in? %>
-
+        <div class="right">
           <fieldset id="user_nav">
             <a href="#" data-dropdown="drop1" data-options="is_hover:true">Welcome, <%= current_user.name %></a>
               <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
               <ul id="drop1" class="f-dropdown" data-dropdown-content>
                 <li><%= link_to "my profile", edit_user_registration_path, {method: :get} %></li>
-                <li><a href="#">edit profile</a></li>
                 <li><%= link_to "sign out", destroy_user_session_path, {method: :delete} %></li>
               </ul>
           </fieldset>
-
+        </div>
       <% else %>
         <%= render partial: 'devise/sessions/new' %>
       <% end %>

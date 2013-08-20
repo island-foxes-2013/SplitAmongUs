@@ -32,12 +32,21 @@ describe ListsController do
 
   describe "PUT #update" do
     context "valid attributes" do
-      it "located the requested list"
+      it "located the requested list" do
+        put :update, id: list.id
+        assigns(:list).should eq(list)
+      end
       it "changes list's attributes"
-      it "redirects to the dashboard page"
+      it "redirects to the dashboard page" do
+        put :update, id: list.id
+        response.should redirect_to dashboard_index_path
+      end
     end
     context "invalid attributes" do
-      it "locates the requested list"
+      it "locates the requested list" do 
+        put :update, id: list.id
+        assigns(:list).should eq(list)
+      end
       it "does not change list's attributes"
       it "re-renders the edit page"
     end
@@ -46,11 +55,11 @@ describe ListsController do
   describe "DELETE #destroy" do
     it "deletes the requested list from the database" do
       expect{ 
-        delete :destroy, id: list.id 
+        delete :destroy, id: list 
         }.to change(List,:count).by(-1)
     end
     it "redirects to the dashboard page" do
-      delete :destroy, id: list.id
+      delete :destroy, id: list
       response.should redirect_to dashboard_index_path
     end
   end

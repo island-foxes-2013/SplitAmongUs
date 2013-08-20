@@ -1,34 +1,38 @@
 <div id="list_show">
-<div id="dialog-bills-form">
-  <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
-</div>
+	<div id="dialog-bills-form">
+	  <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
+	</div>
 
-<br />
-<button id="create-bill">Create A Bill</button>
-<br />
-List Members: <% @list.users.each do |user| %>
-<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
-<% end %>
+	<br />
+	<button id="create-bill">Create A Bill</button>
+	<br />
+		<h5>List Members:</h5>
+		<br />
 
-<% if @list.bills.any? %>
+		<% @list.users.each do |user| %>
+			<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
+		<% end %>
 
-<ul class="bills">
-  <%= render partial: 'bills/bill', locals: { bills: @list.bills } %>
-</ul>
+		<% if @list.bills.any? %>
 
-<div class="add bill">
+		<ul class="bills">
+		  <%= render partial: 'bills/bill', locals: { bills: @list.bills } %>
+		</ul>
+
+		<div class="add bill">
   
-</div>
+		</div>
 
-<h3>Total Amount for bills in <%= @list.name %>:</h3>
-    <% @total = Money.new(0, "USD") %>
-    <% @list.bills.each do |bill| %> 
-    <% @total += bill.amount %>
-    <% end %>
-    $<%= @total %> 
-<% end %> 
-<br />
-<%= button_to "Edit List", edit_list_path(@list), :method => "get" %>
-<%= button_to "Delete List", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete" %>
-<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
-</div>
+		<h3>Total Aaount for bills in <%= @list.name %>:</h3>
+		    <% @total = Money.new(0, "USD") %>
+		    	<% @list.bills.each do |bill| %> 
+		    		<% @total += bill.amount %>
+		    	<% end %>
+		    $<%= @total %> 
+		<% end %> 
+		<br />
+
+		<%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
+		<%= link_to "Delete List", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete" %>
+		<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
+		</div>
