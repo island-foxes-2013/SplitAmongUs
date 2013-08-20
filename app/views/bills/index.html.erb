@@ -1,23 +1,23 @@
 <!-- needs to be rendered via remote true -->
 <ul>
-  <% @lists.each do |list| %>
-  <% if list.bills.any? %>
-  <li><h4><%= list.name %></h4><br />
-    <% list.bills.each do |bill| %>
-    <%= bill.description %> - $<%= bill.amount %><br />
-    <%= bill.date %><br />
-    <%= bill.date_paid %></li>
-    <br />
-    <% end %>
-    <% end %>
+  <% current_user.lists.each do |list| %>
+      <% if list.bills.any? %>
+        <li><h4><%= list.name %></h4><br />
+            <% list.bills.each do |bill| %>
+            <%= bill.description %> - $<%= bill.amount %><br />
+            <%= bill.date %><br />
+            <%= bill.date_paid %></li>
+          <br />
+        <% end %>
+      <% end %>
     <% end %>
   </ul>
 
   <h3>Total Amount:</h3>
-    <% @total = Money.new(0, "USD") %>
-    <% @lists.each do |list| %>
-    <% list.bills.each do |bill| %> 
-    <% @total += bill.amount %>
-    <% end %>
-    <% end %>
-    $<%= @total %>  
+      <% @total = Money.new(0, "USD") %>
+          <% current_user.lists.each do |list| %>
+            <% list.bills.each do |bill| %> 
+            <% @total += bill.amount %>
+          <% end %>
+      <% end %>
+  $<%= @total %>  
