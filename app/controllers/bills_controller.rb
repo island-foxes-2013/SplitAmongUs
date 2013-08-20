@@ -19,16 +19,12 @@ class BillsController < ApplicationController
   end
 
   def edit
-    @list = List.find(params[:list_id])
     @bill = Bill.find(params[:id])
   end
 
   def update
     @bill = Bill.find(params[:id])
-    @bill.description = params[:bill][:description]
-    @bill.amount = params[:bill][:amount]
-    @bill.date = params[:bill][:date]
-    @bill.save
+    @bill.update_attributes(bill_params)
     redirect_to dashboard_index_path
   end
 
