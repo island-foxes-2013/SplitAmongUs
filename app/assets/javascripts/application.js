@@ -23,3 +23,7 @@ $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
 });
+
+$(function() {
+  new BillsIndexView('#all-bills');
+});

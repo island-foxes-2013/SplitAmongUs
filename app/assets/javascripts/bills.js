@@ -14,3 +14,11 @@ function addBill(amount, totalAmount) {
   var intoDollars = sumCents / 100;
   return intoDollars;
 }
+
+function BillsIndexView(locator) {
+  this.element = $(locator);
+  
+  this.element.on('ajax:success', '.button_to', function(e, response) {
+    $('#middle_column').html(response);
+  });
+}

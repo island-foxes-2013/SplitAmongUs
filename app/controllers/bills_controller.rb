@@ -3,6 +3,11 @@ class BillsController < ApplicationController
 
   def index
     @lists = current_user.lists
+    if request.xhr?
+      render :index, :layout => false
+    else
+      render :index
+    end
   end
   
   def create 
