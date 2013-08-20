@@ -3,7 +3,17 @@
   <% if list.bills.any? %>
     <table>
       <thead>
-        <tr><th colspan="6"><%= list.name %></th></tr>
+        <tr>
+          <th colspan="6"><%= list.name %></th>
+        </tr>
+        <tr>
+          <th>date</th>
+          <th>description</th>
+          <th>total</th>
+          <th>paid on</th>
+          <th>status</th>
+          <th>your share</th>
+        </tr>
       </thead>
       <tbody>
         <% list.bills.each do |bill| %>

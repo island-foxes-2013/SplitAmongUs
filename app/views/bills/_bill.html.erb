@@ -3,8 +3,26 @@
 <div id="bill_amount"><%= bill.amount %></div>
 <!-- get the date picker for date -->
 <div id="date_format"><%= bill.date.strftime("%m-%d-%Y") %></div> 
-  
-  <% List.find(bill.list_id).users.each do |user| %>
+  	<table>
+  		<thead>
+  			<tr>
+  				th colspan="6"<%= list.name %></th>
+  			</tr>
+  			<tr>
+  				<th>date</th>
+  				<th>description</th>
+  				<th>total</th>
+  				<th>paid on</th>
+  				<th>status</th>
+  				<th>your share</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% List.find(bill.list_id).users.each do |user| %>
+
+  		</tbody>
+  	</table>
+
     <% if user.id == bill.user_id %>
       <% if user == current_user %>
       You Paid: <%= bill.amount %>

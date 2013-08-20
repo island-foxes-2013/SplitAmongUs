@@ -150,6 +150,11 @@ header a {
 
 table { 
   width: 100%;
+
+  tr { /*This is not working yet*/
+    font-weight: bold;
+    color: $primary-color;
+  }
 }
 
 #index-page {
