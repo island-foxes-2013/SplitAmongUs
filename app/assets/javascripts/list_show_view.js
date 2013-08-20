@@ -12,6 +12,8 @@ function ListShowView(locator) {
   });
 }
 
+// now a ton of stuff needs to update - need to make this more scalable
+// need to add classes and spans to the new totals
 ListShowView.prototype.refreshStats = function(amount) {
   var totalAmountSpan = $('.owe-me');
   var totalAmount = totalAmountSpan[0];
