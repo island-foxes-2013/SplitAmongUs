@@ -26,14 +26,13 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    @list.name = params[:list][:name]
+    @list.name = list_params[:name]
     @list.save
     redirect_to dashboard_index_path
   end
 
   def destroy
-    @list = List.find(params[:id])
-    @list.destroy
+    List.destroy(params[:id])
     redirect_to dashboard_index_path
   end
 

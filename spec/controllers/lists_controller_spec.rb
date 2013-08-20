@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ListsController do
   let(:user) { create(:user) }
-  let(:list) { create(:list) }
+  let!(:list) { create(:list) }
    
   before do
     sign_in(user)
@@ -32,13 +32,13 @@ describe ListsController do
 
   describe "PUT #update" do
     context "valid attributes" do
-      it "located the requested list" do
-        put :update, id: list.id
-        assigns(:list).should eq(list)
+      it "changes list's attributes" do
+        put :update, id: list.id, list: { name: "Some New Name" }
+        list.reload.name.should == "Some New Name"
       end
-      it "changes list's attributes"
+
       it "redirects to the dashboard page" do
-        put :update, id: list.id
+        put :update, id: list.id, list: { name: "Some New Name" }
         response.should redirect_to dashboard_index_path
       end
     end
@@ -56,7 +56,7 @@ describe ListsController do
     it "deletes the requested list from the database" do
       expect{ 
         delete :destroy, id: list.id
-        }.to change(List,:count).by(-1)
+        }.to change{List.count}.by(-1)
     end
     it "redirects to the dashboard page" do
       delete :destroy, id: list.id
@@ -66,15 +66,18 @@ describe ListsController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      let(:list_attributes) { attributes_for(:list) }
       it "saves the new list in the database" do
         expect {
-          post :create, list: attributes_for(:list)
+          post :create, list: list_attributes
         }.to change(List, :count).by(1)
         List.last.users.should == [user]
        end
       it "redirects to the dashboard page" do
-        post :create, list: attributes_for(:list)
-        response.should redirect_to dashboard_index_path
+        post :create, list: list_attributes
+        actual_name = JSON.parse(response.body)['name']
+        actual_name.should be_present
+        actual_name.should == list_attributes[:name]
       end
     end
 
