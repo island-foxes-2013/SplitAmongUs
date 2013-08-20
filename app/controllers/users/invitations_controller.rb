@@ -1,7 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   def new
     @list = List.find(params[:list_id])
-    p ">>>>>>>>>>>> #{@list}"
     self.resource = resource_class.new
   end
 
