@@ -1,1 +1,1 @@
-<li><%= link_to list.name, list_path(list), { remote: true } %></li>
+<li><%= link_to list.name, list_path(list), { remote: true } %></li><span class='delete-list'><%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", remote: true %></span>

@@ -10,6 +10,11 @@ function ListShowView(locator) {
   $( "#create-bill" ).click(function() {
     dialog.open();
   });
+
+  // delete form
+  $(".delete-list").on('click', function(){
+    self.delete(this);
+  })
 }
 
 // now a ton of stuff needs to update - need to make this more scalable
@@ -19,4 +24,8 @@ ListShowView.prototype.refreshStats = function(amount) {
   var totalAmount = totalAmountSpan[0];
   var newTotal = addBill(amount, $(totalAmount).text().slice(1));
   return $('.owe-me').text('$'+newTotal);
+}
+
+ListShowView.prototype.delete = function(self) {
+  // pass in the delete link - 
 }
