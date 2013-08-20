@@ -18,6 +18,13 @@ header {
 header .right {
   height: 5.5em;
   width: 10em;
+  display: inline-block;
+  vertical-align: text-center;
+
+  li {
+    display: inline;
+    font-size: 1em;
+  }
 }
 
 #left-column {
