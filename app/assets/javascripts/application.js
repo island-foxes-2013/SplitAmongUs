@@ -27,3 +27,19 @@ $(function() {
 $(function() {
   new BillsIndexView('#all-bills');
 });
+
+function errors() {
+  $('form#new_user').validate({
+    rules: { 
+      "user[email]": {
+        required: true,
+        minlength: 3
+      }
+    }
+  });
+}
+
+$(document).ready(function(){
+  errors();
+      $("#user_email").css({'color': 'red'});
+});
