@@ -244,3 +244,14 @@ input[type="submit"] {
 }
 
 
+/*These override the modal fonts*/
+#list_name, .ui-button-text, .ui-dialog-title {
+    font-family: 'Esteban', serif;
+  }
+
+ #new_bill {
+  #bill_description, #bill_amount, #bill_date {
+    font-family: 'Esteban', serif;
+  }
+ } 
+
