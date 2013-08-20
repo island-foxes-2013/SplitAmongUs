@@ -45,7 +45,7 @@ header .right {
   border-left: 5px solid $alt-secondary-color;
 }
 
-
+/*
 #list_name {
     font-family: 'Happy Monkey', cursive;
   }
@@ -58,11 +58,11 @@ header .right {
   #bill_description, #bill_amount, #bill_date {
     font-family: 'Happy Monkey', cursive; 
   }
- } 
+ } */
 
 li, p {
   list-style-type: none;
-  font-family: 'Happy Monkey', cursive;
+/*  font-family: 'Esteban', serif;*/
   margin: 4px;
 }
 
@@ -194,6 +194,7 @@ header a {
    float: left;
    text-align: left;
    width: 40%;
+   height: 100%;
 /*   border-left: 4px solid $alt-secondary-color;
    border-right: 4px solid $alt-secondary-color;*/
    background-color: rgba(229,221,217, 0.2);
@@ -240,9 +241,9 @@ input[type="submit"] {
 .headings p {
   float: left;
   padding: 0 0 0 1em;
-  border-top: 2px solid #D1CAC6;
-  border-bottom: 2px solid #D1CAC6;
-  background-color: $alt-secondary-color;
+  border-top: 2px solid $alt-secondary-color;
+  border-bottom: 2px solid $alt-secondary-color;
+  background-color: rgba(229,221,217, 0.3);
   font-size: 16px;
   width: 16.5em;
   height: 1.7em;
