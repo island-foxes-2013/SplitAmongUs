@@ -2,7 +2,7 @@
 <h4><%= bill.description %></h4>
 <div id="bill_amount"><%= bill.amount %></div>
 <!-- get the date picker for date -->
-<div id="date_format"><%= bill.date.strftime("%m-%d-%Y") %></div> 
+<div id="date_format"></div> 
   
   <% List.find(bill.list_id).users.each do |user| %>
 
@@ -20,6 +20,34 @@
       <% end %>
     <% end %>
     <% end %>
+
+  	<table>
+  		<thead>
+  			<tr>
+  				<th colspan="6"><%= @list.name %></th>
+  			</tr>
+  			<tr>
+  				<th>date</th>
+  				<th>description</th>
+  				<th>total</th>
+  				<th>paid on</th>
+  				<th>paid by</th>
+  				<th>your share</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% List.find(bill.list_id).users.each do |user| %>
+  			<tr>
+  				  <td><%= bill.date.strftime("%m-%d-%Y") %></td>
+            <td><%=bill.description%></td>
+            <td><%=bill.amount%></td>
+            <td><%=bill.date_paid%></td>
+            <td><%=responsibility_for(bill)%></td>
+            <td><%=bill.shared_amount%></td>
+  			</tr>
+  			<% end %>
+  		</tbody>
+  	</table>
 
 <!-- needs remote true-->
 <!-- needs error handling -->

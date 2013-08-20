@@ -18,7 +18,7 @@
       <tbody>
         <% list.bills.each do |bill| %>
           <tr>
-            <td><%=bill.date%></td>
+            <td><%= bill.date.strftime("%m-%d-%Y") %></td>
             <td><%=bill.description%></td>
             <td><%=bill.amount%></td>
             <td><%=bill.date_paid%></td>
