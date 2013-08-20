@@ -26,11 +26,12 @@ header .right {
 }
 
 #user-info {
-  margin: 0 3em 2em .5em;
+  margin: 0;
   padding-bottom: 2em;
   text-align: center;
 
   img, h4 {
+    display: inline-block;
     float:left;
   }
 
@@ -45,23 +46,8 @@ header .right {
 }
 
 
-#list_name {
-    font-family: 'Happy Monkey', cursive;
-  }
-
-.ui-button-text {
-    font-family: 'Happy Monkey', cursive;
-  }
-
- #new_bill {
-  #bill_description, #bill_amount, #bill_date {
-    font-family: 'Happy Monkey', cursive; 
-  }
- } 
-
 li, p {
   list-style-type: none;
-  font-family: 'Happy Monkey', cursive;
   margin: 4px;
 }
 
@@ -146,7 +132,9 @@ header a {
   }
 
   img {
-    height: 40em;
+    padding-left: 4em;
+    height: 85%;
+    width: 85%;
     opacity:0.2;
   }
 
@@ -191,8 +179,10 @@ header a {
    float: left;
    text-align: left;
    width: 40%;
-   border-left: 4px solid $alt-secondary-color;
-   border-right:4px solid $alt-secondary-color;
+   height: 100%;
+   border-left: 1px solid #d9d9d9;
+   border-right: 1px solid #d9d9d9;
+   background-color: $alt-secondary-color;
 
   ul, h3 {
     padding: 0 20% 0 20%;
@@ -208,7 +198,12 @@ header a {
     float: left;
     text-align: left;
     width: 30%;
+    padding-left: 2em;
+
+    li {
+    text-indent: 2em;
     }
+  }
 }
 
 #edit_form {
@@ -232,4 +227,31 @@ input[type="submit"] {
   text-align: center;
 }
 
+.headings p {
+  float: left;
+  padding: 0 0 0 1em;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: $alt-secondary-color;
+  font-size: 16px;
+  width: 16.5em;
+  height: 1.7em;
+
+  button, a {
+    padding-right: 8px;
+    float: right;
+  }
+}
+
+
+/*These override the modal fonts*/
+#list_name, .ui-button-text, .ui-dialog-title {
+    font-family: 'Esteban', serif;
+  }
+
+ #new_bill {
+  #bill_description, #bill_amount, #bill_date {
+    font-family: 'Esteban', serif;
+  }
+ } 
 

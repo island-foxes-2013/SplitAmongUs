@@ -27,3 +27,8 @@ $(function() {
 $(function() {
   new BillsIndexView('#all-bills');
 });
+
+
+$(document).ready(function(){
+  errors();   
+});
