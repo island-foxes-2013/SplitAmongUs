@@ -1,13 +1,14 @@
+<div id="list-amounts">
 <h4>I Owe:</h4>
 <% @total = Money.new(0, "USD") %>
 <% current_user.lists.each do |list| %>
 <% list.bills.each do |bill| %>
 <% if bill.owner_id == current_user.id %> 
-<% @total += bill.amount %>
+<% @total += bill.amount %></span>
 <% end %>
 <% end %>
 <% end %>
-$<%= @total %> 
+<span class='owe'>$<%= @total %></span>
 <br />
 <br />
 
@@ -20,4 +21,5 @@ $<%= @total %>
 <% end %>
 <% end %>
 <% end %>
-$<%= @total %> 
+<span class='owe-me'>$<%= @total %></span>
+</div>

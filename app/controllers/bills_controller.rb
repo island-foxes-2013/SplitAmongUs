@@ -10,7 +10,7 @@ class BillsController < ApplicationController
     @bill.list_id = params[:list_id]
     if @bill.save
       if request.xhr?
-        render partial: 'bill', locals: { bill: @bill }
+        render json: {html: render_to_string(partial: 'bill', locals: { bill: @bill }), total: @bill }.to_json
       end
     else
       flash[:error] = @bill.errors.full_messages.join('')
