@@ -47,29 +47,23 @@
           <% end %>
           </div>
         </div>
-        <br />
-        <div class="row">
-          <div class="large-1 column">
-          </div>
-        </div>
       </div>
-    </div>
-    <div id="middle_column">
-      <% if current_user.lists.any? %>
-      <%= render template: 'bills/index', collection: current_user.lists %>
-      <% else %>
-      <p>Welcome to SplitAmong.us!</p>
-      <% end %>
-    </div>
-    <div id="dialog-lists-form">
-      <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
-    </div>
-    <div id="right_column">
-      <h4>Your Stats:</h4><hr>
-      <div class="panel">
-        <h6 class="subheader">
-          <%= render partial: 'bills/totals', locals: { list: current_user.lists.last } %>
-        </h6>
+      <div id="middle_column">
+        <% if current_user.lists.any? %>
+          <%= render template: 'bills/index', collection: current_user.lists %>
+        <% else %>
+          <p>Welcome to SplitAmong.us!</p>
+        <% end %>
+      </div>
+      <div id="dialog-lists-form">
+        <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
+      </div>
+      <div id="right_column">
+        <h4>Your Stats:</h4><hr>
+          <div class="panel">
+            <h6 class="subheader">
+              <%= render partial: 'bills/totals', locals: { list: current_user.lists.last } %>
+            </h6>
       </div>
     </div>
   </div>
