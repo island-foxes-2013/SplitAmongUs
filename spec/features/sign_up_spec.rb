@@ -18,7 +18,7 @@ describe 'SignUp' do
         fill_in 'password confirmation', with: user.password
         click_button "Sign up"
       end
-      page.should have_content("Welcome, #{user.name}")
+      page.should have_content("#{user.name}")
     end
 
     it "does not allow a user to sign up without a name" do

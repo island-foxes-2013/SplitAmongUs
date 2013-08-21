@@ -21,12 +21,5 @@ class Bill < ActiveRecord::Base
       user.id == user_id
     end
   end
-  # def 
-  #   if user == current_user
-  #     You lent: (bill.amount / List.find(bill.list_id).users.count) * (List.find(bill.list_id).users.count - 1)
-  #   else 
-  #     User.find(bill.user_id).name  lent you: bill.amount / List.find(bill.list_id).users.count 
-  #   end
-  # end
 end
 

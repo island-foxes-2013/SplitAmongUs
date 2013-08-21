@@ -2,10 +2,10 @@
     <tr>
       <td><%=bill.date.strftime("%m-%d-%Y") %></td>
       <td><%=bill.description%></td>
-      <td><%=bill.amount%></td>
+      <td>$<%=bill.amount%></td>
       <td><%=bill.date_paid %></td>
       <td><%=bill.paid_by.name %></td>
-      <td><%=bill.shared_amount%></td>
+      <td>$<%=bill.shared_amount%></td>
       <td><li><%= link_to "edit", edit_list_bill_path(bill.list, bill), {method: :get} %></li></td>
       <td><li><%= link_to "delete", list_bill_path(bill.list, bill), confirm: 'Are you sure you want to delete this bill?', method: :delete %></li></td>
     </tr>

@@ -57,4 +57,11 @@ describe Bill do
       end
     end
   end
+
+  context "find user who paid" do
+    # unsure if this test works, all tests on this page are failing
+    it "should return the user who paid" do
+      expect { list.user_id }.to have(user_id)
+    end
+  end
 end

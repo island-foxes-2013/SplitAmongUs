@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic :size => 200,
-             :default => 'http://i00.i.aliimg.com/photo/v0/217768578/Cartoon_pig_book_end.jpg'
+             :default => 'http://i.minus.com/imbEl8iMIekdR.jpg'
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -47,8 +47,19 @@ class User < ActiveRecord::Base
     self.class.amount_owed(list,user)
   end
 
+  def total_due_for_all_lists
+    @total = Money.new(0, "USD") 
+      current_user.lists.each do |list| 
+        list.bills.each do |bill|  
+          @total += bill.amount 
+        end 
+      end 
+    "$ #{@total}"   
+  end
+
   def friends
     list_users.where("groups.user_id <> #{self.id}").uniq
+
   end
 end
 
