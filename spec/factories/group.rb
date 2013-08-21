@@ -1,10 +1,8 @@
 FactoryGirl.define do
 
-  factory :group, :parent => :user do |user|
-  	user.lists { |list| [ list.association(:list),
-					  	  list.association(:list) ] }
-
-  	# lists { [FactoryGirl.create(:list)] }
-    # fill in date here using faker! with blocks {}
+  factory :group do |f|
+    f.name "Awesome Group"
+    f.user_id "25"
+    f.list_id "25"
   end
 end
