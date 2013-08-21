@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe List do
   let(:user) { create(:user) }
-  let(:list) { List.new(name: "Awesome List") }
+  let(:list) { user.lists.create(name: "Awesome List") }
   let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today, user: user) }
   let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today, user: user) }
 
@@ -13,8 +13,10 @@ describe List do
       expect(list).to be_an_instance_of(List)
     end
 
-    it "can be saved successfully" do
-      expect { list.save }.to change(List, :count).by(1)
+    context "when valid" do
+      it "should have a user id" do
+        expect(list.users.first.id).to eq(user.id)
+      end
     end
 
     it "has a name" do
