@@ -14,7 +14,7 @@ describe 'SignIn' do
         fill_in 'email', with: user.email
         fill_in 'password', with: user.password + "234"
       end
-      page.should_not have_content("Welcome, #{user.name}")
+      page.should_not have_content("#{user.name}")
     end
 
     it "doesn't allow a non-user to log in" do
@@ -22,7 +22,7 @@ describe 'SignIn' do
         fill_in 'email', with: user.email.gsub!(/^\w+/, 'aeiou')
         fill_in 'password', with: user.password
       end
-      page.should_not have_content("Welcome, #{user.name}")
+      page.should_not have_content("#{user.name}")
     end
   end
 
@@ -40,7 +40,7 @@ describe 'SignIn' do
         fill_in 'password', :with => user.password
         click_button 'Log In'
       end
-      page.should have_content("Welcome, #{user.name}")
+      page.should have_content("#{user.name}")
     end
   end
 
@@ -52,11 +52,11 @@ describe 'SignIn' do
         check 'Remember me'
         click_button 'Log In'
       end
-      page.should have_content("Welcome, #{user.name}")
+      page.should have_content("#{user.name}")
       page.execute_script "window.close();"
       page.execute_script "window.open();"
       visit root_path
-      page.should have_content("Welcome, #{user.name}")
+      page.should have_content("#{user.name}")
     end
   end
 
