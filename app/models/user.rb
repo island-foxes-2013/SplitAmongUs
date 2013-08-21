@@ -13,11 +13,12 @@ class User < ActiveRecord::Base
   has_many :bills
   has_many :groups
   has_many :lists, through: :groups
+  has_many :list_users, through: :lists, source: :users
 
   has_many :paid_settlements, class_name: "Settlement", foreign_key: "payer_id"
   has_many :received_settlements, class_name: "Settlement", foreign_key: "payee_id"
 
-
+  
     # DO ALL CALCULATIONS IN CENTS:
     #   - iterate over all paid settlements (for this ist) and add to total
     #   - iterate over all received settlements (for this list) and subtract from total
@@ -37,6 +38,10 @@ class User < ActiveRecord::Base
 
   def amount_owed(list, user)
     self.class.amount_owed(list,user)
+  end
+
+  def friends
+    list_users.where("groups.user_id <> #{self.id}").uniq
   end
 end
 
