@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Bill do
   
-  let(:list) { create(:list) }
-  let(:bill) { create(:bill, list: list) }
+  let(:user) { create(:user) }
+  let(:list) { user.lists.create(name: 'test list') }
+  let(:bill) { create(:bill, list: list, user: user) }
 
   context 'create bill' do
     
@@ -48,6 +49,11 @@ describe Bill do
 
       it "when list_id is blank" do
         bill.list_id = nil
+        expect { bill.save! }.to raise_error(NoMethodError)
+      end
+
+      it "when user_id is blank" do
+        bill.user_id = nil
         expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
       end
 
@@ -58,10 +64,14 @@ describe Bill do
     end
   end
 
-  context "find user who paid" do
+  context "find user who paid the bill" do
     # unsure if this test works, all tests on this page are failing
-    it "should return the user who paid" do
-      expect { list.user_id }.to have(user_id)
+    context "paid by" do
+      before {bill.paid_by}
+
+      it "should return the user id" do
+        expect(list.users.first.id).to eq(user.id)
+      end
     end
   end
 end
