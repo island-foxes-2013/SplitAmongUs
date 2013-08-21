@@ -21,6 +21,16 @@ class List < ActiveRecord::Base
   def person_share_cents
     total_amount_cents == 0 ? 0 : total_amount_cents / self.users.count
   end
+
+  def total_due_for_all_lists
+    @total = Money.new(0, "USD") 
+      current_user.lists.each do |list| 
+        list.bills.each do |bill|  
+          @total += bill.amount 
+        end 
+      end 
+    @total   
+  end
 end
 
 # TODO-JW: 
