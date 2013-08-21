@@ -2,7 +2,10 @@
 require 'spec_helper'
 
 describe List do
+  let(:user) { create(:user) }
   let(:list) { List.new(name: "Awesome List") }
+  let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today, user: user) }
+  let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today, user: user) }
 
   context "create list" do
 
@@ -30,5 +33,3 @@ describe List do
   context "tallying money owed due to bills and settlements" do
     it "should fucking work"
   end
-
-end
