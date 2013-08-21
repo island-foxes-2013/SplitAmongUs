@@ -34,13 +34,13 @@ class User < ActiveRecord::Base
       if user.paid_settlements
           user.paid_settlements.each do |settlement|
             if settlement.list_id == list.id
-            @grand_total -= settlement.amount 
+            @grand_total -= settlement.amount_in_cents
             end
           end
         end 
       end
 
-    @grand_total
+    Money.new(@grand_total)
   end
 
   def amount_owed(list, user)
