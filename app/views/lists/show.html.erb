@@ -6,15 +6,26 @@
 	<br />
 	<button id="create-bill">Create A Bill</button>
 	<br />
-		<h5>List Members:</h5>
-		<br />
-
-		<% @list.users.each do |user| %>
-			<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
-		<% end %>
-
 		<% if @list.bills.any? %>
-		<h3> Bills for list: <%= @list.name %> </h3><%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>	
+			<table>
+				<thead>
+					<tr>
+						<th colspan="8"><%= @list.name %>&nbsp<%= link_to "edit", edit_list_path(@list), :method => "get" %>&nbsp<%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>	</th>
+					</tr>
+					<tr>
+						<th>date</th>
+						<th>description</th>
+						<th>total</th>
+						<th>paid on</th>
+						<th>paid by</th>
+						<th>your share</th>
+		        <th></th>
+		        <th></th>
+					</tr>
+				</thead>
+		<tbody>
+
+
 		<ul class="bills">
 		  <%= render partial: 'bills/bill', collection: @list.bills %>
 		</ul>
@@ -23,17 +34,14 @@
   
 		</div>
 
-		<!-- <div id="list-amounts"> -->
-<!-- 			<h3>Total Amount for bills in <%#= @list.name %>:</h3>
-			  <%# @total = Money.new(0, "USD") %>
-			  	<%# @list.bills.each do |bill| %> 
-			  		<%# @total += bill.amount %>
-			  	<%# end %>
-			  $<%#= @total %>  -->
-		<!-- </div> -->
 		<% end %> 
+		<br \>
 		
 		<!-- needs remote true-->
-		<%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
+		<h5>List Members:</h5>
+
+		<% @list.users.each do |user| %>
+			<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
+		<% end %>
 		<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
 		</div>
