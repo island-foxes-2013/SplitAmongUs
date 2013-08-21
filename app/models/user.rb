@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic :size => 200,
-             :default => '/public/gravatar_pig.jpg'
+             :default => 'http://i.minus.com/imbEl8iMIekdR.jpg'
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
