@@ -6,7 +6,7 @@ SplitAmongUs::Application.routes.draw do
   match 'users/:id' => 'users#show', as: :users
   resources :dashboard, only: [:index]
 
-  resources :lists do
+  resources :lists, except: [:edit] do
     resources :bills, only: [:show, :create, :edit, :update, :destroy]
     resources :settlements, only: [:new, :create]
   end

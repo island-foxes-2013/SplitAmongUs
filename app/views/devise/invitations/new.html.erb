@@ -1,20 +1,28 @@
-<h2>Invite a friend to "<%= @list.name %>"</h2>
+<div id="invite_friend">
+  <div id="middle_column">
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+    <fieldset>
+      <%= devise_error_messages! %>
+      <h4>Invite a friend to "<%= @list.name %>"</h4>
+      <br />
+      <%= f.hidden_field :list_id, value: @list.id %>
+      <br />
+      <%= f.text_field :name, placeholder: :name %>
+      <br />
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <%= f.text_field :email, placeholder: :email %>
+      <% end %>
+      <br />
+      <%= f.submit t("devise.invitations.new.submit_button") %>
+      <% end %>
+      <script>
+      var friends = <%= @friends %>
+      </script>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
-
- 
-  <%= f.hidden_field :list_id, value: @list.id %>
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
-<% resource.class.invite_key_fields.each do |field| -%>
-  <p><%= f.label field %><br />
-  <%= f.text_field field %></p>
-<% end -%>
-
-  <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
-
-  <script>
-  var friends = <%= @friends %>
-</script>
-<% end %>
+    </fieldset>
+  </div>
+<!--   <div id="right_column">
+    <img src="pig-wallpaper.jpg" img-tag="pigs"></img>
+  </div> -->
+</div>
+>>>>>>> master

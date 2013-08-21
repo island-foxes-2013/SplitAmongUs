@@ -20,10 +20,10 @@
           <tr>
             <td><%= bill.date.strftime("%m-%d-%Y") %></td>
             <td><%=bill.description%></td>
-            <td><%=bill.amount%></td>
+            <td>$<%=bill.amount%></td>
             <td><%=bill.date_paid%></td>
             <td><%=responsibility_for(bill)%></td>
-            <td><%=bill.shared_amount%></td>
+            <td>$<%=bill.shared_amount%></td>
           </tr>
         <% end %>
       </tbody>
@@ -33,7 +33,7 @@
 <table>
   <thead>
     <th colspan="5">total amount due for all lists:</th>
-    <th colspan="1"><%=total_due_for_all_lists%></th>
+    <th colspan="1">$<%=total_due_for_all_lists%></th>
   </thead>
 </table>
 

@@ -49,7 +49,7 @@ describe 'SignIn' do
       within '#login' do 
         fill_in 'email', :with => user.email
         fill_in 'password', :with => user.password
-        check 'Remember me'
+        check('Remember me')
         click_button 'Log In'
       end
       page.should have_content("#{user.name}")

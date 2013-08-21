@@ -28,18 +28,7 @@ describe ListsController do
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested list to @list" do
-      get :edit, id: list.id
-      assigns(:list).should eq(list)
-    end
-    it "renders the edit template" do
-      get :edit, id: list.id
-      expect(response).to render_template("edit")
-    end
-  end
-
-  describe "PUT #update" do
+  describe "PUT #update", js: true do
     context "valid attributes" do
       it "changes list's attributes" do
         put :update, id: list.id, list: { name: "Some New Name" }
