@@ -33,3 +33,5 @@ describe List do
   context "tallying money owed due to bills and settlements" do
     it "should fucking work"
   end
+
+end

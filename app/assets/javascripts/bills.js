@@ -9,7 +9,7 @@ Bills.prototype.add = function(bill) {
 }
 
 // some bill amounts to display totals
-function addBill(amount, totalAmount) {
+function addSettlement(amount, totalAmount) {
   var sumCents = Number(amount) + Number(totalAmount) * 100;
   var intoDollars = sumCents / 100;
   return intoDollars;
