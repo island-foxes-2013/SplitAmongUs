@@ -7,12 +7,13 @@ class SettlementsController < ApplicationController
   end
 
   def create
-    @settlement = Settlement.create(settlement_params)
-    @settlement.list_id = params[:list_id]
-    payer = User.find_by_name("#{params[:payer]}")
-    payee = User.find_by_name("#{params[:payee]}")
-    @settlement.payer_id = payer.id
+    list = List.find(settlement_params[:list_id])
+    payee = list.users.find_by_name(settlement_params.delete(:payee))
+    payer = list.users.find_by_name(settlement_params.delete(:payer))
+    @settlement = Settlement.new(settlement_params)
+    @settlement.list_id = list.id
     @settlement.payee_id = payee.id
+    @settlement.payer_id = payer.id
     if @settlement.save
       redirect_to root_path
     else
@@ -23,6 +24,6 @@ class SettlementsController < ApplicationController
 
   private
     def settlement_params
-      params.require(:settlement).permit(:payer, :payee, :amount, :list_id)
+      @settlement_params ||= params.require(:settlement).permit(:payer, :payee, :amount_cents, :list_id)
     end
 end

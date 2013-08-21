@@ -22,8 +22,9 @@
 
  <div id="settlements_made">
   <h5>Payments Made Toward List:</h5>
+  <br />
   <% @list.settlements.each do |settlement| %>
-  <%= User.find(settlement.payer_id).name %> paid <%= settlement.amount %> on <%= settlement.created_at %>
+  <%= User.find(settlement.payer_id).name %> paid $<%= settlement.amount %> on <%= settlement.created_at %>
   <% end %>
  </div>
 
