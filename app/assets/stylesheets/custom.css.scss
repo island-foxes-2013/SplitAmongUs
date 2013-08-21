@@ -152,6 +152,8 @@ header a {
 
 table { 
   width: 100%;
+  border-left: none;
+  border-right: none;
 
   tr { /*This is not working yet*/
     font-weight: bold;
@@ -166,7 +168,7 @@ table {
 }
 #left_column {
   width: 25%;
-  border-right: 5px solid $alt-secondary-color;
+  padding-right: 5px;
   text-align: left;
 }
 
@@ -189,7 +191,7 @@ table {
 #right_column {
   width: 25%;
   text-align: left;
-  border-left: 5px solid $alt-secondary-color;
+  padding-left: 1em;
 
   li {
     text-indent: 2em;
