@@ -2,6 +2,7 @@ class Users::InvitationsController < Devise::InvitationsController
   def new
     @list = List.find(params[:list_id])
     self.resource = resource_class.new
+    @friends = current_user.friends.map {|friend| friend.name }
   end
 
   def create
