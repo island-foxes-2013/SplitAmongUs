@@ -3,7 +3,7 @@
       <br />
       <div id="user-info">
         
-        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>Hi&nbsp<%=current_user.name%>!</h4>
+        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>&nbspHi,&nbsp<%=current_user.name%>!</h4>
       </div>
       <div id="dashboard-lists">
         <div class="list-item-template" style="display: none;">
@@ -27,11 +27,11 @@
           <%- end %>
         </div>
         <div class="headings">
-          <p>friends:</p>
+          <p>friends</p>
           <div id="friends">
             <% if current_user.lists.any? %>
-              <% @friends = [] %>
               <% current_user.lists.each do |list| %>
+                <% @friends = [] %>
                 <% if list.users.length > 1 %>
                   <% list.users.each do |user| %>
                     <% if user.id != current_user.id %>

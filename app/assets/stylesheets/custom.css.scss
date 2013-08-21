@@ -28,16 +28,18 @@ header .right {
 }
 
 #user-info {
-  img { vertical-align: middle; }
+  padding-left: 1em;
+  
+  img { 
+    vertical-align: middle; 
+    border-radius: 50px
+  }
 }
-
 
 li, p {
   list-style-type: none;
   margin: 4px;
 }
-
-
 
 .notice {
   float: right;
@@ -243,6 +245,10 @@ input[type="submit"] {
 
 #friends {
   padding-left: 1.5em;
+
+  img {
+    border-radius: 50px;
+  }
 }
 
 
