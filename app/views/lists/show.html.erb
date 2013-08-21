@@ -39,7 +39,7 @@
 
 		<p>List Members:
 			<% @list.users.each do |user| %>
-				<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %><%= link_to("X", group_path(group.id), ) %>
+				<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
 			<% end %>
 			<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
 		</p>
