@@ -28,18 +28,6 @@ describe ListsController do
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested list to @list" do
-      expect {
-        xhr :edit, id: list.id
-      }.to change(Bill, :count).by(1)
-    end
-    it "renders the edit template" do
-      get :edit, id: list.id
-      (response).to render_template("edit")
-    end
-  end
-
   describe "PUT #update", js: true do
     context "valid attributes" do
       it "changes list's attributes" do
