@@ -13,15 +13,14 @@ end
 populate_users_table
 
 def populate_lists
+  num = User.first.id 
   User.all.each do |user|
     3.times do |i|
       list = user.lists.create(name: Faker::Name.name)
-      # binding.pry
-      list.users << User.all.sample
-      list.users << User.all.sample
-      list.users << User.all.sample
-      list.users << User.all.sample
-      list.save
+      (User.first.id).upto(User.last.id) do |i|
+        next if user.id == User.find(i).id
+        list.users << User.find(i)
+      end
     end
   end
 end
@@ -31,10 +30,11 @@ populate_lists
 def populate_bills
   List.all.each do |list|
     3.times do |i|
+      # binding.pry
       date = Date.today - i.days
       bill = Bill.new(description: Faker::Lorem.sentence, amount: 233.23, date: date)
-      bill.list_id = List.all.sample
-      bill.user_id = User.all.sample
+      bill.list = List.all.sample
+      bill.user = User.all.sample
       bill.save
     end
   end
