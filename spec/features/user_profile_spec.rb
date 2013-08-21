@@ -1,6 +1,35 @@
 require 'spec_helper'
 require 'selenium-webdriver'
 
+
+describe "user totals" do
+
+  before do
+    let!(:user) { create(:user) }
+    let(:user_2) { create(:user) }
+    let(:list) { create(:list) }
+    let(:list_2) { create(:list) }
+    let(:bill_1) { list.bills.create(amount: 950.75, description: "Rent", date: Date.today, user: user) }
+    let(:bill_2) { list.bills.create(amount: 75.25, description: "Electricity", date: Date.today, user: user_2) }
+    let(:bill_3) { list_2.bills.create(amount: 35.75, description: "Dinner", date: Date.today, user: user) }
+  end
+
+  context "calculate totals" do
+    it "should return an amount in cents if user paid" do
+      p list.users
+      user.amount_owed(list, user).should eq(bill_1.amount - bill_2.amount).amount_in_cents
+    end
+
+    it "should return an amount in cents if another user paid" do
+      pending
+    end
+
+    it "should return a total for all lists" do 
+      pending
+    end
+  end
+end
+
 describe "user profile" do
 
   context "view profile" do
