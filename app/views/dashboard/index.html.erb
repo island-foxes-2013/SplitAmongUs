@@ -3,7 +3,7 @@
       <br />
       <div id="user-info">
         
-        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>&nbspHi,&nbsp<%=current_user.name%>!</h4>
+        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %><%="Hi, #{current_user.name}!"%></h4>
       </div>
       <div id="dashboard-lists">
         <div class="list-item-template" style="display: none;">
