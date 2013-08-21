@@ -12,7 +12,7 @@ $<%= @total %>
 <br />
 <br />
  <% @list.users.each do |user| %>
-   <%= "#{user.name}: #{user.amount_owed(@list, user)}" %><br /><br>
+   <%= "#{user.amount_owed(@list, user)}" %><br /><br>
  <% end %>
 
 

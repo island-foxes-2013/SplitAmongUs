@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
   has_many :paid_settlements, class_name: "Settlement", foreign_key: "payer_id"
   has_many :received_settlements, class_name: "Settlement", foreign_key: "payee_id"
 
+
+    # DO ALL CALCULATIONS IN CENTS:
+    #   - iterate over all paid settlements (for this ist) and add to total
+    #   - iterate over all received settlements (for this list) and subtract from total
+
   def self.amount_owed(list, user)
     total = 0
     grand_total = 0
@@ -26,10 +31,13 @@ class User < ActiveRecord::Base
       end
       grand_total = total - list.person_share_cents
     end
-    # DO ALL CALCULATIONS IN CENTS:
-    #   - iterate over all paid settlements (for this ist) and add to total
-    #   - iterate over all received settlements (for this list) and subtract from total
-    Money.new(grand_total)
+
+    if grand_total > 0
+      "#{user.name} is owed $#{Money.new(grand_total)}"
+    else
+      abs_amount = Money.new(grand_total).abs
+      "#{user.name} owes $#{abs_amount}"
+    end
   end
 
   def amount_owed(list, user)

@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   responders :flash
 
   def after_sign_in_path_for(resource)
-    dashboard_index_path
+    root_path
   end
 end

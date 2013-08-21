@@ -6,7 +6,8 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def create
     form_params = invite_params
-    list_id = form_params.delete(:list_id)
+     list_id = form_params.delete(:list_id)
+
 
     self.resource = resource_class.invite!(form_params, current_inviter)
 
