@@ -1,5 +1,5 @@
 <div id="login">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %> 
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => 'new_session' }) do |f| %> 
   <fieldset>
     <%= f.email_field :email, placeholder: :email %>
     <% if devise_mapping.rememberable? -%>
