@@ -61,8 +61,8 @@ describe 'SignIn' do
   #     page.execute_script "window.close();"
   #     page.execute_script "window.open();"
   #     visit root_path
-      page.should have_content("#{user.name}")
-    end
-  end
+  #     page.should have_content("#{user.name}")
+  #   end
+  # end
 
 end
