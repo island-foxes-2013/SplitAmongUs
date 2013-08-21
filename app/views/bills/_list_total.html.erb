@@ -7,8 +7,17 @@
   <% @total += bill.amount %>
 <% end %>
 <h5><%= @list.name %>'s Dues:</h5>
- <% @list.users.each do |user| %>
-   <%= "#{user.amount_owed(@list, user)}" %><br /><br>
- <% end %>
+  <% @list.users.each do |user| %>
+    <% grand_total = user.amount_owed(@list, user) %>
+      
+      <% if grand_total > 0 %>
+        <%= "#{user.name} is owed $#{Money.new(grand_total)}" %><br /><br />
+      <% else %>
+        <% abs_amount = Money.new(grand_total).abs %>
+        <%= "#{user.name} owes $#{abs_amount}" %><br /><br />
+      <% end %>
+    <% end %>
 <br />
  List's Total: $<%= @total %>
+
+

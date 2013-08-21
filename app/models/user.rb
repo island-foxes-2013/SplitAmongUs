@@ -24,20 +24,15 @@ class User < ActiveRecord::Base
 
   def self.amount_owed(list, user)
     total = 0
-    grand_total = 0
+    @grand_total = 0
     list.bills.each do |bill|
       if bill.user_id == user.id
         total += bill.amount_in_cents
       end
-      grand_total = total - list.person_share_cents
+      @grand_total = total - list.person_share_cents
     end
 
-    if grand_total > 0
-      "#{user.name} is owed $#{Money.new(grand_total)}"
-    else
-      abs_amount = Money.new(grand_total).abs
-      "#{user.name} owes $#{abs_amount}"
-    end
+    @grand_total
   end
 
   def amount_owed(list, user)
