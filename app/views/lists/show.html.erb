@@ -2,6 +2,7 @@
 	<div id="dialog-bills-form">
 	  <%= render partial: 'bills/form', locals: { list: @list, bills: @list.bills.build } %>
 	</div>
+
 		<% if @list.bills.any? %>
 			<table>
 				<thead>
@@ -34,6 +35,7 @@
 	</tbody>
 </table>
 	<button id="create-bill">Create A Bill</button>
+	<%= button_to "Settle Up", new_list_settlement_path(@list), :method => "get" %>
 	<br \>
 
 		<p>List Members:

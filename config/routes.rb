@@ -8,6 +8,7 @@ SplitAmongUs::Application.routes.draw do
 
   resources :lists, only: [:show, :new, :create] do
     resources :bills, only: [:show, :create, :edit, :update, :destroy]
+    resources :settlements, only: [:new, :create]
   end
   
   resources :lists, only: [:edit, :update, :destroy]

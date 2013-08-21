@@ -1,0 +1,10 @@
+<%= form_for [@list, @settlement] do |f| %>
+  <!-- add in hidden field -->
+  <%= f.hidden_field :list_id, :value => @list.id %>
+  <%= f.text_field :payer, placeholder: :payment_to %>
+  <%= f.text_field :payee, placeholder: :payment_from %>
+  <%= f.text_field :amount, placeholder: :amount %>
+  <%= f.submit "Record Payment" %>
+  <span class='errors'><%= flash[:error] %></span>
+
+<% end %>

@@ -31,7 +31,14 @@ class User < ActiveRecord::Base
         total += bill.amount_in_cents
       end
       @grand_total = total - list.person_share_cents
-    end
+      if user.paid_settlements
+          user.paid_settlements.each do |settlement|
+            if settlement.list_id == list.id
+            @grand_total -= settlement.amount 
+            end
+          end
+        end 
+      end
 
     @grand_total
   end
