@@ -24,9 +24,10 @@ class BillsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @bill = Bill.find(params[:id])
-  # end
+  # will end up removing this method once dialog is implemented
+  def edit
+    @bill = Bill.find(params[:id])
+  end
 
   def update
     @bill = Bill.find(params[:id])
