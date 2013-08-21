@@ -7,8 +7,14 @@ class ListsController < ApplicationController
       render json: @list
     else
       flash[:error] = @list.errors[:name].join('')
-      redirect_to dashboard_index_path
+      # this still needs to account to errors in the modal
+      # so render the modal
+      # redirect_to dashboard_index_path
     end
+  end
+
+  def index
+    render json: current_user.lists.order(:created_at)
   end
 
   def show
@@ -27,9 +33,9 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(list_params)
-      redirect_to dashboard_index_path
+      render json: @list
     else
-      render :edit
+      flash[:error] = @list.errors[:name].join('')
     end
   end
 

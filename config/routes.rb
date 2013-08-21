@@ -6,12 +6,10 @@ SplitAmongUs::Application.routes.draw do
   match 'users/:id' => 'users#show', as: :users
   resources :dashboard, only: [:index]
 
-  resources :lists, only: [:show, :new, :create] do
+  resources :lists do
     resources :bills, only: [:show, :create, :edit, :update, :destroy]
     resources :settlements, only: [:new, :create]
   end
-  
-  resources :lists, only: [:edit, :update, :destroy]
 
   authenticated :user do
     root :to => "dashboard#index"
