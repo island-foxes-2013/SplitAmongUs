@@ -278,3 +278,18 @@ footer {
   width: 100%;
 
 }
+
+#invite_friend #middle_column {
+  @include grid-column(4);
+
+  h4 {
+    text-align: left;
+  }
+
+/*  img {
+    padding-left: 4em;
+    height: 85%;
+    width: 85%;
+    opacity:0.2;
+  }*/
+}
