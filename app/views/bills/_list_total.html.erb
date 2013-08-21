@@ -6,17 +6,9 @@
 <% @list.bills.each do |bill| %> 
   <% @total += bill.amount %>
 <% end %>
-
-<h4>List's Total:</h4>
-$<%= @total %>
-<br />
-<br />
+<h5><%= @list.name %>'s Dues:</h5>
  <% @list.users.each do |user| %>
    <%= "#{user.amount_owed(@list, user)}" %><br /><br>
  <% end %>
-
-
-
-
-
-
+<br />
+ List's Total: $<%= @total %>
