@@ -10,9 +10,9 @@
 						<th colspan="8">
 							<span class="list_name"><%= @list.name %></span>&nbsp
 							<!-- The add is not working--needs to be fixed -->
-							<a href='#' class="create">add bill</a>&nbsp
 							<a class="edit" href="#">&#9998;</a><div id="dialog-bills-edit-form"><%= render partial: 'lists/edit', locals: { list: @list } %></div>&nbsp
-							<%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>	</th>
+							<%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>
+							<a href='#' class="create">add bill</a>&nbsp</th>
 					</tr>
 					<tr>
 						<th>date</th>

@@ -293,3 +293,24 @@ footer {
     opacity:0.2;
   }*/
 }
+
+tr th {
+
+  .create {
+    float: right;
+    color: $alt-primary-color;
+  }
+
+/*  .remote-delete-list {
+    float: right;
+  }
+
+  .edit {
+    float: right;
+  }*/
+
+  a {
+    padding-left: .5em;
+  }
+
+}
