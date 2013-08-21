@@ -15,7 +15,7 @@ class List < ActiveRecord::Base
     bills.each do |bill|
       total_cents += bill.amount_cents
     end
-    return total_cents
+    total_cents
   end
 
   def person_share_cents

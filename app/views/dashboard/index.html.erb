@@ -1,95 +1,76 @@
-<div class="row">
-  <div class="temp">
-<!--   <div class="large-12 columns">
-    <div class="row"> -->
-          <!-- Shows -->
-      <div id="left_column">
-        <br />
-        <div id="user-info">
-          <%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>
-          <h4>Hi&nbsp<%=current_user.name%>!</h4>
+<div id="index-page">
+    <div id="left_column">
+      <br />
+      <div id="user-info">
+        
+        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %>&nbspHi,&nbsp<%=current_user.name%>!</h4>
+      </div>
+      <div id="dashboard-lists">
+        <div class="list-item-template" style="display: none;">
+          <li><a href="/foo/bar" data-remote="true">default</a></li>
         </div>
-        <div id="dashboard-lists">
-          <div class="list-item-template" style="display: none;">
-            <li><a href="/foo/bar" data-remote="true">default</a></li>
+        <div id="users-contain" class="ui-widget">
+          <div class="headings">
+            <p>all bills
+              <span id="all-bills">
+                <%= link_to "view", user_bills_path(current_user), :method => "get", remote: true %>
+              </span>
+            </p>
           </div>
-          <div id="users-contain" class="ui-widget">
-            <div class = "row">
-              <div class= "large-6 columns">
-                <div class="headings">
-                  <p>all bills
-                    <span id="all-bills">
-                      <%= link_to "view", user_bills_path(current_user), :method => "get", remote: true %>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class = "row">
-              <div class= "large-6 columns">
-                <div class="headings">
-                  <p>my lists<a href='#' class="create">add</button></p>
-                  <%- if current_user.lists.any? %>
-                    <ul class="lists">
-                      <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
-                    </ul>
-                  <%- end %>
-              </div>
-            </div>
-          </div>
-          <div class = "row">
-            <div class= "large-6 columns">
-              <div class="headings">
-                <p>friends:</p>
-                <div id="friends">
-                  <% if current_user.lists.any? %>
-                    <% current_user.lists.each do |list| %>
-                    <% friends = [] %>
-                      <% if list.users.length > 1 %>
-                        <% list.users.each do |user| %>
-                          <% if user.id != current_user.id %>
-                          <% friends << user %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                    <% unique_friends = friends.uniq %>
-                    <% unique_friends.each do |friend| %>
-                    <%= image_tag(friend.gravatar_url, height: 40, width: 40) %>  <%= friend.name %><br />
-                     <% end %>
-                    <% end %>
+        </div>
+        <div class="headings">
+          <p>my lists<a href='#' class="create">add</button></p>
+          <%- if current_user.lists.any? %>
+          <ul class="lists">
+            <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
+          </ul>
+          <%- end %>
+        </div>
+        <div class="headings">
+          <p>friends</p>
+          <div id="friends">
+            <% if current_user.lists.any? %>
+              <% current_user.lists.each do |list| %>
+                <% @friends = [] %>
+                <% if list.users.length > 1 %>
+                  <% list.users.each do |user| %>
+                    <% if user.id != current_user.id %>
+                    <% @friends << user %>
                   <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="large-1 column">
-            </div>
+                <% end %>
+              <% end %>
+              <% @unique_friends = @friends.uniq %>
+              <% @unique_friends.each do |friend| %>
+                <%= image_tag(friend.gravatar_url, height: 40, width: 40) %><%= friend.name %> <br />
+              <% end %>
+            <% end %>
+          <% end %>
           </div>
         </div>
-      </div>
-      <div id="middle_column">
-        <% if current_user.lists.any? %>
-          <%= render template: 'bills/index', collection: current_user.lists %>
-        <% else %>
-          <p>Welcome to SplitAmong.us!</p>
-        <% end %>
-      </div>
-      <div id="dialog-lists-form">
-        <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
-      </div>
-      <div id="right_column">
-        <h4>Your Stats:</h4><hr>
-          <div class="panel">
-            <h6 class="subheader">
-              <%= render partial: 'bills/totals', locals: { list: current_user.lists.last } %>
-            </h6>
+        <br />
+        <div class="row">
+          <div class="large-1 column">
           </div>
         </div>
       </div>
     </div>
-<!--   </div>
-  </div> -->
+    <div id="middle_column">
+      <% if current_user.lists.any? %>
+      <%= render template: 'bills/index', collection: current_user.lists %>
+      <% else %>
+      <p>Welcome to SplitAmong.us!</p>
+      <% end %>
+    </div>
+    <div id="dialog-lists-form">
+      <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
+    </div>
+    <div id="right_column">
+      <h4>Your Stats:</h4><hr>
+      <div class="panel">
+        <h6 class="subheader">
+          <%= render partial: 'bills/totals', locals: { list: current_user.lists.last } %>
+        </h6>
+      </div>
+    </div>
+  </div>
 </div>
