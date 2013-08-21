@@ -11,6 +11,8 @@ SplitAmongUs::Application.routes.draw do
     resources :settlements, only: [:new, :create]
   end
 
+  resources :groups, only: [:destroy]
+
   authenticated :user do
     root :to => "dashboard#index"
   end

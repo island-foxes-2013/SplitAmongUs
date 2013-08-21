@@ -23,11 +23,11 @@
       <div class="headings">
         <p>friends</p>
         <div id="friends">
-<!--             <%# unless current_user.friends.any? %>
-          <%# current_user.friends.each do |friend| %>
-            <%#= image_tag(friend.gravatar_url, height: 40, width: 40) %><%#= friend.name %> <br />
-          <%# end %>
-          <%# end %> -->
+            <% if current_user.friends.any? %>
+          <% current_user.friends.each do |friend| %>
+            <%= image_tag(friend.gravatar_url, height: 40, width: 40) %><%= friend.name %> <br />
+          <% end %>
+          <% end %>
         </div>
       </div>
       <br />
