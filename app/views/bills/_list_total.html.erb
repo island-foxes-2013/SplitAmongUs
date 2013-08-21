@@ -11,9 +11,9 @@
     <% grand_total = user.amount_owed(@list, user) %>
       
       <% if grand_total > 0 %>
-        <%= "#{user.name} is owed $#{Money.new(grand_total)}" %><br /><br />
+        <%= "#{user.name} is owed $#{grand_total}" %><br /><br />
       <% else %>
-        <% abs_amount = Money.new(grand_total).abs %>
+        <% abs_amount = grand_total.abs %>
         <%= "#{user.name} owes $#{abs_amount}" %><br /><br />
       <% end %>
     <% end %>
