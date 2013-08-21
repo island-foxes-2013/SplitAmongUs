@@ -1,22 +1,41 @@
-function ListShowView(locator) {
-  this.element = $(locator);
-  var dialog = new CreateBillDialog("#dialog-bills-form");
+function ListShowView(list) {
+  this.list = list;
+
   var self = this;
-  dialog.form.on('ajax:success', function(e, bill) {
-    self.element.find('.bills').append(bill.html);
-    self.refreshStats(bill.total.amount_cents);
+
+  var createBillDialog, editDialog;
+  this.element = $('<div id="list-show-page"></div>');
+  list.loadShowHtml().done(function(showHtml){
+    self.element.html(showHtml);
+    createBillDialog = new CreateBillDialog("#dialog-bills-form", list);
+    editDialog = new ListShowViewEditListDialog(list);
   });
-  
-  $( "#create-bill" ).click(function() {
-    dialog.open();
+
+  $(list).on('changed', function() {
+    self.element.find('.list_name').text(list.name());
+  });
+
+  $(list).on('deleted', function() {
+    self.element.remove();
+  });
+
+  $(list.bills).on('added', function(bill) {
+    var billView = new ListShowViewBill(bill);
+    self.element.find('.bills').append(billView.element);
+    self.refreshStats();
+  });
+
+  this.element.on('click', '.edit', function() {
+    editDialog.open();
+  });
+  this.element.on('click', '.create', function() {
+    createBillDialog.open();
   });
 }
 
+
 // now a ton of stuff needs to update - need to make this more scalable
 // need to add classes and spans to the new totals
-ListShowView.prototype.refreshStats = function(amount) {
-  var totalAmountSpan = $('.owe-me');
-  var totalAmount = totalAmountSpan[0];
-  var newTotal = addBill(amount, $(totalAmount).text().slice(1));
-  return $('.owe-me').text('$'+newTotal);
+ListShowView.prototype.refreshStats = function() {
+  $('.owe-me').text('$'+newTotal);
 }

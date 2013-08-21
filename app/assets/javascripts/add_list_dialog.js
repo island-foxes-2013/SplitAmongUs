@@ -1,10 +1,13 @@
 function AddListDialog(id, lists) {
   this.dialog = $(id);
+  this.lists = lists;
   this.form = this.dialog.find('form');
+  var self = this;
+  this.form.on('submit', function(e) {
+    e.preventDefault();
+    self.createList();
+  })
   this.name = this.dialog.find('input[name="list[name]"]');
-  this.form.on('ajax:success', function(e, list) {
-    lists.add(list);
-  });
   this.createDialog();
 }
 
@@ -42,7 +45,10 @@ AddListDialog.prototype.createList = function() {
   if ($.trim(this.name.val()) === "") {
     alert("NO SOUP FOR YOU");
   } else {
-    this.dialog.find('form').submit();
-    this.close();
+    var self = this;
+    new List({ name: this.name.val() }).save().done(function(list) {
+      self.lists.add(list);
+      self.close();
+    });
   }
 }

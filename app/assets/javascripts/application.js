@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require foundation
 // require zepto/default
+//= require model
 //= require_tree .
 
 $(document).foundation();
@@ -22,18 +23,10 @@ $(document).foundation();
 $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
-});
-
-$(function() {
   new BillsIndexView('#all-bills');
-});
 
 
-$(document).ready(function(){
-  errors();   
+  lists.load();
 
-  // $('body').on('ajax:success', ".remote-delete-list", function(e, list){
-  //   $(this).parent().remove();
-  // });
-
+  
 });

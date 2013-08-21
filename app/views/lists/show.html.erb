@@ -11,8 +11,8 @@
 							<%= @list.name %>&nbsp
 							<!-- The add is not working--needs to be fixed -->
 							<a href='#' class="create">add</button>&nbsp
-							<%= link_to "edit", edit_list_path(@list), :method => "get" %>&nbsp
-							<%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %>	</th>
+							<a class="edit" href="#">&#9998;</a><div id="dialog-bills-edit-form"><%= render partial: 'lists/edit', locals: { list: @list } %></div>&nbsp
+							<span class="list_name"><%= @list.name %></list><%= link_to 'x', @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'remote-delete-list' %></span>	</th>
 					</tr>
 					<tr>
 						<th>date</th>
@@ -25,24 +25,23 @@
 		        <th></th>
 					</tr>
 				</thead>
-		<tbody>
+		  <tbody>
+		    <ul class="bills">
+		      <%= render partial: 'bills/bill', collection: @list.bills %>
+			    <% end %> 
+		    </ul>
+      </tbody>
+    </table>
 
-
-		<ul class="bills">
-		  <%= render partial: 'bills/bill', collection: @list.bills %>
-			<% end %> 
-		</ul>
-	</tbody>
-</table>
 	<button id="create-bill">Create A Bill</button>
 	<%= button_to "Settle Up", new_list_settlement_path(@list), :method => "get" %>
 	<br \>
 
-		<p>List Members:
-			<% @list.users.each do |user| %>
-				<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
-			<% end %>
-			<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
-		</p>
-	</div>
+	<p>List Members:
+		<% @list.users.each do |user| %>
+			<%= image_tag(user.gravatar_url, :title => user.name, height: 40, width: 40) %>
+		<% end %>
+		<%= link_to("Add A Friend", new_user_invitation_path(list_id: @list.id)) %>
+	</p>
 </div>
+<div class="add bill"></div> 
