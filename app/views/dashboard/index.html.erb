@@ -1,43 +1,37 @@
 <div id="index-page">
-    <div id="left_column">
-      <br />
-      <div id="user-info">
-        
-        <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %><%="Hi, #{current_user.name}!"%></h4>
+  <div id="left_column">
+    <br />
+    <div id="user-info">      
+      <h4><%= image_tag(current_user.gravatar_url, height: 40, width: 40) %><%="Hi, #{current_user.name}!"%></h4>
+    </div>
+    <div id="dashboard-lists">
+      <div id="users-contain" class="ui-widget">
+        <div class="headings">
+          <p>all bills
+            <span id="all-bills">
+              <%= link_to "view", user_bills_path(current_user), :method => "get", remote: true %>
+            </span>
+          </p>
+        </div>
       </div>
-      <div id="dashboard-lists">
-        <div class="list-item-template" style="display: none;">
-          <li><a href="/foo/bar" data-remote="true">default</a></li>
+      <div class="headings">
+        <p>my lists<a href='#' class="create">add</a></p>
+        <ul class="lists">
+        </ul>
+      </div>
+      <div class="headings">
+        <p>friends</p>
+        <div id="friends">
+        <% unless current_user.friends.any? %>
+          <% current_user.friends.each do |friend| %>
+            <%= image_tag(friend.gravatar_url, height: 40, width: 40) %><%= friend.name %> <br />
+          <% end %>
+        <% end %> 
         </div>
-        <div id="users-contain" class="ui-widget">
-          <div class="headings">
-            <p>all bills
-              <span id="all-bills">
-                <%= link_to "view", user_bills_path(current_user), :method => "get", remote: true %>
-              </span>
-            </p>
-          </div>
-        </div>
-        <div class="headings">
-          <p>my lists<a href='#' class="create">add</a></p>
-          <%- if current_user.lists.any? %>
-          <ul class="lists">
-            <%= render partial: 'lists/list', collection: current_user.lists.order(:created_at) %>
-          </ul>
-          <%- end %>
-        </div>
-        <div class="headings">
-          <p>friends</p>
-          <div id="friends">
-            <% current_user.friends.each do |friend| %>
-              <%= image_tag(friend.gravatar_url, height: 40, width: 40) %><%= friend.name %> <br />
-            <% end %>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="large-1 column">
-          </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="large-1 column">
         </div>
       </div>
     </div>
@@ -61,4 +55,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div id="dashboard-lists-view-list-item-template" style="display: none;">
+  <li><a href="/foo/bar" data-remote="true">default</a></li>
 </div>
