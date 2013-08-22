@@ -30,6 +30,7 @@
       <%= User.find(settlement.payer_id).name %> paid $<%= settlement.amount %> on <%= settlement.created_at.strftime("%m-%d-%Y") %><br />
       <% end %>
     </ul>
+    <% end %>
   </div>
 </div>
 
