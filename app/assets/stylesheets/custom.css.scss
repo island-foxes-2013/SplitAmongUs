@@ -81,9 +81,7 @@ header a {
 
 #logo {
   
-
-  
-    @include grid-column(6);
+  @include grid-column(6);
   
 
   padding: 0;
@@ -298,18 +296,15 @@ input[type="submit"]
     text-align: left;
   }
 
-  img {
-    padding-left: 4em;
-    height: 85%;
-    width: 85%;
-    opacity:0.2;
-  }
-
   fieldset {
     vertical-align: top;
     margin: 0;
     padding: 0;
   }
+}
+
+#right_column img{
+  opacity:0.2;
 }
 
 
