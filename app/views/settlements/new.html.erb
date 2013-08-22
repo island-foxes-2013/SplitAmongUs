@@ -1,8 +1,8 @@
 <%= form_for [@list, @settlement] do |f| %>
-  <!-- add in hidden field -->
-  <%= f.hidden_field :list_id, :value => @list.id %>
-  <%= f.text_field :payee, placeholder: "Payment to" %>
-  <%= f.text_field :payer, placeholder: "Payment From" %>
+  <%= f.label :payee_id, "Payment to" %>
+  <%= f.select :payee_id, options_from_collection_for_select(@list.users, 'id', 'name')%>
+  <%= f.label :payer_id, "Payment From" %>
+  <%= f.select :payer_id, options_from_collection_for_select(@list.users, 'id', 'name')%>
   <%= f.text_field :amount_cents, placeholder: :amount %>
   <%= f.submit "Record Payment" %>
   <span class='errors'><%= flash[:error] %></span>
