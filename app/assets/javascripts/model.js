@@ -39,7 +39,7 @@ Model.prototype.saveableData = function() {
   return this.attrs;
 }
 Model.prototype.errors = function() {
-  return this.attrs.errors || [];
+  return this.attrs.errors.join('<br>') + '<br>' || [];
 }
 Model.prototype.save = function() {
   var promise = $.Deferred();

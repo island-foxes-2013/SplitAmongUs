@@ -46,6 +46,12 @@ li, p {
   color: $alert-color;
 }
 
+.errors {
+  color: $alert-color;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
 header fieldset {
   margin: 0;
   padding: 13px 0 0 0;
