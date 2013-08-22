@@ -1,7 +1,7 @@
 <div id="list-amounts">
 <!-- Need to make sure we are passing it what list we want to populate here for @list -->
 <% if current_user.lists.any? %>
-<% @list = List.last %>
+<% @list = current_user.lists.last %>
 
   <% @total = Money.new(0, "USD") %>
   <% @list.bills.each do |bill| %> 
