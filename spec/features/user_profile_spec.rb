@@ -19,16 +19,17 @@ describe "user totals" do
   context "calculate totals" do
 
     it "should return an amount in cents if user paid" do
-      user.amount_owed(list, user).should eq(Money.new(43762))
+      user.amount_owed(list, user).should eq(Money.new(33762))
     end
 
-    # it "should return an amount in cents if another user paid" do
-    #   pending
-    # end
+    it "should return an amount in cents if another user paid" do
+      user_2.amount_owed(list, user_2).should eq(Money.new(-33762))
+    end
 
-    # it "should return a total for all lists" do 
-    #   pending
-    # end
+    it "should return a total for all lists" do 
+      pending
+      # user.total_due_for_all_lists.should eq(Money.new(95000))
+    end
   end
 end
 
