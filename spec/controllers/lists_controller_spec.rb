@@ -2,10 +2,19 @@ require 'spec_helper'
 
 describe ListsController do
   let(:user) { create(:user) }
-  let!(:list) { create(:list) }
+  let!(:list) { user.lists.create(name: 'test list') }
+
    
   before do
     sign_in(user)
+  end
+
+  describe "GET #index" do   
+    it "renders all of the current users lists" do
+      @expected = user.lists.order(:created_at).to_json
+      xhr :get, :index, list: user.lists.order(:created_at).to_json
+      response.body.should == @expected
+    end
   end
 
   describe "GET #show" do
@@ -34,21 +43,17 @@ describe ListsController do
         put :update, id: list.id, list: { name: "Some New Name" }
         list.reload.name.should == "Some New Name"
       end
-
-      it "redirects to the dashboard page" do
-        put :update, id: list.id, list: { name: "Some New Name" }
-        response.should redirect_to dashboard_index_path
-      end
     end
     context "invalid attributes" do
       it "does not change list's attributes" do
         expect {
-        put :update, id: list.id, list: { name: nil }
-        }.to_not change{ list.name }
+          put :update, id: list.id, list: { name: nil }
+        }.not_to change{ list.name }
       end
-      it "re-renders the edit page" do
+      it "gets error messages in a JSON response" do
         put :update, id: list.id, list: { name: nil }
-        response.should render_template :edit
+        response.status.should == 422
+        JSON.parse(response.body).should have_key 'error'
       end
     end
   end
@@ -90,7 +95,8 @@ describe ListsController do
       end
       it "renders the error message and redirects to the dashboard page" do
         post :create, list: attributes_for(:invalid_list)
-        response.should redirect_to dashboard_index_path
+        response.status.should == 422
+        JSON.parse(response.body).should have_key 'error'
       end
     end
   end 

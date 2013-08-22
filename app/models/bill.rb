@@ -5,10 +5,9 @@ class Bill < ActiveRecord::Base
   validates :description, :amount, :date, :list_id, :user_id, presence: true
 
   monetize :amount_cents 
-  monetize :shared_amount_cents 
   
-  def shared_amount_cents
-  	amount_cents / list.users.count
+  def shared_amount
+    Money.new(amount_cents / list.users.count)
   end
   
   def amount_in_cents

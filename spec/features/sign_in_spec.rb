@@ -44,20 +44,25 @@ describe 'SignIn' do
     end
   end
 
-  context "user clicks 'remember me' button", :js => true do
-    it "remembers a user who clicks remember me button" do
-      within '#login' do 
-        fill_in 'email', :with => user.email
-        fill_in 'password', :with => user.password
-        check('Remember me')
-        click_button 'Log In'
-      end
-      page.should have_content("#{user.name}")
-      page.execute_script "window.close();"
-      page.execute_script "window.open();"
-      visit root_path
-      page.should have_content("#{user.name}")
-    end
-  end
+  # context "user clicks 'remember me' button", :js => true do
+  #   it "remembers a user who clicks remember me button" do
+  #     pending # TODO-JW: this doesn't test what you think!
+  #     within '#login' do 
+  #       fill_in 'email', :with => user.email
+  #       fill_in 'password', :with => user.password
+  #       # TODO-MARIA: This is fucking ugly. I did it because of a bug in Capybara Webkit:
+  #       #             https://github.com/thoughtbot/capybara-webkit/issues/494
+  #       #check 'Remember me'
+  #       #click_button 'Log In'
+  #       page.execute_script "$('input#user_remember_me').attr('checked', true);"
+  #       page.execute_script "$('form#new_session').trigger('submit');"
+  #     end
+  #     page.should have_content("#{user.name}")
+  #     page.execute_script "window.close();"
+  #     page.execute_script "window.open();"
+  #     visit root_path
+  #     page.should have_content("#{user.name}")
+  #   end
+  # end
 
 end
