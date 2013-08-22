@@ -1,10 +1,10 @@
 SplitAmongUs::Application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
   resources :users, only: [] do
-    resources :bills, only: [:index]
+    resources :bills, only: [:index], module: "users"
   end
   match 'users/:id' => 'users#show', as: :users
-  resources :dashboard, only: [:index], module: "users"
+  resources :dashboard, only: [:index]
 
   resources :lists, except: [:edit] do
     resources :bills, except: [:new]

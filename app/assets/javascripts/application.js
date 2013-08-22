@@ -25,7 +25,7 @@ $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
   new BillsIndexView('#all-bills');
-  new StatsView(lists);
+  // new StatsView(lists);
   
   lists.load();
 
