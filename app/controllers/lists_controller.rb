@@ -24,11 +24,7 @@ class ListsController < ApplicationController
       format.json { render json: @list }
     }
   end
-
-  # def edit
-  #   @list = List.find(params[:id])
-  # end
-
+  
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(list_params)
@@ -43,6 +39,11 @@ class ListsController < ApplicationController
     @list.destroy
     redirect_to dashboard_index_path
     # render json: @list
+  end
+
+  def stats
+    render partial: 'lists/total' 
+    # pass in variables
   end
 
   private
