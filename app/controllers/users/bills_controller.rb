@@ -7,4 +7,8 @@ class Users::BillsController < ApplicationController
       render "users/bills/index"
     end
   end
+
+  def stats
+    render partial: 'bills/totals', locals: { bills: current_user.bills }
+  end
 end

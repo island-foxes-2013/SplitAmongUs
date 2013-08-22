@@ -28,5 +28,6 @@ $(function() {
   new BillsIndexView('#all-bills');
   new StatsView(lists, '#dashboard-stats');
   new ListStatsView(lists, '#list_show');
+  new BillStatsView('#bills-index');
   lists.load();
 });

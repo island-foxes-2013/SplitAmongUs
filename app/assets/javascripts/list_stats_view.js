@@ -11,11 +11,7 @@ function ListStatsView(lists, element) {
 
 ListStatsView.prototype.refresh = _.debounce(function(list) {
   var self = this;
-  console.log("this is this" + self);
-  console.log("this is list" + list);
-  // debugger
   $.get('/lists/'+ list.id() +'/stats').done(function(response){
-
     $('#dashboard-stats').html(response);
   });
 }, 250);
