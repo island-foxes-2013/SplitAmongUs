@@ -45,7 +45,8 @@ group :development, :test do
 end
 
 group :test do
-  #gem 'capybara-screenshot'
+  gem 'capybara-screenshot'
+  gem 'database_cleaner'
 end
 
 group :development do

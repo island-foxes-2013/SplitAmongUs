@@ -5,6 +5,8 @@ describe "Inviting a user to a list", js: true do
   
   before do
     login_as(user)
+    page.driver.resize_window(1000, 1000)
+    page.driver.evaluate_script("window.innerWidth")
   end
   
   it "lets the user invite someone to the list" do
@@ -18,11 +20,12 @@ describe "Inviting a user to a list", js: true do
     #click on invite user link
     click_on("Add A Friend")
     #fill in form
-    fill_in("name", with: "Mike")
-    fill_in("email", with: "mike@me.com")
+    fill_in("name", with: "Test B Mike")
+    fill_in("email", with: "testbmike@me.com")
     #click submit
     click_on("Send an invitation")
     #should see invited user's name on page
+    screenshot_and_open_image
     within("#dashboard-lists") do
       page.should have_content("Mike")
     end
