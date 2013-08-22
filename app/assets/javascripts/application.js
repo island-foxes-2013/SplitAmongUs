@@ -19,7 +19,9 @@
 //= require view
 //= require_tree .
 
+
 $(function() {
+  $(document).foundation();
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
   new BillsIndexView('#all-bills');

@@ -37,6 +37,7 @@
     </div>
   </div>
   <div id="middle_column">
+    <h4> all bills</h4>
     <% if current_user.lists.any? %>
       <%= render template: 'users/bills/index', collection: current_user.lists %>
     <% else %>
