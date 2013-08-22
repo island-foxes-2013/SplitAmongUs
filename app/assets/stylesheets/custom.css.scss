@@ -42,6 +42,12 @@ li, p {
   margin: 4px;
 }
 
+.alert {
+  float: right;
+  color: $alt-primary-color;
+  padding: .5em;
+}
+
 .notice {
   float: right;
   color: $alt-primary-color;
