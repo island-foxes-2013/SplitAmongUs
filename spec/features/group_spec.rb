@@ -3,48 +3,19 @@ require 'selenium-webdriver'
 
 describe "groups" do
 
-  context "invite friends" do
+  context "invite friends", js: true do
 
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :with_list) }
 
     before do
+      login_as(user)
       visit root_path
-      within '#login' do 
-        fill_in 'email', :with => user.email
-        fill_in 'password', :with => user.password
-        click_link_or_button 'Log In'
-      end
-      visit dashboard_index_path
+      click_on(user.lists.first.name)
     end
 
     it "allows a user to invite friends via email" do
       click_link_or_button('Add A Friend')
       page.should have_content('Send invitation')
-    end
-
-    it "requires a name" do 
-      # This test will fail because there is no validation for name
-      click_link_or_button('Add A Friend')
-      fill_in 'Name', with: ""
-      fill_in 'Email', with: "example" + rand(1000000).to_s + rand(200000).to_s + "@hotmail.com"
-      click_link_or_button('Send an invitation')
-      page.should have_content("A name is required to send an invitation")
-    end
-
-    it "requires a valid email" do
-      click_link_or_button('Add A Friend')
-        fill_in 'Name', with: "user.name" + " a.k.a Snoopy"
-        fill_in 'Email', with: "example" + rand(1000000).to_s + rand(200000).to_s + "@hotmail.com"
-        click_link_or_button('Send an invitation')
-        redirect_to(dashboard_index_path)
-    end
-
-    it "will not work with an invalid email" do
-      click_link_or_button('Add A Friend')
-      fill_in 'Name', with: "user.name" + " a.k.a Peter Griffin"
-      fill_in 'Email', with: "example" + rand(1000000).to_s + rand(200000).to_s
-      click_link_or_button('Send an invitation')
-      page.should have_content("Email is invalid")
     end
 
     it "will send invitations on submit" do

@@ -13,6 +13,7 @@ h2 {
 header {
   @include grid-row();
   height: 5.5em;
+  min-width: 960px;
 }
 
 header .right {
@@ -53,6 +54,16 @@ li, p {
   margin-bottom: 1em;
 }
 
+.delete {
+  font-size: 19px;
+  font-weight:bold;
+}
+
+.edit {
+  font-size: 18px;
+  font-weight:bold;
+}
+
 header fieldset {
   margin: 0;
   padding: 13px 0 0 0;
@@ -64,12 +75,10 @@ header a {
 
 #logo {
   
-  @media #{$small} {
-    @include grid-column(12);
-  }
-  @media #{$large} {
+
+  
     @include grid-column(6);
-  }
+  
 
   padding: 0;
   height: 5.5em;
@@ -89,25 +98,17 @@ header a {
 /* This modifies the login form */
 #login {
 
-  @media #{$small} {
-    @include grid-column(12);
-    
-    fieldset {
-      @include grid-column(12);
-      margin: 0;
-    }
-  }
-  @media #{$large} {
-    @include grid-column($columns: 6, $last-column:true);
 
-    fieldset {
-      @include grid-column(5);
-      margin: 0;
-    }
-    fieldset:last-child {
-      @include grid-column(2);
-    }
+  @include grid-column($columns: 6, $last-column:true);
+
+  fieldset {
+    @include grid-column(5);
+    margin: 0;
   }
+  fieldset:last-child {
+    @include grid-column(2);
+  }
+
   
   h1,h2,h3,h4, label {
     color: $alt-secondary-color;   
@@ -166,6 +167,7 @@ table {
 #index-page {
   display: table;
   width: 100%;
+  min-width: 960px;
 
 }
 #left_column {
@@ -287,17 +289,24 @@ input[type="submit"]
     text-align: left;
   }
 
-/*  img {
+  img {
     padding-left: 4em;
     height: 85%;
     width: 85%;
     opacity:0.2;
-  }*/
+  }
 }
+
+
 
 tr th {
 
   .create {
+    float: right;
+    color: $alt-primary-color;
+  }
+
+  .settle-up {
     float: right;
     color: $alt-primary-color;
   }
@@ -322,7 +331,9 @@ footer {
   bottom: 0px;
   height: 3em;
   width: 100%;
+  min-width: 960px;
   line-height: 3em;
   padding-top: .5em;
   color: $alt-secondary-color;
+
 }

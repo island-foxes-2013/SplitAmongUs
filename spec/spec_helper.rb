@@ -8,12 +8,39 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require "capybara/rspec"
+require 'capybara-screenshot/rspec'
 require 'faker'
+require "selenium-webdriver"
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+
+
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.include Warden::Test::Helpers
   # include devise test helpers i.e.: 
   # sign_in :user, @user   # sign_in(scope, resource)
   # sign_in @user          # sign_in(resource)
@@ -55,11 +82,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.after do
-    if example.metadata[:type] == :feature and example.exception.present?
-      save_and_open_page
-    end
-  end
+  # config.after do
+  #   if example.metadata[:type] == :feature and example.exception.present?
+  #     save_and_open_page
+  #   end
+  # end
 end
 
 Capybara.javascript_driver = :webkit

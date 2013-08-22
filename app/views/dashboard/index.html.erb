@@ -37,6 +37,7 @@
     </div>
   </div>
   <div id="middle_column">
+    <h4> all bills</h4>
     <% if current_user.lists.any? %>
       <%= render template: 'users/bills/index', collection: current_user.lists %>
     <% else %>
@@ -50,12 +51,10 @@
   <div id="right_column">
 <!--       <h4>Your Stats:</h4><hr> -->
     <div id="dashboard-stats" class="panel">
-
       <%= render partial: 'bills/list_total', locals: { list: current_user.lists.last } %>
     </div>
   </div>
 </div>
-
 
 <div id="dashboard-lists-view-list-item-template" style="display: none;">
   <li><a href="/foo/bar" data-remote="true">default</a></li>

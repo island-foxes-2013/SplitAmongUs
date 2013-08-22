@@ -44,6 +44,11 @@ group :development, :test do
   gem 'debugger'
 end
 
+group :test do
+  gem 'capybara-screenshot'
+  gem 'database_cleaner'
+end
+
 group :development do
   gem "letter_opener"
 end
