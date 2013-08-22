@@ -273,19 +273,6 @@ p img {
 input[type="submit"] 
 
 
-footer {
-  position: fixed;
-  background-color: $alt-primary-color;
-  border-top: 1px solid $alt-secondary-color;
-  left: 0px;
-  bottom: 0px;
-  height: 3em;
-  width: 100%;
-  line-height: 3em;
-  padding-top: .5em;
-  color: $alt-secondary-color;
-}
-
 #invite_friend #middle_column {
   @include grid-column(4);
 
@@ -319,5 +306,16 @@ tr th {
   a {
     padding-left: .5em;
   }
-
+}
+footer {
+  position: fixed;
+  background-color: $alt-primary-color;
+  border-top: 1px solid $alt-secondary-color;
+  left: 0px;
+  bottom: 0px;
+  height: 3em;
+  width: 100%;
+  line-height: 3em;
+  padding-top: .5em;
+  color: $alt-secondary-color;
 }
