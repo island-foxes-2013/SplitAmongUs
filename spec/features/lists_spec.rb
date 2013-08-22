@@ -4,61 +4,90 @@ require 'selenium-webdriver'
 describe 'managing lists' do
 
   let(:user) { create(:user) }
+  let(:list) { create(:list) }
+  let!(:bill_1) { list.bills.create(amount: 950.00, description: "Rent", date: Date.today, user: user) }
+  let!(:bill_2) { list.bills.create(amount: 75.00, description: "Electricity", date: Date.today, user: user) }
 
-  before do
-    visit root_path
-    within '#login' do 
-      fill_in 'email', :with => user.email
-      fill_in 'password', :with => user.password
-      click_button 'Log In'
-      end
-    visit dashboard_index_path
-  end
 
   context 'create a new list' do 
 
-    it "pops up a modal when the create list button is clicked", :js => true do
-      click_button "Create new list"
-      fill_in "List Name",  with: "Groceries"
+    before do
+      visit root_path
+      within '#login' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        page.execute_script "$('form#new_session').trigger('submit');"
+      end
+      visit root_path
     end
 
-    it "saves the new list" do
-      pending
+    it "a modal appears when the create list button is clicked", js: true do
+      click_link 'add'
+      fill_in 'List Name',  with: list.name
     end
 
-    it "shows the new list on the dashboard" do
-      pending
+    it "shows the new list on the dashboard", js: true do
+      click_link 'add'
+      fill_in 'List Name',  with: list.name
+      page.execute_script "$('form#new_session').trigger('submit');"
+      page.should have_content(list.name)
     end
-
-    it "makes an empty list" do
-      pending
-    end
-
 
   end
 
   context 'does not create a list' do
+
+    before do
+      visit root_path
+      within '#login' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        page.execute_script "$('form#new_session').trigger('submit');"
+        end
+      visit dashboard_index_path
+    end
     
-    it "does not save a list without a name" do
-      pending
+    it "does not save a list without a name", js: true do
+      click_link 'add'
+      fill_in 'List Name',  with: ''
+      page.execute_script "$('form#new_session').trigger('submit');"
+      page.should have_content("Name can't be blank")
     end
 
-    it "does not save a list when cancel is pressed" do
-      pending
-    end
+    # it "does not save a list when cancel is pressed" do
+    #   click_link 'add'
+    #   fill_in 'List Name',  with: list.name
+    #   page.execute_script "$('form#new_session').trigger('cancel');"
+    #   page.should_not have_content(list.name)
+    # end
 
 
 
   end
 
   context 'view a list' do 
+
+    before do
+      visit root_path
+      within '#login' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_button 'Log In'
+      end
+      visit dashboard_index_path
+      click_link 'add'
+      fill_in 'List Name',  with: list.name
+      page.execute_script "$('form#new_session').trigger('submit');"
+    end
     
     it "displays the title of the list on a click" do
-      pending
+      click_link(list.name)
+      page.should have_content(list.name)
     end
 
     it "displays the total of all bills in the list" do
-      pending
+      click_link(list.name)
+      page.should have_content(1025.00)
     end
 
     it "displays the bills in the list" do
@@ -89,6 +118,16 @@ describe 'managing lists' do
 
   context 'edit a list' do
     
+    before do
+      visit root_path
+      within '#login' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        page.execute_script "$('form#new_session').trigger('submit');"
+        end
+      visit dashboard_index_path
+    end    
+    
     it "allows the user to change the name of the list" do
       pending
     end
@@ -97,7 +136,7 @@ describe 'managing lists' do
       pending
     end
 
-    it "loads the edit page without refreshing", :js => true do
+    it "loads the edit page without refreshing", js: true do
       pending
     end
 
@@ -109,7 +148,7 @@ describe 'managing lists' do
       pending
     end
 
-    it "updates the list name without refreshing", :js => true do 
+    it "updates the list name without refreshing", js: true do 
       pending
     end
 
@@ -121,6 +160,16 @@ describe 'managing lists' do
   end
 
   context 'delete a list' do
+
+    before do
+      visit root_path
+      within '#login' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        page.execute_script "$('form#new_session').trigger('submit');"
+        end
+      visit dashboard_index_path
+    end    
   
     it "allows a user to delete a list" do
       pending
