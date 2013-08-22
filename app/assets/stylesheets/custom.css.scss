@@ -102,7 +102,6 @@ header a {
 /* This modifies the login form */
 #login {
 
-
   @include grid-column($columns: 6, $last-column:true);
 
   fieldset {
@@ -208,7 +207,6 @@ table {
   }
 }
 
-
 #left_column, #middle_column, #right_column {
     display: table-cell; 
 }
@@ -270,14 +268,14 @@ p img {
 
 /*These override the modal fonts*/
 #list_name, .ui-button-text, .ui-dialog-title, #dialog-bills-form {
+  font-family: 'Esteban', serif;
+  
+  input[type="submit"] {
     font-family: 'Esteban', serif;
-    
-    input[type="submit"] {
-      font-family: 'Esteban', serif;
-    }
-    .cancel {
-      font-family: 'Esteban', serif;
-    }
+  }
+  .cancel {
+    font-family: 'Esteban', serif;
+  }
 }
 
 #description, #amount, #date {
@@ -306,8 +304,6 @@ input[type="submit"]
 #right_column img{
   opacity:0.2;
 }
-
-
 
 tr th {
 
