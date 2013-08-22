@@ -3,6 +3,6 @@ class DashboardController < ApplicationController
   end
 
   def stats
-    render json: { partial: 'bills/list_total', locals: { list: current_user.lists.last, bill: current_user.lists.last.bills } }
+    render json: { list: current_user.lists.last, bill: current_user.lists.last.bills }
   end
 end
