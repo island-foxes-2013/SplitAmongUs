@@ -163,8 +163,9 @@ table {
 }
 #left_column {
   width: 25%;
-  padding-right: 5px;
+  padding: 0;
   text-align: left;
+  vertical-align: top;
 }
 
 #middle_column {
@@ -255,19 +256,22 @@ p img {
 
 
 /*These override the modal fonts*/
-#list_name, .ui-button-text, .ui-dialog-title {
+#list_name, .ui-button-text, .ui-dialog-title, #dialog-bills-form {
     font-family: 'Esteban', serif;
-  }
+    
+    input[type="submit"] {
+      font-family: 'Esteban', serif;
+    }
+    .cancel {
+      font-family: 'Esteban', serif;
+    }
+}
 
- #new_bill {
-  #bill_description, #bill_amount, #bill_date {
-    font-family: 'Esteban', serif;
-  }
- } 
+#description, #amount, #date {
+  font-family: 'Esteban', serif;
+}
+input[type="submit"] 
 
-#list_show table {
-
-} 
 
 footer {
   position: fixed;
