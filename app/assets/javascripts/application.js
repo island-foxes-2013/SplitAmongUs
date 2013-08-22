@@ -19,8 +19,6 @@
 //= require view
 //= require_tree .
 
-$(document).foundation();
-
 $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
