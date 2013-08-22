@@ -27,8 +27,10 @@ List.prototype.loadShowHtml = function() {
 
 List.prototype.createBill = function(billData) {
   var bill = new Bill($.extend(billData, { list: this }));
-  this.bills.add(bill)
-  return bill.save();
+  var self = this;
+  return bill.save().done(function() {
+    self.bills.add(bill)
+  });
 }
 
 List.prototype.loadBills = function() {
