@@ -1,34 +1,36 @@
 <div id="list-amounts">
 <!-- Need to make sure we are passing it what list we want to populate here for @list -->
+<% if current_user.lists.any? %>
 <% @list = List.last %>
 
-<% @total = Money.new(0, "USD") %>
-<% @list.bills.each do |bill| %> 
+  <% @total = Money.new(0, "USD") %>
+  <% @list.bills.each do |bill| %> 
   <% @total += bill.amount %>
-<% end %>
-<h5><%= @list.name %>'s Dues:</h5>
-  <% @list.users.each do |user| %>
-    <% grand_total = user.amount_owed(@list, user) %>
-      
-      <% if grand_total > 0 %>
-        <%= "#{user.name} is owed $#{grand_total}" %><br /><br />
-      <% else %>
-        <% abs_amount = grand_total.abs %>
-        <%= "#{user.name} owes $#{abs_amount}" %><br /><br />
-      <% end %>
-    <% end %>
- List's Total: $<%= @total %>
-<div>
-  <br />
-</div>
- 
- <div id="settlements_made">
-  <h5>Payments Made Toward List:</h5>
-  <ul>
-  <% @list.settlements.each do |settlement| %>
-  <%= User.find(settlement.payer_id).name %> paid $<%= settlement.amount %> on <%= settlement.created_at.strftime("%m-%d-%Y") %><br />
   <% end %>
-</ul>
- </div>
+  <h5><%= @list.name %>'s Dues:</h5>
+  <% @list.users.each do |user| %>
+  <% grand_total = user.amount_owed(@list, user) %>
 
+  <% if grand_total > 0 %>
+  <%= "#{user.name} is owed $#{grand_total}" %><br /><br />
+  <% else %>
+  <% abs_amount = grand_total.abs %>
+  <%= "#{user.name} owes $#{abs_amount}" %><br /><br />
+  <% end %>
+  <% end %>
+  List's Total: $<%= @total %>
+  <div>
+    <br />
+  </div>
+
+  <div id="settlements_made">
+    <h5>Payments Made Toward List:</h5>
+    <ul>
+      <% @list.settlements.each do |settlement| %>
+      <%= User.find(settlement.payer_id).name %> paid $<%= settlement.amount %> on <%= settlement.created_at.strftime("%m-%d-%Y") %><br />
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+</div>
 

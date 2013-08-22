@@ -16,6 +16,7 @@
 //= require foundation
 // require zepto/default
 //= require model
+//= require view
 //= require_tree .
 
 $(document).foundation();
@@ -24,7 +25,8 @@ $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
   new BillsIndexView('#all-bills');
-
+  new StatsView(lists);
+  
   lists.load();
 
 });

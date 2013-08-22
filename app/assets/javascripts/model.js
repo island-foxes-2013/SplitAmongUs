@@ -8,16 +8,42 @@ Model.prototype.id = function() {
 
 Model.prototype.update = function(attrs) {
   $.extend(this.attrs, attrs);
-  $(this).trigger('changed');
+  this.triggerChanged();
   return this;
 }
 
+Model.prototype.triggerChanged = function() {
+  $(this).trigger('changed');
+}
+
+Model.prototype.refresh = function() {
+  var self = this;
+  $.ajax({
+    method: "GET",
+    url: this.path(),
+    contentType: "text/json"
+  }).done(function(model_attributes) {
+    self.update(model_attributes);
+  });
+}
+
+Model.prototype.on = function(event, callback) {
+  $(this).on(event, callback);
+}
+
+Model.prototype.trigger = function(event) {
+  $(this).trigger(event);
+}
+
+Model.prototype.saveableData = function() {
+  return this.attrs;
+}
 Model.prototype.save = function() {
   var promise = $.Deferred();
   
   
   var data = {}
-  data[this.type] = $.extend({}, this.attrs);
+  data[this.type] = $.extend({}, this.saveableData());
   delete data[this.type]["created_at"]
   delete data[this.type]["id"]
   delete data[this.type]["updated_at"]

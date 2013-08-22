@@ -1,16 +1,14 @@
-<% if bill.date %>
-    <tr>
-      <td><%=bill.date.strftime("%m-%d-%Y") %></td>
-      <td><%=bill.description%></td>
-      <td>$<%=bill.amount%></td>
-      <td><%=bill.date_paid %></td>
-      <td><%=bill.paid_by.name %></td>
-      <td><li><%= link_to "edit", edit_list_bill_path(bill.list, bill), {method: :get} %></li></td>
-      <td><li><%= link_to "delete", list_bill_path(bill.list, bill), confirm: 'Are you sure you want to delete this bill?', method: :delete %></li></td>
-    </tr>
-<!-- needs remote true-->
-<!-- needs error handling -->
-<!-- needs remote true-->
-<!-- needs error handling -->
+<tr>
+  <td class="date">unknown</td>
+  <td class="description">unknown</td>
+  <td class="amount">unknown</td>
+  <td class="date_paid">unknown</td>
+  <td class="paid_by">unknown</td>
+  <td class="shared_amount">unknown</td>
+  <td><a href="#" class="edit">Edit</a></td>
+  <td><a href="#" class="delete">Delete</a></td>
+</tr>
 
-<% end %>
+<!--       <td><%#= link_to "edit", edit_list_bill_path(bill.list, bill), {method: :get} %></td>
+      <td><%#= link_to "delete", list_bill_path(bill.list, bill), confirm: 'Are you sure you want to delete this bill?', method: :delete %></td> -->
+

@@ -19,11 +19,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    if request.xhr?
-      render :show, :layout => false
-    else
-      render :show
-    end
+    respond_to { |format|
+      format.html { render :show, request.xhr? ? { layout: false } : {} }
+      format.json { render json: @list }
+    }
   end
 
   # def edit
