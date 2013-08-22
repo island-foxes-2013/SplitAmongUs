@@ -48,9 +48,8 @@
     <%= render partial: 'lists/new', locals: { lists: current_user.lists.build } %>
   </div>
   <div id="right_column">
-<!--       <h4>Your Stats:</h4><hr> -->
     <div id="dashboard-stats" class="panel">
-      <%= render partial: 'bills/list_total', locals: { list: current_user.lists.last } %>
+      <%= render partial: "bills/totals" %>
     </div>
   </div>
 </div>
