@@ -10,7 +10,7 @@
 				<!-- The add is not working--needs to be fixed -->
 				<a class="edit" href="#">&#9998;</a><div id="dialog-bills-edit-form"><%= render partial: 'lists/edit', locals: { list: @list } %></div>&nbsp
 				<%= link_to "x", @list, :confirm => 'Are you sure you want to delete this list?', :method => "delete", :class => 'delete' %>
-				<%= link_to "settle up", new_list_settlement_path(@list), :method => "get", class: 'create' %>
+				<%= link_to "settle up", new_list_settlement_path(@list), :method => "get", class: 'settle-up' %>
 				<a href='#' class="create">add bill</a>&nbsp</th>
 		</tr>
 		<tr>
