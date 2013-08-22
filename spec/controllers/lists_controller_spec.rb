@@ -100,4 +100,11 @@ describe ListsController do
       end
     end
   end 
+
+  describe "GET #stats" do
+    it "assigns a current users bills to bills as a local" do
+      get :stats, id: list.id
+      response.should render_template('lists/_total')
+    end
+  end
 end

@@ -25,5 +25,12 @@ module Users
         response.should render_template("layouts/application")
       end
     end
+
+    describe "GET #stats" do
+      it "assigns a current users bills to bills as a local" do
+        get :stats
+        response.should render_template('bills/_totals')
+      end
+    end
   end
 end

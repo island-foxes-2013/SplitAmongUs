@@ -6,7 +6,7 @@ SplitAmongUs::Application.routes.draw do
   match 'users/:id' => 'users#show', as: :users
   match '/dashboard/stats' => 'dashboard#stats' 
   match '/lists/:id/stats' => 'lists#stats'
-   match '/bills/stats' => 'users::bills#stats'
+   match '/bills/stats' => 'users/bills#stats'
   resources :dashboard, only: [:index]
 
   resources :lists, except: [:edit] do
