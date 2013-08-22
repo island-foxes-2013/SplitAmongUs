@@ -49,7 +49,7 @@ describe Bill do
 
       it "when list_id is blank" do
         bill.list_id = nil
-        expect { bill.save! }.to raise_error(NoMethodError)
+        expect { bill.save! }.to raise_error(ActiveRecord::RecordInvalid)
       end
 
       it "when user_id is blank" do
