@@ -5,5 +5,11 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "password"
     password_confirmation { password }
+
+    trait :with_list do
+      after(:create) do |user, _| 
+        user.lists << create(:list)
+      end
+    end
   end
 end
