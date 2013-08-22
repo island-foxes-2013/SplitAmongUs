@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
   end
 
   def stats
-    render json: { list: current_user.lists.last, bill: current_user.lists.last.bills }
+    render partial: "bills/totals"
   end
 end

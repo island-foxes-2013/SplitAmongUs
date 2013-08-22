@@ -14,6 +14,7 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require foundation
+//= require underscore
 // require zepto/default
 //= require model
 //= require view
@@ -25,7 +26,8 @@ $(function() {
   var lists = new Lists();
   new DashboardListsView('#dashboard-lists', lists);
   new BillsIndexView('#all-bills');
-  // new StatsView(lists, '#dashboard-stats');
-  
+  new StatsView(lists, '#dashboard-stats');
+  new ListStatsView(lists, '#list_show');
+  new BillStatsView('#bills-index');
   lists.load();
 });
