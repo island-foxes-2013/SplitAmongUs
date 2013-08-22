@@ -28,26 +28,24 @@ describe SettlementsController do
     context "with valid attributes" do
       it "saves the new settlement in the database" do
         expect {
-          post :create, settlement: list_attributes
-        }.to change(List, :count).by(1)
-        List.last.users.should == [user]
+          post :create, list_id: list.id, settlement: settlement_attributes
+        }.to change(Settlement, :count).by(1)
+        Settlement.last.should == [settlement]
        end
       it "redirects to the dashboard page" do
-        post :create, list: list_attributes
-        actual_name = JSON.parse(response.body)['name']
-        actual_name.should be_present
-        actual_name.should == list_attributes[:name]
+        post :create, list_id: list.id, settlement: attributes_for(:settlement)
+        response.should redirect_to dashboard_index_path
       end
     end
 
     context "with invalid attributes" do
-      it "does not save the new list in the database" do
+      it "does not save the new settlement in the database" do
         expect {
-          post :create, list: attributes_for(:invalid_list)
-          }.to_not change(List,:count)
+          post :create, list_id: list.id, settlement: attributes_for(:invalid_settlement)
+          }.to_not change(Settlement,:count)
       end
       it "renders the error message and redirects to the dashboard page" do
-        post :create, list: attributes_for(:invalid_list)
+        post :create, list_id: list.id, settlement: attributes_for(:settlement)
         response.should redirect_to dashboard_index_path
       end
     end

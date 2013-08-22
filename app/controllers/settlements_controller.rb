@@ -24,6 +24,6 @@ class SettlementsController < ApplicationController
 
   private
     def settlement_params
-      @settlement_params ||= params.require(:settlement).permit(:payer, :payee, :amount_cents, :list_id)
+      @settlement_params ||= params.require(:settlement).permit(:payer, :payee, :amount_cents, :amount, :list_id, :payer_id, :payee_id)
     end
 end
