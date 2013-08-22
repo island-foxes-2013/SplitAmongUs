@@ -1,5 +1,5 @@
-<div id="invite_friend">
-  <div id="middle_column">
+<div class="large-3 columns" id="invite_friend">
+  <div id="left_column">
     <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
     <fieldset>
       <%= devise_error_messages! %>

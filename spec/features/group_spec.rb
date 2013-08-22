@@ -13,10 +13,10 @@ describe "groups" do
       click_on(user.lists.first.name)
     end
 
-    it "allows a user to invite friends via email" do
-      click_link_or_button('Add A Friend')
-      page.should have_content('Send invitation')
-    end
+    # it "allows a user to invite friends via email" do
+    #   click_link_or_button('Add A Friend')
+    #   page.should have_content('Send invitation')
+    # end
 
     it "will send invitations on submit" do
       pending

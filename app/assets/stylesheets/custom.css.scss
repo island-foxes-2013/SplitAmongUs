@@ -288,8 +288,11 @@ p img {
 input[type="submit"] 
 
 
-#invite_friend #middle_column {
-  @include grid-column(4);
+#invite_friend #left_column {
+  width: 25%;
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
 
   h4 {
     text-align: left;
@@ -300,6 +303,12 @@ input[type="submit"]
     height: 85%;
     width: 85%;
     opacity:0.2;
+  }
+
+  fieldset {
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
   }
 }
 
