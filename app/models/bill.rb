@@ -20,5 +20,17 @@ class Bill < ActiveRecord::Base
       user.id == user_id
     end
   end
+
+  def as_json(options)
+    {
+      id: id,
+      amount: amount_cents,
+      description: description, 
+      date: date, 
+      paid_by: paid_by, 
+      date_paid: date_paid,
+      shared_amount: shared_amount_cents
+    }
+  end
 end
 

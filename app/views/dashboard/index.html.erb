@@ -38,7 +38,7 @@
   </div>
   <div id="middle_column">
     <% if current_user.lists.any? %>
-      <%= render template: 'bills/index', collection: current_user.lists %>
+      <%= render template: 'users/bills/index', collection: current_user.lists %>
     <% else %>
       <h4>Welcome to SplitAmong.us!</h4>
 <!--         <p> Have you ever pulled your hair out while keeping track of multiple lists of shared expenses in excel? Have you gotten into arguments with your roommates about who paid what bill and who owes who money? We are here to help you solve these problems and help your relationships stay strong without the stress of money getting in the way. SplitAmong.us is a simple, easy way to calculate shared expenses between different groups of people, or just keep track of your own expenses. You can invite friends to share lists, create bills, and see the share of what you owe, all from this simple, free app!</p> -->
@@ -49,10 +49,9 @@
   </div>
   <div id="right_column">
 <!--       <h4>Your Stats:</h4><hr> -->
-    <div class="panel">
-      <h6 class="subheader">
-        <%= render partial: 'bills/list_total', locals: { list: current_user.lists.last } %>
-      </h6>
+    <div id="dashboard-stats" class="panel">
+
+      <%= render partial: 'bills/list_total', locals: { list: current_user.lists.last } %>
     </div>
   </div>
 </div>

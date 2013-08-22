@@ -19,10 +19,9 @@ function ListShowView(list) {
     self.element.remove();
   });
 
-  $(list.bills).on('added', function(bill) {
+  $(list.bills).on('added', function(e, bill) {
     var billView = new ListShowViewBill(bill);
     self.element.find('.bills').append(billView.element);
-    self.refreshStats();
   });
 
   this.element.on('click', '.edit', function() {
@@ -31,11 +30,6 @@ function ListShowView(list) {
   this.element.on('click', '.create', function() {
     createBillDialog.open();
   });
-}
-
-
-// now a ton of stuff needs to update - need to make this more scalable
-// need to add classes and spans to the new totals
-ListShowView.prototype.refreshStats = function() {
-  $('.owe-me').text('$'+newTotal);
+  
+  list.loadBills();
 }

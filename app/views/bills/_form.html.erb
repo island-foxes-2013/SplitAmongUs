@@ -1,8 +1,8 @@
-<%= form_for [list, bills], remote: true do |f| %>
-  <!-- add in hidden field -->
-  <%= f.text_field :description, placeholder: :description %>
-  <%= f.text_field :amount, placeholder: :amount %>
-  <%= f.text_field :date, :class => :datepicker, placeholder: :date %>
-  <span class='errors'><%= flash[:error] %></span>
-  <!-- needs error handling, it shows up on modal but buggy: error appears after to sumbit with an empty field, modal should respond to error instantly -->
+<h3>Create a bill:</h3>
+<%= form_tag do %>
+  <%= text_field_tag :description, nil, placeholder: :description %>
+  <%= text_field_tag :amount, nil, placeholder: :amount %>
+  <%= text_field_tag :date, nil, class: :datepicker, placeholder: :date %>
+  <%= submit_tag "Create bill" %>
+  <%= button_tag "Cancel", class: "cancel" %>
 <% end %>

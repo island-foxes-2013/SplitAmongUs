@@ -1,0 +1,39 @@
+<!-- needs to be rendered via remote true -->
+<% current_user.lists.each do |list| %>
+  <% if list.bills.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="6"><%= list.name %></th>
+        </tr>
+        <tr>
+          <th>date</th>
+          <th>description</th>
+          <th>total</th>
+          <th>paid on</th>
+          <th>status</th>
+          <th>your share</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% list.bills.each do |bill| %>
+          <tr>
+            <td><%= bill.date.strftime("%m-%d-%Y") %></td>
+            <td><%= bill.description%></td>
+            <td>$<%= bill.amount%></td>
+            <td><%= bill.date_paid%></td>
+            <td><%= responsibility_for(bill)%></td>
+            <td>$<%= bill.shared_amount%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+<table>
+  <thead>
+    <th colspan="5">total amount due for all lists:</th>
+    <th colspan="1">$<%=total_due_for_all_lists%></th>
+  </thead>
+</table>
+
