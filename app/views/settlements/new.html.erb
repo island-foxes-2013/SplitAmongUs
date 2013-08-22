@@ -1,10 +1,30 @@
-<%= form_for [@list, @settlement] do |f| %>
-  <%= f.label :payee_id, "Payment to" %>
-  <%= f.select :payee_id, options_from_collection_for_select(@list.users, 'id', 'name')%>
-  <%= f.label :payer_id, "Payment From" %>
-  <%= f.select :payer_id, options_from_collection_for_select(@list.users, 'id', 'name')%>
-  <%= f.text_field :amount_cents, placeholder: :amount %>
-  <%= f.submit "Record Payment" %>
-  <span class='errors'><%= flash[:error] %></span>
-
-<% end %>
+<div id="middle_column">
+  <table>
+    <%= form_for [@list, @settlement] do |f| %>
+    <thead>
+      <tr>
+        <th colspan="3">
+          <span class="settle_up">Make a settlment</span>
+        </th>
+      <tr>
+        <th> <%= f.label :payee_id, "Payment to" %></th>
+        <th> <%= f.label :payer_id, "Payment From" %></th>
+        <th>Amount paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= f.select :payee_id, options_from_collection_for_select(@list.users, 'id', 'name')%></td>
+        <td> <%= f.select :payer_id, options_from_collection_for_select(@list.users, 'id', 'name')%></td>
+        <td> <%= f.text_field :amount_cents, placeholder: :amount %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td> <%= f.submit "Record Payment" %></td>
+      </tr>
+      <span class='errors'><%= flash[:error] %></span>
+    </tbody>
+    <% end %>
+  <table>
+<div>    
