@@ -297,33 +297,6 @@ input[type="submit"]
   }
 }
 
-#new_settlement {
-  padding-top: 1em;
-  width: 30%;
-
-  input[type="submit"] {
-    float: right;
-  }
-
-  #settlement_amount_cents {
-    max-width: 4em;
-  }
-
-  h4 {
-    text-align: left;
-    padding: 5px;
-  }
-/*  #settlement_payee_id, #settlement_payer_id{
-    padding: 1em 5em 1em 0;
-  }*/
-
-/*  img {
-    padding-left: 4em;
-    height: 85%;
-    width: 85%;
-    opacity:0.2;
-  }*/
-}
 
 
 tr th {
