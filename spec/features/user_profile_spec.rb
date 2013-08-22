@@ -27,8 +27,13 @@ describe "user totals" do
     end
 
     it "should return a total for all lists" do 
-      pending
-      # user.total_due_for_all_lists.should eq(Money.new(95000))
+      visit root_path
+      within '#new_session' do 
+        fill_in 'email', :with => user.email
+        fill_in 'password', :with => user.password
+        click_button 'Log In'
+      end
+      expect(page).to have_content("total amount due for all lists: $1025.76")
     end
   end
 end
