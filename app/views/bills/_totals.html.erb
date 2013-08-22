@@ -22,7 +22,7 @@
   <h5>Am Owed:</h5>
     <% if @owed.any? %>
       <% @owed.each do |list| %>
-        $<%= Money.new(current_user.amount_owed(list, current_user)).abs %> - from <%= list.name%> list<br />
+        $<%= current_user.amount_owed(list, current_user).abs %> - from <%= list.name%> list<br />
       <% end %>
     <% else %>
       <p>$0</p> 
