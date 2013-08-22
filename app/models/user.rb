@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
           @total += bill.amount 
         end 
       end 
-    "$ #{@total}"   
+    @total  
   end
 
   def friends

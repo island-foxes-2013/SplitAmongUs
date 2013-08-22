@@ -1,26 +1,40 @@
-function CreateBillDialog(locator) {
+function CreateBillDialog(locator, list) {
   this.dialog = $(locator)
-  this.form = this.dialog.find("#new_bill");
+  this.form = this.dialog.find("form");
   this.dialog.find('.datepicker').datepicker();
+  var self = this;
+
+  this.form.on('click', '.cancel', function(e) {
+    self.close();
+    return false;
+  });
+  
+  this.form.on('submit', function(e) {
+    e.preventDefault();
+    var data = {};
+
+    $(this).find('input[type="text"]').each(function(){
+      data[$(this).attr('name')] = $(this).val();
+    });
+    
+    data.amount = parseInt(data.amount) * 100;
+
+    list.createBill(data).done(function() {
+      self.close();  
+    }).fail(function(bill){
+      self.dialog.append(bill.errors());
+    });
+  });
+
   
   var self = this;
   this.dialog.dialog({
     autoOpen: false,
-    height: 300,
+    height: 390,
     width: 350,
     modal: true,
-    title: "add bill",
-    buttons: {
-      "Create bill": function() {
-        self.form.submit();
-        self.close();
-      },
-      "Cancel": function() {
-        self.open();
-      }
-    },
     close: function() {
-      self.form.find('input').val('');
+      $(this).find('input[type="text"]').val('');
     }
   });
 }

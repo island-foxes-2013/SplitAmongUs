@@ -6,7 +6,7 @@ class ListsController < ApplicationController
     if current_user.save
       render json: @list
     else
-      flash[:error] = @list.errors[:name].join('')
+      render status: :unprocessable_entity, json: { error: @list.errors[:name].join(',') }
       # this still needs to account to errors in the modal
       # so render the modal
       # redirect_to dashboard_index_path
@@ -19,11 +19,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    if request.xhr?
-      render :show, :layout => false
-    else
-      render :show
-    end
+    respond_to { |format|
+      format.html { render :show, request.xhr? ? { layout: false } : {} }
+      format.json { render json: @list }
+    }
   end
 
   # def edit
@@ -35,7 +34,7 @@ class ListsController < ApplicationController
     if @list.update_attributes(list_params)
       render json: @list
     else
-      flash[:error] = @list.errors[:name].join('')
+      render status: :unprocessable_entity, json: { error: @list.errors[:name].join(',') }
     end
   end
 

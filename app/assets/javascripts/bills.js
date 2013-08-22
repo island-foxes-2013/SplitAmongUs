@@ -1,13 +1,21 @@
-function Bills() {
+function Bills(list) {
   this.bills = [];
+  this.list = list;
 }
 
 Bills.prototype.add = function(bill) {
   this.bills.push(bill);
-  // I might not need the trigger here -- find out...
   $(this).trigger('added', bill);
 }
 
+Bills.prototype.load = function() {
+  var self = this;
+  $.get(this.list.path() + '/bills').done(function(bills_data) {
+    $.each(bills_data, function() {
+      self.add(new Bill(this));
+    })
+  });
+}
 // some bill amounts to display totals
 function addSettlement(amount, totalAmount) {
   var sumCents = Number(amount) + Number(totalAmount) * 100;

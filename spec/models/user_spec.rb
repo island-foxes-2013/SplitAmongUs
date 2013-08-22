@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe User do
   describe "#friends" do
-    let(:user) { create(:user) }
+    let!(:user) { create(:user) }
     let(:friend1) { create(:user) }
     # let(:friend2) { create(:user) }
-    let(:list) {create(:list) }
+    let(:list) { create(:list) }
 
     it "returns the list of people the user shares one or more groups with" do
       user.groups.create(list: list)
