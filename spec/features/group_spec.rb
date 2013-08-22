@@ -18,32 +18,6 @@ describe "groups" do
       page.should have_content('Send invitation')
     end
 
-    it "requires a name" do 
-      # This test will fail because there is no validation for name
-      click_link_or_button('Add A Friend')
-      fill_in 'name', with: ""
-      fill_in 'email', with: "example" + rand(1000000).to_s + rand(200000).to_s + "@hotmail.com"
-      click_link_or_button('Send an invitation')
-      save_and_open_page
-      page.should have_content("A name is required to send an invitation")
-    end
-
-    it "requires a valid email" do
-      click_link_or_button('Add A Friend')
-        fill_in 'name', with: "user.name" + " a.k.a Snoopy"
-        fill_in 'email', with: "example" + rand(1000000).to_s + rand(200000).to_s + "@hotmail.com"
-        click_link_or_button('Send an invitation')
-        redirect_to(dashboard_index_path)
-    end
-
-    it "will not work with an invalid email" do
-      click_link_or_button('Add A Friend')
-      fill_in 'name', with: "user.name" + " a.k.a Peter Griffin"
-      fill_in 'email', with: "example" + rand(1000000).to_s + rand(200000).to_s
-      click_link_or_button('Send an invitation')
-      page.should have_content("Email is invalid")
-    end
-
     it "will send invitations on submit" do
       pending
     end

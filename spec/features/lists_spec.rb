@@ -12,6 +12,7 @@ describe 'managing lists' do
   context 'create a new list' do 
 
     before do
+      
       visit root_path
       within '#login' do 
         fill_in 'email', with: user.email
