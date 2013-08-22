@@ -38,12 +38,13 @@ Model.prototype.trigger = function(event) {
 Model.prototype.saveableData = function() {
   return this.attrs;
 }
+
 Model.prototype.errors = function() {
   return this.attrs.errors.join('<br>') + '<br>' || [];
 }
+
 Model.prototype.save = function() {
   var promise = $.Deferred();
-  
   
   var data = {}
   data[this.type] = $.extend({}, this.saveableData());
@@ -59,6 +60,7 @@ Model.prototype.save = function() {
   }).done(function(model_attributes) {
     self.update(model_attributes);
     promise.resolve(self);
+
   }).fail(function(response) {
     self.update(response.responseJSON);
     promise.reject(self);

@@ -1,4 +1,3 @@
-
 function Lists() {
   this.lists = [];
 }
