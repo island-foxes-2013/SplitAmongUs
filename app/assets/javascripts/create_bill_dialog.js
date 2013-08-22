@@ -20,7 +20,7 @@ function CreateBillDialog(locator, list) {
     list.createBill(data).done(function() {
       self.close();  
     }).fail(function(model){
-      self.dialog.append(model.errors());
+      self.dialog.find('.errors').html(model.errors());
     });
   });
 
@@ -33,6 +33,7 @@ function CreateBillDialog(locator, list) {
     modal: true,
     close: function() {
       $(this).find('input[type="text"]').val('');
+      self.dialog.find('.errors').remove();
     }
   });
 }

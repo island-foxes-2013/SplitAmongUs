@@ -27,82 +27,143 @@ describe "user totals" do
     end
 
     it "should return a total for all lists" do 
-      pending
-      # user.total_due_for_all_lists.should eq(Money.new(95000))
+      visit root_path
+      within '#new_session' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_button 'Log In'
+      end
+      expect(page).to have_content("total amount due for all lists: $1025.76")
     end
   end
 end
 
 describe "user profile" do
 
+  let!(:user) { create(:user) }
+  let!(:user_2) { build(:user) }
+
   context "view profile" do
+    before do
+      visit root_path
+      within '#new_session' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_button 'Log In'
+      end
+      click_link 'my profile'
+    end
 
     it "displays a user profile on click" do
-      pending
+      page.should have_content("#{user.name}")
     end
 
     it "shows an edit form on display" do
-      pending
-    end
-
-    it "autofills user name, email, and password" do
-      pending
+      page.should have_content("Edit")
     end
 
   end
 
   context "edit profile" do 
+
+    before do
+      visit root_path
+      within '#new_session' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_button 'Log In'
+      end
+      click_link 'my profile'
+    end
     
     it "allows a user to edit their name" do
-      pending
+      fill_in 'Name', with: 'Johnny Depp'
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+      page.should have_content('Johnny Depp')
     end
 
     it "allows a user to change his/her image" do
-      pending
+      page.should have_content("To change your image, click here!")
     end
 
     it "does not require a user to change their password" do
-      pending
+      fill_in 'Email', with: user_2.email
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+      redirect_to(root_path)
     end
 
     it "allows a user to only modify their password" do
-      pending
+      fill_in 'Password', with: user.password + "234"
+      fill_in 'Password confirmation', with: user.password + "234"
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+      redirect_to(root_path)
     end
 
     it "will not save a new password if the confirmation does not match" do
-      pending
+      fill_in 'Password', with: user.password + "234"
+      fill_in 'Password confirmation', with: user.password + "24"
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+      page.should have_content("error")
     end
 
-    it "requires a current password to update information" do
-      pending
+    it "will not update without a current password" do
+      fill_in 'Password', with: user.password + "234"
+      fill_in 'Password confirmation', with: user.password + "234"
+      fill_in 'Current password', with: ''
+      click_button 'Update'
+      page.should have_content("error")
     end
 
     it "will not allow a user to change to a non-unique email address" do
-      pending
+      fill_in 'Password', with: user.password + "234"
+      fill_in 'Password confirmation', with: 'example@example.com'
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+      page.should have_content("error")
     end
 
-    it "does not update the account information if the current password is incorrect" do
-      pending
+    it "does not update the name if the current password is incorrect" do
+      fill_in 'Name', with: "Marilyn Monroe"
+      fill_in 'Current password', with: user.password + "234"
+      click_button 'Update'
+      page.should have_content("error")
+    end
+
+    it "does not update the eamil if the current password is incorrect" do
+      fill_in 'Email', with: user.email.gsub!(/^\w+/, 'aeiou')
+      fill_in 'Current password', with: user.password + "234"
+      click_button 'Update'
+      page.should have_content("error")
+    end
+
+    it "does not update the password if the current password is incorrect" do
+      fill_in 'Password', with: user.password + "2345678"
+      fill_in 'Password confirmation', with: 'example@example.com'
+      fill_in 'Current password', with: user.password + "234"
+      click_button 'Update'
+      page.should have_content("error")
     end
 
   end
 
   context "delete account" do
 
-    it "has a button to delete an account" do
-      pending
+    before do
+      visit root_path
+      within '#new_session' do 
+        fill_in 'email', with: user.email
+        fill_in 'password', with: user.password
+        click_button 'Log In'
+      end
+      click_link 'my profile'
     end
 
-    it "will require a person to confirm cancellation" do
-      pending
-    end
-
-    it "will delete a user from the database if they click confirm" do
-      pending
-    end
-
-    it "will not delete a user who cancels cancellation" do
-      pending
+    it "has a link to delete an account" do
+      page.should have_content("Cancel my account")
     end
 
   end

@@ -43,7 +43,14 @@ li, p {
 
 .notice {
   float: right;
+  color: $alt-primary-color;
+  padding: .5em;
+}
+
+.errors {
   color: $alert-color;
+  display: inline-block;
+  margin-bottom: 1em;
 }
 
 header fieldset {
@@ -163,8 +170,9 @@ table {
 }
 #left_column {
   width: 25%;
-  padding-right: 5px;
+  padding: 0;
   text-align: left;
+  vertical-align: top;
 }
 
 #middle_column {
@@ -255,32 +263,22 @@ p img {
 
 
 /*These override the modal fonts*/
-#list_name, .ui-button-text, .ui-dialog-title {
+#list_name, .ui-button-text, .ui-dialog-title, #dialog-bills-form {
     font-family: 'Esteban', serif;
-  }
-
- #new_bill {
-  #bill_description, #bill_amount, #bill_date {
-    font-family: 'Esteban', serif;
-  }
- } 
-
-#list_show table {
-
-} 
-
-footer {
-  position: fixed;
-  background-color: $alt-primary-color;
-  border-top: 1px solid $alt-secondary-color;
-  left: 0px;
-  bottom: 0px;
-  height: 3em;
-  width: 100%;
-  line-height: 3em;
-  padding-top: .5em;
-  color: $alt-secondary-color;
+    
+    input[type="submit"] {
+      font-family: 'Esteban', serif;
+    }
+    .cancel {
+      font-family: 'Esteban', serif;
+    }
 }
+
+#description, #amount, #date {
+  font-family: 'Esteban', serif;
+}
+input[type="submit"] 
+
 
 #invite_friend #middle_column {
   @include grid-column(4);
@@ -315,5 +313,16 @@ tr th {
   a {
     padding-left: .5em;
   }
-
+}
+footer {
+  position: fixed;
+  background-color: $alt-primary-color;
+  border-top: 1px solid $alt-secondary-color;
+  left: 0px;
+  bottom: 0px;
+  height: 3em;
+  width: 100%;
+  line-height: 3em;
+  padding-top: .5em;
+  color: $alt-secondary-color;
 }

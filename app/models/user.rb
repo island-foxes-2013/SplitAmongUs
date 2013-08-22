@@ -40,16 +40,6 @@ class User < ActiveRecord::Base
     self.class.amount_owed(list,user)
   end
 
-  def total_due_for_all_lists
-    @total = Money.new(0, "USD") 
-      current_user.lists.each do |list| 
-        list.bills.each do |bill|  
-          @total += bill.amount 
-        end 
-      end 
-    @total  
-  end
-
   def friends
     list_users.where("groups.user_id <> #{self.id}").uniq
 
