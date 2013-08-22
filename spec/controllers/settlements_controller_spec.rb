@@ -26,15 +26,21 @@ describe SettlementsController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      let(:settlement_attributes) do
+        {
+          amount: "35.00",
+          payee_id: 5,
+          payer_id: 6
+        }
+      end
       it "saves the new settlement in the database" do
         expect {
           post :create, list_id: list.id, settlement: settlement_attributes
         }.to change(Settlement, :count).by(1)
-        Settlement.last.should == [settlement]
        end
-      it "redirects to the dashboard page" do
-        post :create, list_id: list.id, settlement: attributes_for(:settlement)
-        response.should redirect_to dashboard_index_path
+      it "redirects to the root path" do
+        post :create, list_id: list.id, settlement: settlement_attributes
+        response.should redirect_to root_path
       end
     end
 
@@ -45,8 +51,8 @@ describe SettlementsController do
           }.to_not change(Settlement,:count)
       end
       it "renders the error message and redirects to the dashboard page" do
-        post :create, list_id: list.id, settlement: attributes_for(:settlement)
-        response.should redirect_to dashboard_index_path
+        post :create, list_id: list.id, settlement: attributes_for(:invalid_settlement)
+        response.should redirect_to new_list_settlement_path(list.id)
       end
     end
   end 

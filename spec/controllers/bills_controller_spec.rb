@@ -13,8 +13,8 @@ describe BillsController do
 
   describe "GET #index" do
     it "assigns the user's list to list" do
-      get :index, user_id: user.id
-      assigns(:lists).should eq(user.lists)
+      get :index, list_id: list.id
+      JSON.parse(response.body).should be_a Array
     end
   end
 
@@ -58,9 +58,9 @@ describe BillsController do
           }.to change(Bill, :count).by(1)
         end
 
-        it "renders the bill partial" do
+        it "renders the bill JSON" do
           xhr :post, :create, list_id: list.id, user_id: user.id, bill: attributes_for(:bill)
-          expect(response).to render_template("bill")
+          JSON.parse(response.body).should have_key("description")
         end
       end
 
@@ -72,9 +72,9 @@ describe BillsController do
             }.to_not change(Bill,:count)
         end
      
-        it "renders the error message and redirects to the show/dashboard page" do
+        it "returns a 422 - Unprocessable Entity" do
           xhr :post, :create, list_id: list.id, user_id: user.id, bill: attributes_for(:invalid_bill)
-          response.should redirect_to list_path(bill.list)
+          response.status.should == 422
         end
       end
     end
