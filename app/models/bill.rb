@@ -7,7 +7,11 @@ class Bill < ActiveRecord::Base
   monetize :amount_cents 
   
   def shared_amount
-    Money.new(amount_cents / list.users.count)
+    Money.new(shared_amount_cents)
+  end
+
+  def shared_amount_cents
+    amount_cents / list.users.count
   end
   
   def amount_in_cents
@@ -28,7 +32,8 @@ class Bill < ActiveRecord::Base
       date: date, 
       paid_by: paid_by, 
       date_paid: date_paid,
-      shared_amount: shared_amount_cents
+      shared_amount: shared_amount_cents,
+      errors: errors.full_messages
     }
   end
 end

@@ -16,13 +16,11 @@ function CreateBillDialog(locator, list) {
     $(this).find('input[type="text"]').each(function(){
       data[$(this).attr('name')] = $(this).val();
     });
-    
-    data.amount = parseInt(data.amount) * 100;
 
     list.createBill(data).done(function() {
       self.close();  
-    }).fail(function(bill){
-      self.dialog.append(bill.errors());
+    }).fail(function(model){
+      self.dialog.append(model.errors());
     });
   });
 

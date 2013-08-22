@@ -13,8 +13,7 @@ class BillsController < ApplicationController
     if @bill.save
       render json: @bill
     else
-      flash[:error] = @bill.errors.full_messages.join('')
-      redirect_to list_path(@bill.list)
+      render json: @bill, status: :unprocessable_entity
     end
   end
 
