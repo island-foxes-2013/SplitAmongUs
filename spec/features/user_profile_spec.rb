@@ -4,29 +4,31 @@ require 'selenium-webdriver'
 
 describe "user totals" do
 
-  before do
-    let!(:user) { create(:user) }
-    let(:user_2) { create(:user) }
-    let(:list) { create(:list) }
-    let(:list_2) { create(:list) }
-    let(:bill_1) { list.bills.create(amount: 950.75, description: "Rent", date: Date.today, user: user) }
-    let(:bill_2) { list.bills.create(amount: 75.25, description: "Electricity", date: Date.today, user: user_2) }
-    let(:bill_3) { list_2.bills.create(amount: 35.75, description: "Dinner", date: Date.today, user: user) }
-  end
+  let!(:user) { create(:user) }
+  let!(:user_2) { create(:user) }
+  let!(:list) { create(:list) }
+  let!(:list_2) { create(:list) }
+  let!(:group) { Group.create(user_id: user.id, list_id: list.id) }
+  let!(:group_2) { Group.create(user_id: user_2.id, list_id: list.id) }
+  let!(:bill_1) { list.bills.create(amount: 950.50, description: "Rent", date: Date.today, user: user) }
+  let!(:bill_2) { list.bills.create(amount: 75.26, description: "Electricity", date: Date.today, user: user_2) }
+  let!(:bill_3) { list_2.bills.create(amount: 35.75, description: "Dinner", date: Date.today, user: user) }
+  let!(:settlement) { Settlement.create(payer_id: user_2.id, payee_id: user.id, amount: 200.00, list_id: list.id)}
+  let!(:settlement_2) { Settlement.create(payer_id: user.id, payee_id: user_2.id, amount: 100.00, list_id: list.id)}
 
   context "calculate totals" do
+
     it "should return an amount in cents if user paid" do
-      p list.users
-      user.amount_owed(list, user).should eq(bill_1.amount - bill_2.amount).amount_in_cents
+      user.amount_owed(list, user).should eq(Money.new(43762))
     end
 
-    it "should return an amount in cents if another user paid" do
-      pending
-    end
+    # it "should return an amount in cents if another user paid" do
+    #   pending
+    # end
 
-    it "should return a total for all lists" do 
-      pending
-    end
+    # it "should return a total for all lists" do 
+    #   pending
+    # end
   end
 end
 
