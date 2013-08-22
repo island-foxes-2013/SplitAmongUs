@@ -43,7 +43,8 @@ li, p {
 
 .notice {
   float: right;
-  color: $alert-color;
+  color: $alt-primary-color;
+  padding: .5em;
 }
 
 header fieldset {
