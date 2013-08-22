@@ -24,7 +24,7 @@ class ListsController < ApplicationController
       format.json { render json: @list }
     }
   end
-  
+
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(list_params)
@@ -42,8 +42,8 @@ class ListsController < ApplicationController
   end
 
   def stats
-    render partial: 'lists/total' 
-    # pass in variables
+    list = List.find(params[:id])
+    render partial: 'lists/total', locals: { list: list }
   end
 
   private

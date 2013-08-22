@@ -11,7 +11,7 @@ function StatsView(lists, element) {
 
 StatsView.prototype.refresh = _.debounce(function() {
   var self = this;
-  $.get('/stats').done(function(response){
+  $.get('/dashboard/stats').done(function(response){
     $(self.element).html(response);
   });
 }, 250);
