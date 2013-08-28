@@ -21,7 +21,7 @@ SplitAmongUs::Application.configure do
   config.assets.digest = true
 
   config.action_mailer.delivery_method = :smtp
-  config.action_controller.default_url_options = {:host => "www.splitamong.us"}
+  config.action_mailer.default_url_options = {:host => "www.splitamong.us"} 
 
 
   # Defaults to nil and saved in location specified by config.assets.prefix
