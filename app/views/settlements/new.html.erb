@@ -9,14 +9,14 @@
       <tr>
         <th> <%= f.label :payee_id, "Payment to" %></th>
         <th> <%= f.label :payer_id, "Payment From" %></th>
-        <th> <%= f.label :amount_cents, "Amount paid" %></th>
+        <th> <%= f.label :amount, "Amount paid" %></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td> <%= f.select :payee_id, options_from_collection_for_select(@list.users, 'id', 'name')%></td>
         <td> <%= f.select :payer_id, options_from_collection_for_select(@list.users, 'id', 'name')%></td>
-        <td> <%= f.text_field :amount_cents, placeholder: :amount %></td>
+        <td> <%= f.text_field :amount, placeholder: :amount %></td>
       </tr>
       <tr>
         <td></td>

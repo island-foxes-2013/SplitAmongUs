@@ -7,7 +7,6 @@ class Settlement < ActiveRecord::Base
 
   validates :payer_id, :amount, :payee_id, :list_id, presence: true
 
-
   def amount_in_cents
     amount.fractional
   end

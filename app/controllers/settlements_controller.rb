@@ -9,6 +9,7 @@ class SettlementsController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @settlement = Settlement.new(settlement_params)
+    p "this is the settlement amount #{settlement_params[:amount]}"
     @settlement.list_id = @list.id
     if @settlement.save
       redirect_to root_path
@@ -20,6 +21,6 @@ class SettlementsController < ApplicationController
 
   private
     def settlement_params
-      @settlement_params ||= params.require(:settlement).permit(:amount_cents, :amount, :payer_id, :payee_id)
+      @settlement_params ||= params.require(:settlement).permit(:amount, :payer_id, :payee_id)
     end
 end
