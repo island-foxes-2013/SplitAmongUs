@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'american_date'
+gem 'newrelic_rpm'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
