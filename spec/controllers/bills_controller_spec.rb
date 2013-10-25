@@ -3,6 +3,7 @@ require 'spec_helper'
 describe BillsController do
   
   let(:user) { create(:user) }
+  let(:user_two) { create(:user) }
   let!(:list) { user.lists.create(name: 'test list') }
   let!(:bill) { create(:bill, list: list, user: user) }
    
@@ -54,8 +55,19 @@ describe BillsController do
      
         it "saves the new bill in the database" do
           expect {
-            xhr :post, :create, list_id: list.id, user_id: user.id, bill: attributes_for(:bill)
+            xhr :post, :create, list_id: list.id, bill: attributes_for(:bill, user_id: user.id)
           }.to change(Bill, :count).by(1)
+        end
+
+        it "creates a bill for the given user" do 
+          xhr :post, :create, list_id: list.id, bill: attributes_for(:bill, user_id: user_two.id)
+          Bill.last.user_id.should eq(user_two.id)
+        end
+
+        it "only a user a part of the list can create a bill" do 
+        end
+
+        it "only users a part of the list can own the bill" do 
         end
 
         it "renders the bill JSON" do
