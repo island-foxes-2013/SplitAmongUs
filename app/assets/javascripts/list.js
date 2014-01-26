@@ -15,6 +15,13 @@ List.prototype.path = function() {
   }
   return "/lists"  
 } 
+
+List.prototype.saveableData  = function() {
+  var saveableAttrs = {}; 
+  saveableAttrs[this.type] = $.extend({}, this.attrs);
+  return saveableAttrs;
+}
+
 List.prototype.type = 'list';
 
 List.prototype.name = function() {
