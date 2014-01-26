@@ -47,21 +47,17 @@ Model.prototype.save = function() {
   var promise = $.Deferred();
   
   var data = {}
-  data[this.type] = $.extend({}, this.saveableData());
-  delete data[this.type]["created_at"]
-  delete data[this.type]["id"]
-  delete data[this.type]["updated_at"]
+  data = $.extend({}, this.saveableData());
   var self = this;
 
   $.ajax({
     method: this.id() ? "PUT" : "POST",
     url: this.path(), 
-    data: data
+    data: data,
   }).done(function(model_attributes) {
     self.update(model_attributes);
     promise.resolve(self);
-
-  }).fail(function(response) {
+  }).fail(function(response) {    
     self.update(response.responseJSON);
     promise.reject(self);
   });

@@ -4,11 +4,12 @@ class BillsController < ApplicationController
   def index
     render json: List.find(params[:list_id]).bills
   end
-  
-  
+   
   def create 
     @bill = Bill.new(bill_params)
-    @bill.list_id = params[:list_id]
+    @list = List.find(params[:list_id])
+    @bill.list_id = @list.id
+
     if @bill.save
       render json: @bill
     else
@@ -35,6 +36,6 @@ class BillsController < ApplicationController
 
   private
   def bill_params
-    params.require(:bill).permit(:description, :amount, :date, :user_id)
+    @bill_params ||= params.require(:bill).permit(:description, :amount, :date, :user_id)
   end
 end

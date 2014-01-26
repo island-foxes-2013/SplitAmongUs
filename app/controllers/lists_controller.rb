@@ -19,6 +19,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @bill = Bill.new
     respond_to { |format|
       format.html { render :show, request.xhr? ? { layout: false } : {} }
       format.json { render json: @list }
