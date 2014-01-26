@@ -3,6 +3,8 @@ class Bill < ActiveRecord::Base
   belongs_to :user
 
   validates :description, :amount, :date, :list_id, :user_id, presence: true
+  validates :user, inclusion: { in: proc { |bill| bill.list.users } },
+            if: proc { |bill| bill.list }
 
   monetize :amount_cents 
   

@@ -12,14 +12,18 @@ function CreateBillDialog(locator, list) {
   this.form.on('submit', function(e) {
     e.preventDefault();
     var data = {};
-
     $(this).find('input[type="text"]').each(function(){
+      data[$(this).attr('name')] = $(this).val();
+    });
+    $(this).find('select').each(function(){
       data[$(this).attr('name')] = $(this).val();
     });
 
     list.createBill(data).done(function() {
+      console.log("inside of create bill");
       self.close();  
     }).fail(function(model){
+      console.log("inside of errors");
       self.dialog.find('.errors').html(model.errors());
     });
   });
@@ -28,7 +32,7 @@ function CreateBillDialog(locator, list) {
   var self = this;
   this.dialog.dialog({
     autoOpen: false,
-    height: 390,
+    height: 420,
     width: 350,
     modal: true,
     close: function() {

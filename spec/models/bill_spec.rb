@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Bill do
   
   let(:user) { create(:user) }
+  let(:user_two) { create(:user) }
   let(:list) { user.lists.create(name: 'test list') }
   let(:bill) { create(:bill, list: list, user: user) }
 
@@ -31,6 +32,21 @@ describe Bill do
     it 'has a list_id' do
       expect(bill.list_id).not_to eq(nil)
     end
+
+    context "when user belong to a list" do 
+      it "can create a bill for that list" do 
+        expect(bill.user_id).to eq(user.id)
+      end
+    end
+
+    context "when a user does not belong to a list" do 
+      let(:bill_two) { build(:bill, list: list, user: user_two) }
+      it "can't create a bill" do 
+      p "this is bill two #{bill_two.inspect}"
+
+        expect{ bill_two.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end 
   end
 
   context "validate bill" do

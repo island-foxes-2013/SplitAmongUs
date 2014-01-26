@@ -19,6 +19,7 @@ Bill.prototype.saveableData  = function() {
   delete saveableAttrs["list"];
   return saveableAttrs;
 }
+
 Bill.prototype.type = 'bill';
 
 Bill.prototype.list = function() {
@@ -34,6 +35,10 @@ Bill.prototype.amount = function() {
 
 Bill.prototype.date = function() {
   return this.attrs.date;
+}
+
+Bill.prototype.billOwner = function() {
+  return this.attrs.user_id ? this.attrs.user_id.name : ""
 }
 
 Bill.prototype.datePaid = function() {

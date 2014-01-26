@@ -1,9 +1,11 @@
 <h3>Create a bill:</h3>
-<%= form_tag do %>
+<%= form_for [@list, @bill], remote: true do |f| %>
   <span class='errors'></span>
-  <%= text_field_tag :description, nil, placeholder: :description %>
-  <%= text_field_tag :amount, nil, placeholder: :amount %>
-  <%= text_field_tag :date, nil, class: :datepicker, placeholder: :date %>
-  <%= submit_tag "Create bill" %>
-  <%= button_tag "Cancel", class: "cancel" %>
+  <%= f.select     :user_id, options_from_collection_for_select(@list.users, 'id', 'name') %>
+  <br>
+  <br>
+  <%= f.text_field :description, placeholder: :description %>
+  <%= f.text_field :amount, placeholder: :amount %>
+  <%= f.text_field :date, class: :datepicker, placeholder: :date %>
+  <%= f.submit "Create bill" %>
 <% end %>
